@@ -1,13 +1,12 @@
 #ifndef CONCESIONARIO_CONCESIONARIO_H_
 #define CONCESIONARIO_CONCESIONARIO_H_
 
-#define TAM_ID 5
 #define TAM_NOM_EMAIL 30
 #define TAM_DIREC 40
 #define TAM_CID_TLF 15
 
 typedef struct{
-	int ID[TAM_ID];
+	int ID;
 	char nombre[TAM_NOM_EMAIL];
 	char direccion[TAM_DIREC];
 	char ciudad[TAM_CID_TLF];
