@@ -1,13 +1,24 @@
-/*
- * concesionario.h
- *
- *  Created on: 6 mar 2025
- *      Author: zJson
- */
-
 #ifndef CONCESIONARIO_CONCESIONARIO_H_
 #define CONCESIONARIO_CONCESIONARIO_H_
 
+#define TAM_ID 4
+#define TAM_NOM_EMAIL 30
+#define TAM_DIREC 40
+#define TAM_CID_TLF 15
 
+typedef struct{
+	int ID[TAM_ID];
+	char nombre[TAM_NOM_EMAIL];
+	char direccion[TAM_DIREC];
+	char ciudad[TAM_CID_TLF];
+	char tlf[TAM_CID_TLF];
+	char email[TAM_NOM_EMAIL];
+
+} Conce;
+
+typedef struct{
+	Conce *aConce;
+	int numConces;
+} ListaConce;
 
 #endif /* CONCESIONARIO_CONCESIONARIO_H_ */
