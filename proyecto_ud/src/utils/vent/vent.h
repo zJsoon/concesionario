@@ -1,13 +1,18 @@
-/*
- * vent.h
- *
- *  Created on: 6 mar 2025
- *      Author: zJson
- */
-
 #ifndef VENT_H_
 #define VENT_H_
 
+#define TAM_METODO_PAGO 20
 
+typedef struct {
+    int operacion_id;
+    int vehiculo_id;
+    double precio_final;
+    char metodo_pago[TAM_METODO_PAGO];
+} Vent;
+
+typedef struct {
+    Vent* aVent;
+    int numVentas;
+} ListaVent;
 
 #endif /* VENT_H_ */
