@@ -1,8 +1,1 @@
-/*
- * alquiler.c
- *
- *  Created on: 6 mar 2025
- *      Author: zJson
- */
-
-
+#include "alquiler.h"
