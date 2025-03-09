@@ -1,10 +1,3 @@
-/*
- * manitenimiento.h
- *
- *  Created on: 6 mar 2025
- *      Author: zJson
- */
-
 #ifndef MANTENIMIENTO_MANTENIMIENTO_H_
 #define MANTENIMIENTO_MANTENIMIENTO_H_
 
