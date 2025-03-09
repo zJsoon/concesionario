@@ -8,6 +8,6 @@ void mostrarMenuInicio(){
 	printf("2. Empleado\n");
 	printf("3. Gerente\n");
 	printf("0. Exit\n");
-	printf("Selecciona una opción: ")
+	printf("Selecciona una opción: ");
 	fflush(stdout);
 }
