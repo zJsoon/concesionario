@@ -1,4 +1,4 @@
-#include "../menus/menu.h"
+#include "menus/menu.h"
 
 int main() {
 

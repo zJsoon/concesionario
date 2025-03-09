@@ -5,8 +5,8 @@
  *      Author: zJson
  */
 
-#ifndef MANTENIMIENTO_MANITENIMIENTO_H_
-#define MANTENIMIENTO_MANITENIMIENTO_H_
+#ifndef MANTENIMIENTO_MANTENIMIENTO_H_
+#define MANTENIMIENTO_MANTENIMIENTO_H_
 
 #define TAM_FECHA 11
 #define TAM_TIPO 30
@@ -26,4 +26,4 @@ typedef struct {
     int numMantenimientos;
 } ListaMantenimientos;
 
-#endif /* MANTENIMIENTO_MANITENIMIENTO_H_ */
+#endif /* MANTENIMIENTO_MANTENIMIENTO_H_ */
