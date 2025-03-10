@@ -20,4 +20,12 @@ typedef struct{
 	int numConces;
 } ListaConce;
 
+void iniLC(ListaConce *lc);
+void loadConceCSV(char *csv, ListaConce *lc);
+void addConce(ListaConce *lc, Conce c);
+void printC(Conce c);
+void printLC(ListaConce lc);
+Conce pedirConce(ListaConce lc);
+void copyConceCSV(char *csv, ListaConce lc);
+
 #endif /* CONCESIONARIO_CONCESIONARIO_H_ */
