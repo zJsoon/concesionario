@@ -16,4 +16,10 @@ typedef struct {
     int numAlquileres;
 } ListaAlquileres;
 
+void iniLA(ListaAlquileres *la);
+void addAlquiler(ListaAlquileres *la, Alquiler a);
+void printA(Alquiler a);
+void printLA(ListaAlquileres la);
+Alquiler realizarAlquiler(ListaAlquileres la);
+
 #endif /* ALQUILER_ALQUILER_H_ */
