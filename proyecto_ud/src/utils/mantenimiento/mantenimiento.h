@@ -19,4 +19,6 @@ typedef struct {
     int numMantenimientos;
 } ListaMantenimientos;
 
+void iniLM(ListaMantenimientos *lm);
+
 #endif /* MANTENIMIENTO_MANTENIMIENTO_H_ */

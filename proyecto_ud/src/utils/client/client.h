@@ -22,7 +22,9 @@ typedef struct {
 
 typedef struct {
     Client *aClient;
-    int cantidad;
+    int numClient;
 } ListaClientes;
+
+void iniLC(ListaClientes *lc);
 
 #endif /* CLIENT_CLIENT_H_ */

@@ -18,7 +18,9 @@ typedef struct {
 
 typedef struct {
     Operacion *aOperaciones;
-    int cantidad;
+    int numOperaciones;
 } ListaOperaciones;
+
+iniLOP(ListaOperaciones *lop);
 
 #endif /* OPERACIONES_H_ */

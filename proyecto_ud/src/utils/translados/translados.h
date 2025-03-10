@@ -17,4 +17,6 @@ typedef struct {
     int numTraslados;
 } ListaTraslados;
 
+iniLT(ListaTraslados *lt);
+
 #endif /* TRANSLADOS_TRANSLADOS_H_ */

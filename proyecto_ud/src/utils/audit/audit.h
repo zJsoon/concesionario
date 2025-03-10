@@ -18,4 +18,6 @@ typedef struct {
     int numAuditorias;
 } ListaAuditorias;
 
+void iniLAU(ListaAuditorias *lau);
+
 #endif /* AUDIT_AUDIT_H_ */

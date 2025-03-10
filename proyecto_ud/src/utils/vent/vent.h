@@ -15,4 +15,6 @@ typedef struct {
     int numVentas;
 } ListaVent;
 
+iniLVent(ListaVent *lvent);
+
 #endif /* VENT_H_ */
