@@ -145,36 +145,23 @@ Veh pedirVeh(ListaVeh lv) {
 	return v;
 }
 
-void copyVehCSV(char *csv, ListaVeh lv){
-	FILE *archivo = fopen(csv, "w");
+void copyVehCSV(char *csv, ListaVeh lv) {
+	FILE *pf = fopen(csv, "w");
 
-	    if (archivo == NULL) {
-	        perror("Error al abrir el archivo");
-	        return;
-	    }
+	if (pf != (FILE*) NULL) {
+		for (int i = 0; i < lv.numVeh; i++) {
+			Veh v = lv.aVeh[i];
+			fprintf(pf, "%d;%s;%s;%s;%d;%s;%s;%.2f;%.2f;%s;%s;%d;%d;%s\n", v.ID,
+					v.matricula, v.marca, v.modelo, v.year, v.tipo, v.color,
+					v.precio_compra, v.precio_venta, v.estado,
+					v.fecha_adquisicion, v.concesionario_ID, v.kilometraje,
+					v.tipo_combustible);
+		}
+		printf("Datos guardados en %s correctamente.\n", csv);
+		fflush(stdout);
+	} else {
+		perror("Error al abrir el archivo.\n");
+	}
 
-	    // Escribir cada vehículo
-	    for (int i = 0; i < lv.numVeh; i++) {
-	        Veh v = lv.aVeh[i];
-	        fprintf(archivo,
-	            "%d;%s;%s;%s;%d;%s;%s;%.2f;%.2f;%s;%s;%d;%d;%s\n",
-	            v.ID,
-	            v.matricula,
-	            v.marca,
-	            v.modelo,
-	            v.year,
-	            v.tipo,
-	            v.color,
-	            v.precio_compra,
-	            v.precio_venta,
-	            v.estado,
-	            v.fecha_adquisicion,
-	            v.concesionario_ID,
-	            v.kilometraje,
-	            v.tipo_combustible
-	        );
-	    }
-
-	    fclose(archivo);
-	    printf("Datos guardados en %s correctamente\n", csv);
+	fclose(pf);
 }
