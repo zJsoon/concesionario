@@ -75,14 +75,18 @@ void addVeh(ListaVeh *lv, Veh v) {
 }
 
 void printV(Veh v) {
-	printf("%10s%30s%30s%30s%10i%20s\n", v.matricula, v.marca, v.modelo, v.year,
-			v.estado);
+	printf("%10d%15s%20s%20s%10d%15s%15s%12.2f%12.2f%15s%15s%10d%10d%15s\n",
+			v.ID, v.matricula, v.marca, v.modelo, v.year, v.tipo, v.color,
+			v.precio_compra, v.precio_venta, v.estado, v.fecha_adquisicion,
+			v.concesionario_ID, v.kilometraje, v.tipo_combustible);
 }
 
 void printLV(ListaVeh lv) {
 	int i;
-	printf("%10s%30s%30s%30s%10s%20s\n", "MATRÍCULA", "MARCA", "MODELO", "AÑO",
-			"ESTADO");
+	printf("%10s%15s%20s%20s%10s%15s%15s%12s%12s%15s%15s%10s%10s%15s\n", "ID",
+			"MATRÍCULA", "MARCA", "MODELO", "AÑO", "TIPO", "COLOR",
+			"PRECIO_COMP", "PRECIO_VENT", "ESTADO", "FECHA_ADQ", "CONCE_ID",
+			"KM", "COMBUSTIBLE");
 	for (i = 0; i < lv.numVeh; i++) {
 		printV(lv.aVeh[i]);
 	}
