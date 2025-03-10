@@ -18,5 +18,12 @@ typedef struct{
 	int numEmp;
 }ListaEmp;
 
+void iniLE(ListaEmp *le);
+void loadEmpCSV(char *csv, ListaEmp *le);
+void addEmp(ListaEmp *le, Emp e);
+void printE(Emp e);
+void printLE(ListaEmp le);
+Emp pedirEmp(ListaEmp le);
+void copyEmpCSV(char *csv, ListaEmp le);
 
 #endif /* EMP_H_ */
