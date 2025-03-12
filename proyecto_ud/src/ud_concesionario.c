@@ -51,7 +51,10 @@ int main() {
 					printf("Saliendo...\n");
 					fflush(stdout);
 					break;
-				case 1: // Ver concesionarios
+				/*
+				 * CONCESIONARIOS
+				 */
+				case 1:
 					do {
 						op11 = mostrarMenuUsuarioConce();
 						switch (op11) {
@@ -79,7 +82,10 @@ int main() {
 						}
 					} while (op11 != 0);
 					break;
-				case 2: // Ver vehículos
+				/*
+				 * VER VEHICULOS
+				 */
+				case 2:
 					do {
 						op12 = mostrarMenuUsuarioVeh();
 						switch (op12) {
@@ -119,6 +125,9 @@ int main() {
 						}
 					} while (op12 != 0);
 					break;
+				/*
+				* HISTORIAL VEHICULO
+				*/
 				case 3: // Consultar historial un vehículo
 					printf("Consultar historial un vehículo.\n");
 					fflush(stdout);
@@ -143,6 +152,9 @@ int main() {
 						printf("Saliendo...\n");
 						fflush(stdout);
 						break;
+					/*
+					 * GESTION CLIENTES
+					 */
 					case 1:
 						do {
 							op21 = mostrarMenuEmpGest();
@@ -175,6 +187,9 @@ int main() {
 							}
 						} while (op21 != 0);
 						break;
+					/*
+					 * OPERACIONES
+					 */
 					case 2:
 						do {
 							op22 = mostrarMenuEmpOperaciones();
@@ -255,7 +270,10 @@ int main() {
 							}
 						} while (op22 != 0);
 						break;
-					case 3: //Mantenimiento
+					/*
+					 * MANTENIMIENTO
+					 */
+					case 3:
 						do {
 							op23 = mostrarMenuEmpMantenimiento();
 							switch (op23) {
@@ -287,7 +305,10 @@ int main() {
 							}
 						} while (op23 != 0);
 						break;
-					case 4: //Informes
+					/*
+					 * INFORMES
+					 */
+					case 4:
 						do {
 							op24 = mostrarMenuEmpInformes();
 							switch (op24) {
@@ -369,7 +390,10 @@ int main() {
 						printf("Saliendo...\n");
 						fflush(stdout);
 						break;
-					case 1: // Gestión empleado
+					/*
+					 * GESTION EMPLEADO
+					 */
+					case 1:
 						do {
 							op31 = mostrarMenuGerenteEmp();
 							switch (op31) {
@@ -401,6 +425,9 @@ int main() {
 							}
 						} while (op31 != 0);
 						break;
+					/*
+					 * GESTION CONCESIONARIOS
+					 */
 					case 2: // Gestión concesionarios
 						do {
 							op32 = mostrarMenuGerenteConce();
