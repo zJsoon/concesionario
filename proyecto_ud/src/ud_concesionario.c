@@ -40,6 +40,9 @@ int main() {
 		case 0:
 			printf("Saliendo...\n");
 			break;
+		/*
+		 * MENU USUARIO
+		 */
 		case 1:
 			do {
 				op1 = mostrarMenuUsuario();
@@ -127,6 +130,10 @@ int main() {
 				}
 			} while (op1 != 0);
 			break;
+
+		/*
+		* MENU EMPLEADO
+		*/
 		case 2:
 			if (verifyEmpleado) {
 				do {
@@ -350,6 +357,9 @@ int main() {
 				} while (op2 != 0);
 			}
 			break;
+		/*
+		* MENU GERENTE
+		*/
 		case 3:
 			if (verifyGerente) {
 				do {
