@@ -13,6 +13,6 @@ typedef struct {
     int numRenting;
 } ListaRenting;
 
-iniLR(ListaRenting *lr);
+void iniLR(ListaRenting *lr);
 
 #endif /* RENTING_RENTING_H_ */

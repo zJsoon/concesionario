@@ -3,7 +3,7 @@
 #include <string.h>
 #include "concesionario.h"
 
-void iniLC(ListaConce *lc) {
+void iniLCon(ListaConce *lc) {
     lc->aConce = NULL;
     lc->numConces = 0;
 }

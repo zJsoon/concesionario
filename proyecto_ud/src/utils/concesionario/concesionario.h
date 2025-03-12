@@ -20,7 +20,7 @@ typedef struct{
 	int numConces;
 } ListaConce;
 
-void iniLC(ListaConce *lc);
+void iniLCon(ListaConce *lc);
 void loadConceCSV(char *csv, ListaConce *lc);
 void addConce(ListaConce *lc, Conce c);
 void printC(Conce c);

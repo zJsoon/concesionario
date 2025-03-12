@@ -21,6 +21,6 @@ typedef struct {
     int numOperaciones;
 } ListaOperaciones;
 
-iniLOP(ListaOperaciones *lop);
+void iniLOP(ListaOperaciones *lop);
 
 #endif /* OPERACIONES_H_ */

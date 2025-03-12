@@ -32,7 +32,7 @@ void loadVehCSV(char *csv, ListaVeh *lv) {
 			char *kilometraje = strtok(NULL, ";");
 			char *tipo_combustible = strtok(NULL, "");
 
-			strcpy(v.ID, id);
+			v.ID = atoi(id);
 			strcpy(v.matricula, matricula);
 			strcpy(v.marca, marca);
 			strcpy(v.modelo, modelo);

@@ -17,7 +17,7 @@
 #include "utils/vent/vent.h"
 
 int main() {
-	int op, op1, op11, op12, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32, verifyEmpleado, verifyGerente;
+	int op, op1, op11, op12, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32, verifyEmpleado=1, verifyGerente=1;
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
