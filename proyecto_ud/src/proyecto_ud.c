@@ -33,9 +33,6 @@ int main() {
 
 	iniListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 
-	/**
-	 * FALTA POR TERMINAR DE MONTAR EL DO WHILE
-	 */
 	do {
 		op = mostrarMenuInicio();
 		switch (op) {
