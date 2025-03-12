@@ -41,12 +41,14 @@ int main() {
 			fflush(stdout);
 			break;
 		case 1: // Usuario
+			op1 = mostrarMenuUsuario();
 			switch (op1) {
 			case 0: // Salir
 				printf("Saliendo...");
 				fflush(stdout);
 				break;
 			case 1: // Ver concesionarios
+				op11 = mostrarMenuUsuarioConce();
 				switch (op11) {
 				case 0:
 					printf("Saliendo...");
@@ -65,6 +67,7 @@ int main() {
 				}
 				break;
 			case 2: // Ver vehículos
+				op12 = mostrarMenuUsuarioVeh();
 				switch (op12) {
 				case 0:
 					printf("Saliendo...");
@@ -98,12 +101,14 @@ int main() {
 			break;
 		case 2: // Empleado
 			if (verifyEmpleado) {
+				op2 = mostrarMenuEmp();
 				switch (op2) {
 				case 0:
 					printf("Saliendo...");
 					fflush(stdout);
 					break;
 				case 1: // Gestión Clientes
+					op21 = mostrarMenuEmpGest();
 					switch (op21) {
 					case 0:
 						printf("Saliendo...");
@@ -124,6 +129,7 @@ int main() {
 					}
 					break;
 				case 2: // Operaciones
+					op22 = mostrarMenuEmpOperaciones();
 					switch (op22) {
 					case 0:
 						printf("Saliendo...");
@@ -132,29 +138,34 @@ int main() {
 					case 1: // Registrar venta
 						break;
 					case 2: // Registrar alquiler
+						op222 = mostrarMenuEmpOperacionesAlquiler();
 						switch (op222) {
 						case 0:
 							printf("Saliendo...");
 							break;
 						case 1: // Inicio alquiler
 							break;
-						case 2: // Fin alquiler
+						case 2: // Estado alquiler
+							break;
+						case 3: // Fin alquiler
 							break;
 						default:
-							printf(
-									"Error! La opción seleccionada no es correcta\n");
+							printf("Error! La opción seleccionada no es correcta\n");
 							fflush(stdout);
 							break;
 						}
 						break;
 					case 3: // Registrar renting
+						op223 = mostrarMenuEmpOperacionesRenting();
 						switch (op223) {
 						case 0:
 							printf("Saliendo...");
 							break;
 						case 1: // Inicio renting
 							break;
-						case 2: // Fin reinting
+						case 2: // Estado renting
+							break;
+						case 3: // Fin reinting
 							break;
 						default:
 							break;
@@ -170,6 +181,7 @@ int main() {
 					}
 					break;
 				case 3: // Mantenimientos
+					op23 = mostrarMenuEmpMantenimiento();
 					switch (op23) {
 					case 0:
 						printf("Saliendo...");
@@ -178,20 +190,25 @@ int main() {
 						break;
 					case 2: // Registrar revisiones
 						break;
+					case 3: // Visualizar reparaciones
+						break;
+					case 4: // Visualizar revisiones
+						break;
 					default:
-						printf(
-								"Error! La opción seleccionada no es correcta\n");
+						printf("Error! La opción seleccionada no es correcta\n");
 						fflush(stdout);
 						break;
 					}
 					break;
 				case 4: // Informes
+					op24 = mostrarMenuEmpInformes();
 					switch (op24) {
 					case 0:
 						printf("Saliendo...");
 						fflush(stdout);
 						break;
 					case 1: // Generar informes
+						op241 = mostrarMenuEmpInformesGenerar();
 						switch (op241) {
 						case 0:
 							printf("Saliendo...");
@@ -210,8 +227,7 @@ int main() {
 						case 6: // Informe revisiones
 							break;
 						default:
-							printf(
-									"Error! La opción seleccionada no es correcta\n");
+							printf("Error! La opción seleccionada no es correcta\n");
 							fflush(stdout);
 							break;
 						}
@@ -235,12 +251,14 @@ int main() {
 			break;
 		case 3: // Gerente
 			if (verifyGerente) {
+				op3 = mostrarMenuGerente();
 				switch (op3) {
 				case 0:
 					printf("Saliendo...");
 					fflush(stdout);
 					break;
 				case 1: // Gestión empleados
+					op31 = mostrarMenuGerenteEmp();
 					switch (op31) {
 					case 0:
 						printf("Saliendo...");
@@ -262,6 +280,7 @@ int main() {
 					}
 					break;
 				case 2: // Gestión concesionarios
+					op32 = mostrarMenuGerenteConce();
 					switch (op32) {
 					case 0:
 						printf("Saliendo...");
