@@ -75,8 +75,7 @@ int main() {
 							fflush(stdout);
 							break;
 						default:
-							printf(
-									"Error! La opción seleccionada no es correcta\n");
+							printf("Error! La opción seleccionada no es correcta\n");
 							fflush(stdout);
 							break;
 						}
@@ -118,8 +117,7 @@ int main() {
 							fflush(stdout);
 							break;
 						default:
-							printf(
-									"Error! La opción seleccionada no es correcta\n");
+							printf("Error! La opción seleccionada no es correcta\n");
 							fflush(stdout);
 							break;
 						}
@@ -180,8 +178,7 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
+								printf("Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
@@ -222,8 +219,7 @@ int main() {
 										fflush(stdout);
 										break;
 									default:
-										printf(
-												"Error! La opción seleccionada no es correcta\n");
+										printf("Error! La opción seleccionada no es correcta\n");
 										fflush(stdout);
 										break;
 									}
@@ -250,8 +246,7 @@ int main() {
 										fflush(stdout);
 										break;
 									default:
-										printf(
-												"Error! La opción seleccionada no es correcta\n");
+										printf("Error! La opción seleccionada no es correcta\n");
 										fflush(stdout);
 										break;
 									}
@@ -263,8 +258,7 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
+								printf("Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
@@ -298,8 +292,7 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
+								printf("Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
@@ -349,8 +342,7 @@ int main() {
 										fflush(stdout);
 										break;
 									default:
-										printf(
-												"Error! La opción seleccionada no es correcta\n");
+										printf("Error! La opción seleccionada no es correcta\n");
 										fflush(stdout);
 										break;
 									}
@@ -370,8 +362,7 @@ int main() {
 						} while (op24 != 0);
 						break;
 					default:
-						printf(
-								"Error! La opción seleccionada no es correcta\n");
+						printf("Error! La opción seleccionada no es correcta\n");
 						fflush(stdout);
 						break;
 					}
@@ -418,8 +409,7 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
+								printf("Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
