@@ -2,8 +2,15 @@
 #include <string.h>
 
 #include "manageMenu.h"
-#include "../utils/emp/emp.h"
 
+int pedirOp(){
+	int op;
+
+	fflush(stdin);
+	scanf("%d", &op);
+
+	return op;
+}
 int verificarEmpleado(ListaEmp le) {
 	loadEmpCSV(EMP_CSV, &le);
 	int enc = 0, i;

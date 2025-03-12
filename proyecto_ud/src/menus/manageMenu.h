@@ -3,6 +3,7 @@
 
 #include "../utils/emp/emp.h"
 
+int pedirOp();
 int verificarEmpleado(ListaEmp le);
 int verificarGerente(ListaEmp le);
 
