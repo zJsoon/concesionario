@@ -15,6 +15,9 @@ int mostrarMenuInicio() {
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
@@ -33,6 +36,9 @@ int mostrarMenuUsuario() {
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
@@ -46,6 +52,9 @@ int mostrarMenuUsuarioConce() {
 	printf("3. Filtrar por marca\n");
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
+
+	fflush(stdout);
+	fflush(stdin);
 
 	scanf("%d", &op);
 
@@ -63,6 +72,9 @@ int mostrarMenuUsuarioVeh() {
 	printf("6. Filtrar por estado\n");
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
+
+	fflush(stdout);
+	fflush(stdin);
 
 	scanf("%d", &op);
 
@@ -83,6 +95,9 @@ int mostrarMenuEmp() {
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
@@ -97,6 +112,9 @@ int mostrarMenuEmpGest() {
 	printf("4. Consultar clieentes\n");
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
+
+	fflush(stdout);
+	fflush(stdin);
 
 	scanf("%d", &op);
 
@@ -113,6 +131,9 @@ int mostrarMenuEmpOperaciones() {
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
@@ -127,6 +148,9 @@ int mostrarMenuEmpOperacionesAlquiler() {
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
@@ -140,6 +164,9 @@ int mostrarMenuEmpOperacionesRenting() {
 	printf("3. Fin renting\n");
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
+
+	fflush(stdout);
+	fflush(stdin);
 
 	scanf("%d", &op);
 
@@ -156,6 +183,9 @@ int mostrarMenuEmpMantenimiento() {
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
@@ -168,6 +198,9 @@ int mostrarMenuEmpInformes() {
 	printf("2. Visualizar informes\n");
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
+
+	fflush(stdout);
+	fflush(stdin);
 
 	scanf("%d", &op);
 
@@ -186,6 +219,9 @@ int mostrarMenuEmpInformesGenerar() {
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
@@ -194,7 +230,7 @@ int mostrarMenuEmpInformesGenerar() {
 /*
  * GERENTES
  */
-int mostrarMenuGerente(){
+int mostrarMenuGerente() {
 	int op;
 
 	printf("GERENTE:\n");
@@ -203,11 +239,14 @@ int mostrarMenuGerente(){
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
 }
-int mostrarMenuGerenteEmp(){
+int mostrarMenuGerenteEmp() {
 	int op;
 
 	printf("GERENTE - EMPLEADOS:\n");
@@ -218,12 +257,15 @@ int mostrarMenuGerenteEmp(){
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
 
+	fflush(stdout);
+	fflush(stdin);
+
 	scanf("%d", &op);
 
 	return op;
 
 }
-int mostrarMenuGerenteConce(){
+int mostrarMenuGerenteConce() {
 	int op;
 
 	printf("GERENTE - CONCESIONARIOS:\n");
@@ -233,6 +275,9 @@ int mostrarMenuGerenteConce(){
 	printf("4. Consultar concesionario\n");
 	printf("0. Salir\n");
 	printf("Selecciona una opción: ");
+
+	fflush(stdout);
+	fflush(stdin);
 
 	scanf("%d", &op);
 
