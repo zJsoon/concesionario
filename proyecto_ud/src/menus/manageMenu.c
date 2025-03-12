@@ -1,2 +1,43 @@
 #include <stdio.h>
+#include <string.h>
+
 #include "manageMenu.h"
+#include "../utils/emp/emp.h"
+
+int verificarEmpleado(ListaEmp le) {
+	int enc = 0, i;
+	Emp e;
+
+	printf("Introduce el DNI: ");
+	fflush(stdout);
+	fflush(stdin);
+	fgets(e.DNI, TAM_DNI, stdin);
+	e.DNI[strcspn(e.DNI, "\n")] = 0;
+
+	for (i=0;i<le.numEmp;i++) {
+		if (strcmp(le.aEmp[i].DNI, e.DNI)==0) {
+			enc = 1;
+			break;
+		}
+	}
+	return enc;
+}
+
+int verificarGerente(ListaEmp le) {
+	int enc = 0, i;
+	Emp e;
+
+	printf("Introduce el DNI: ");
+	fflush(stdout);
+	fflush(stdin);
+	fgets(e.DNI, TAM_DNI, stdin);
+
+	for (i = 0; i < le.numEmp; i++) {
+		if (strcmp(le.aEmp[i].DNI, e.DNI)==0
+				&& strcmp(le.aEmp[i].cargo, "gerente")==0) {
+			enc = 1;
+			break;
+		}
+	}
+	return enc;
+}

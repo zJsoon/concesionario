@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "menus/menu.h"
+#include "menus/manageMenu.h"
 
 #include "comp/ini.h"
 
@@ -16,8 +17,10 @@
 #include "utils/veh/veh.h"
 #include "utils/vent/vent.h"
 
+#define EMP_CSV "./data/csv/empleados.csv"
+
 int main() {
-	int op, op1, op11, op12, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32, verifyEmpleado = 1, verifyGerente = 1;
+	int op, op1, op11, op12, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32;
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
@@ -141,7 +144,8 @@ int main() {
 		* MENU EMPLEADO
 		*/
 		case 2:
-			if (verifyEmpleado) {
+			loadEmpCSV(EMP_CSV, &le);
+			if (verificarEmpleado(le)) {
 				do {
 					op2 = mostrarMenuEmp();
 					switch (op2) {
@@ -366,13 +370,17 @@ int main() {
 						break;
 					}
 				} while (op2 != 0);
+			}else{
+				printf("No estas autorizado para acceder a este menú.\n");
+				fflush(stdout);
 			}
 			break;
 		/*
 		* MENU GERENTE
 		*/
 		case 3:
-			if (verifyGerente) {
+			loadEmpCSV(EMP_CSV, &le);
+			if (verificarGerente(le)) {
 				do {
 					op3 = mostrarMenuGerente();
 					switch (op3) {
@@ -454,6 +462,9 @@ int main() {
 						break;
 					}
 				} while (op3 != 0);
+			}else{
+				printf("No estas autorizado para acceder a este menú.\n");
+				fflush(stdout);
 			}
 			break;
 		default:

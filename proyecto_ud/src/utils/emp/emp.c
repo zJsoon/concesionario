@@ -35,6 +35,8 @@ void loadEmpCSV(char *csv, ListaEmp *le) {
             addEmp(le, e);
         }
         fclose(pf);
+    }else{
+    	printf("No se encuenta el archivo.\n");
     }
 }
 
