@@ -1,6 +1,7 @@
 #ifndef CONCESIONARIO_CONCESIONARIO_H_
 #define CONCESIONARIO_CONCESIONARIO_H_
 
+#define CONC_CSV "./data/csv/concesionario.csv"
 #define TAM_NOM_EMAIL 30
 #define TAM_DIREC 40
 #define TAM_CID_TLF 15

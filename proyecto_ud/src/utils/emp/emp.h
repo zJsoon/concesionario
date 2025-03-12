@@ -1,6 +1,7 @@
 #ifndef EMP_H_
 #define EMP_H_
 
+#define EMP_CSV "./data/csv/empleados.csv"
 #define TAM_DNI 11
 #define TAM_NOMBRE 50
 #define TAM_CARGO 30

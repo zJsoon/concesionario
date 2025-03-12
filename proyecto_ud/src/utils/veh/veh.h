@@ -1,6 +1,7 @@
 #ifndef VEH_H_
 #define VEH_H_
 
+#define VEH_CSV "./data/csv/vehiculos.csv"
 #define TAM_FECHA 11
 #define TAM_TIPO_VEH 30
 #define TAM_MATRICULA 10
