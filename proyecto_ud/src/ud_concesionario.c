@@ -354,11 +354,81 @@ int main() {
 			if (verifyGerente) {
 				do {
 					op3 = mostrarMenuGerente();
-					printf("Hemos entrado a una categoria de gerente.\n");
-					fflush(stdout);
+					switch (op3) {
+					case 0:
+						printf("Saliendo...\n");
+						fflush(stdout);
+						break;
+					case 1: // Gestión empleado
+						do {
+							op31 = mostrarMenuGerenteEmp();
+							switch (op31) {
+							case 0:
+								printf("Saliendo...\n");
+								fflush(stdout);
+								break;
+							case 1: // Añadir empleado
+								printf("Añadir empleado\n");
+								fflush(stdout);
+								break;
+							case 2: // Modificar empleado
+								printf("Modificar empleado\n");
+								fflush(stdout);
+								break;
+							case 3: // Eliminar empleado
+								printf("Eliminar empleado\n");
+								fflush(stdout);
+								break;
+							case 4: // Consultar empleado
+								printf("Consular empleado\n");
+								fflush(stdout);
+								break;
+							default:
+								printf(
+										"Error! La opción seleccionada no es correcta\n");
+								fflush(stdout);
+								break;
+							}
+						} while (op31 != 0);
+						break;
+					case 2: // Gestión concesionarios
+						do {
+							op32 = mostrarMenuGerenteConce();
+							switch (op32) {
+							case 0:
+								printf("Saliendo...");
+								fflush(stdout);
+								break;
+							case 1: // Añadir concesionarios
+								printf("Añadir concesionario.\n");
+								fflush(stdout);
+								break;
+							case 2: // Modificar concesionarios
+								printf("Modificar concesionario.\n");
+								fflush(stdout);
+								break;
+							case 3: // Eliminar concesionarios
+								printf("Eliminar concesionarios");
+								fflush(stdout);
+								break;
+							case 4: // Consultar concesionarios
+								printf("Consultar concesionarios");
+								fflush(stdout);
+								break;
+							default:
+								printf("Error! La opción seleccionada no es correcta.\n");
+								fflush(stdout);
+								break;
+							}
+						} while (op32 != 0);
+						break;
+					default:
+						printf("Error! La opción seleccionada no es correcta.\n");
+						fflush(stdout);
+						break;
+					}
 				} while (op3 != 0);
 			}
-
 			break;
 		default:
 			printf("Error! La opción seleccionada no es correcta\n");
