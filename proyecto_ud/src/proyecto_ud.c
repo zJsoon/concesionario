@@ -145,4 +145,6 @@ int main() {
 			break;
 		}
 	} while (op != 0);*/
+
+	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 }
