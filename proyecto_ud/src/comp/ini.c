@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "ini.h"
 
 void iniListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
@@ -15,6 +18,9 @@ void iniListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	iniLT(lt);
 	iniLV(lv);
 	iniLVent(lvent);
+
+	printf("Listas inicializadas.\n");
+	fflush(stdout);
 }
 
 void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
@@ -32,4 +38,7 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	free(lt->aTraslado);
 	free(lv->aVeh);
 	free(lvent->aVent);
+
+	printf("Listas limpiadas.\n");
+	fflush(stdout);
 }
