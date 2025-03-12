@@ -2,7 +2,7 @@
 #define VEH_H_
 
 #define TAM_FECHA 11
-#define TAM_TIPO 30
+#define TAM_TIPO_VEH 30
 #define TAM_MATRICULA 10
 #define TAM_MARCA 30
 #define TAM_MODELO 30
@@ -17,7 +17,7 @@ typedef struct{
     char marca[TAM_MARCA];
     char modelo[TAM_MODELO];
     int year;
-    char tipo[TAM_TIPO];
+    char tipo[TAM_TIPO_VEH];
     char color[TAM_COLOR];
     double precio_compra;
     double precio_venta;
