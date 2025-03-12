@@ -1,0 +1,68 @@
+FUNCIONES PROGRAMA PRINCIPAL:
+-----------------------------------------
+|	concesionario.h & concesionario.c	|
+-----------------------------------------
+- visualizarConce()
+- visualizarConceCiudad(char *ciudad)
+- visualizarConceMarca(char *marca)
+- modConce(char *ID)
+- elimConce(char *ID)
+- consultConce(char *ID)
+
+---------------------
+|	veh.h & veh.c	|
+---------------------
+- visualizarVeh()
+- visualizarVehConce(int id)
+- visualizarVehCiudad(char *ciudad)
+- visualizarVehMarca(char *marca)
+- visualizarVehTipo(char *tipo)
+- visualizarVehEstado(char *tipo)
+- visualizarVehHistorial(char *matricula)
+
+-----------------------------
+|	client.h & client.c		|
+-----------------------------
+- addClientes()
+- modClientes(char *DNI)
+- elimClientes(char *DNI)
+- consultClientes(char *DNI)
+
+-------------------------
+|	vent.h & vent.c		|
+-------------------------
+- registrarVenta(char *matricula)
+
+---------------------------------
+|	alquiler.h & alquiler.c		|
+---------------------------------
+- startAlquiler(char *matricula)
+- estadoAlquiler(char *matricula)
+- endAlquiler(char *matricula)
+
+---------------------------------
+|	renting.h & renting.c		|
+---------------------------------
+- startRenting(char *matricula)
+- estadoRenting(char *matricula)
+- endRenting(char *matricula)
+
+-------------------------------------
+|	translados.h & translados.c		|
+-------------------------------------
+- registrarTranslado(char *matricula)
+
+-----------------------------------------
+|	mantenimiento.h & mantenimiento.c	|
+-----------------------------------------
+- registrarRep(char *matricula)
+- registrarRevi(char *matricula)
+- visualizarMantRep(char *matricula)
+- visualizarMantRevi(char *matricula)
+
+---------------------
+|	emp.h & emp.c	|
+---------------------
+- modEmp(char *DNI)
+- elimEmp(char *DNI)
+- consultEmp(char *DNI)
