@@ -19,12 +19,12 @@ typedef struct{
     int year;
     char tipo[TAM_TIPO_VEH];
     char color[TAM_COLOR];
-    double precio_compra;
-    double precio_venta;
+    float precio_compra;
+    float precio_venta;
     char estado[TAM_ESTADO];
     char fecha_adquisicion[TAM_FECHA];
     int concesionario_ID;
-    int kilometraje;
+    float kilometraje;
     char tipo_combustible[TAM_COMBUSTIBLE];
 } Veh;
 

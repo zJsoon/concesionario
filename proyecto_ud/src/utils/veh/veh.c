@@ -75,7 +75,7 @@ void addVeh(ListaVeh *lv, Veh v) {
 }
 
 void printV(Veh v) {
-	printf("%10d%15s%20s%20s%10d%15s%15s%12.2f%12.2f%15s%15s%10d%10d%15s\n",
+	printf("%10d%15s%20s%20s%10d%15s%15s%12.2f%12.2f%15s%15s%10d%10.2f%15s\n",
 			v.ID, v.matricula, v.marca, v.modelo, v.year, v.tipo, v.color,
 			v.precio_compra, v.precio_venta, v.estado, v.fecha_adquisicion,
 			v.concesionario_ID, v.kilometraje, v.tipo_combustible);
@@ -115,7 +115,7 @@ Veh pedirVeh(ListaVeh lv) {
 	printf("Introduce el tipo: ");
 	fflush(stdout);
 	fflush(stdin);
-	fgets(v.tipo, TAM_TIPO, stdin);
+	fgets(v.tipo, TAM_TIPO_VEH, stdin);
 	printf("Introduce el color: ");
 	fflush(stdout);
 	fflush(stdin);
@@ -155,7 +155,7 @@ void copyVehCSV(char *csv, ListaVeh lv) {
 	if (pf != (FILE*) NULL) {
 		for (int i = 0; i < lv.numVeh; i++) {
 			Veh v = lv.aVeh[i];
-			fprintf(pf, "%d;%s;%s;%s;%d;%s;%s;%.2f;%.2f;%s;%s;%d;%d;%s\n", v.ID,
+			fprintf(pf, "%d;%s;%s;%s;%d;%s;%s;%.2f;%.2f;%s;%s;%d;%.2f;%s\n", v.ID,
 					v.matricula, v.marca, v.modelo, v.year, v.tipo, v.color,
 					v.precio_compra, v.precio_venta, v.estado,
 					v.fecha_adquisicion, v.concesionario_ID, v.kilometraje,
