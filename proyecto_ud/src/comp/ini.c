@@ -42,3 +42,9 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	printf("Listas liberadas.\n");
 	fflush(stdout);
 }
+
+void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv){
+	copyEmpCSV(EMP_CSV, le);
+	copyConceCSV(CONC_CSV, lcon);
+	copyVehCSV(VEH_CSV, lv);
+}

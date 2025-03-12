@@ -396,7 +396,8 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Añadir empleado
-								printf("Añadir empleado\n");
+								addEmp(&le, pedirEmp(le));
+								printf("Empleado añadido.\n");
 								fflush(stdout);
 								break;
 							case 2: // Modificar empleado
@@ -469,6 +470,8 @@ int main() {
 			break;
 		}
 	} while (op != 0);
+
+	guardarDatos(lcon, le, lv);
 
 	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 }
