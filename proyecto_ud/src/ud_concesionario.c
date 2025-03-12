@@ -17,7 +17,9 @@
 #include "utils/veh/veh.h"
 #include "utils/vent/vent.h"
 
+#define CONC_CSV "./data/csv/concesionario.csv"
 #define EMP_CSV "./data/csv/empleados.csv"
+#define VEH_CSV "./data/csv/vehiculos.csv"
 
 int main() {
 	int op, op1, op11, op12, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32;
