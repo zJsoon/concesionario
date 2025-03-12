@@ -39,6 +39,6 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	free(lv->aVeh);
 	free(lvent->aVent);
 
-	printf("Listas limpiadas.\n");
+	printf("Listas liberadas.\n");
 	fflush(stdout);
 }
