@@ -14,7 +14,7 @@ void addAudit(ListaAuditorias *lau, Auditoria a) {
     if (lau->aAuditoria == NULL) {
     	lau->aAuditoria = malloc(1 * sizeof(Auditoria));
     } else {
-        Alquiler *aux = malloc(lau->numAuditorias * sizeof(Auditoria));
+    	Auditoria *aux = malloc(lau->numAuditorias * sizeof(Auditoria));
         for (i = 0; i < lau->numAuditorias; i++) {
             aux[i] = lau->aAuditoria[i];
         }
