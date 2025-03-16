@@ -19,5 +19,6 @@ typedef struct {
 } ListaAuditorias;
 
 void iniLAU(ListaAuditorias *lau);
+void addAudit(ListaAuditorias *lau, Auditoria a);
 
 #endif /* AUDIT_AUDIT_H_ */
