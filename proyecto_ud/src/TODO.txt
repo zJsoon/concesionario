@@ -1,6 +1,58 @@
+FUNCIONES OBLIGATORIAS:
+-------------------------
+|	audit.h & audit.c	|						-> Isasi
+-------------------------
+- void printAU(Auditoria a)
+- void printLAU(ListaAuditorias lau)
+- Auditoria realizarAuditoria(ListaAuditorias lau)
+
+-------------------------
+|	client.h & client.c	|						-> Declan
+-------------------------
+- void printC(Client c)
+- void printLC(ListaClientes lc)
+- Client realizarCliente(ListaClientes lc)
+
+-----------------------------------------
+|	mantenimiento.h & mantenimiento.c	|		-> Isasi
+-----------------------------------------
+- void printM(Mantenimiento m)
+- void printLC(ListaMantenimientos lm)
+- Mantenimiento realizarMantenimiento(ListaMantenimientos lm)
+
+-------------------------------------
+|	operaciones.h & operaciones.c	|			-> Declan
+-------------------------------------
+- void printOP(Operacion op)
+- void printLOP(ListaOperaciones lop)
+- Operacion realizarOperacion(ListaOperaciones lop)
+
+-----------------------------
+|	renting.h & renting.c	|					-> Isasi
+-----------------------------
+- void printR(Renting r)
+- void printLR(ListaRenting lr)
+- Renting realizarRenting(ListaRenting lr)
+
+---------------------------------
+|	translados.h & translados.c	|				-> Declan
+---------------------------------
+- void printT(Traslado t)
+- void printLT(ListaTraslados lt)
+- Translado realizarTranslado(ListaTraslados lt)
+
+---------------------
+|	vent.h & vent.c	|							-> Isasi
+---------------------
+- void printVent(Vent vent)
+- void printLVent(ListaVent lvent)
+- Vent realizarVenta(ListaVent lvent)
+
+---------------------------------------------------------------------
+
 FUNCIONES PROGRAMA PRINCIPAL:
 -----------------------------------------
-|	concesionario.h & concesionario.c	|
+|	concesionario.h & concesionario.c	|		-> Eneko
 -----------------------------------------
 - visualizarConce()
 - visualizarConceCiudad(char *ciudad)
@@ -10,7 +62,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - consultConce(char *ID)
 
 ---------------------
-|	veh.h & veh.c	|
+|	veh.h & veh.c	|							-> Eneko
 ---------------------
 - visualizarVeh()
 - visualizarVehConce(int id)
@@ -21,7 +73,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - visualizarVehHistorial(char *matricula)
 
 -----------------------------
-|	client.h & client.c		|
+|	client.h & client.c		|					-> Eneko
 -----------------------------
 - addClientes()
 - modClientes(char *DNI)
@@ -29,31 +81,31 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - consultClientes(char *DNI)
 
 -------------------------
-|	vent.h & vent.c		|
+|	vent.h & vent.c		|						-> Isasi
 -------------------------
 - registrarVenta(char *matricula)
 
 ---------------------------------
-|	alquiler.h & alquiler.c		|
+|	alquiler.h & alquiler.c		| 				-> Isasi
 ---------------------------------
 - startAlquiler(char *matricula)
 - estadoAlquiler(char *matricula)
 - endAlquiler(char *matricula)
 
 ---------------------------------
-|	renting.h & renting.c		|
+|	renting.h & renting.c		|				-> Declan
 ---------------------------------
 - startRenting(char *matricula)
 - estadoRenting(char *matricula)
 - endRenting(char *matricula)
 
 -------------------------------------
-|	translados.h & translados.c		|
+|	translados.h & translados.c		|			-> Declan
 -------------------------------------
 - registrarTranslado(char *matricula)
 
 -----------------------------------------
-|	mantenimiento.h & mantenimiento.c	|
+|	mantenimiento.h & mantenimiento.c	|		-> Declan
 -----------------------------------------
 - registrarRep(char *matricula)
 - registrarRevi(char *matricula)
@@ -61,8 +113,8 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - visualizarMantRevi(char *matricula)
 
 ---------------------
-|	emp.h & emp.c	|
+|	emp.h & emp.c	|							-> Isasi & Declan & Eneko
 ---------------------
-- modEmp(char *DNI)
-- elimEmp(char *DNI)
-- consultEmp(char *DNI)
+- modEmp(char *DNI) 		- Isasi
+- elimEmp(char *DNI)		- Declan
+- consultEmp(char *DNI)		- Eneko
