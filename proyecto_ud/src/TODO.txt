@@ -62,9 +62,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 -----------------------------------------
 |	concesionario.h & concesionario.c	|		-> Eneko
 -----------------------------------------
-- visualizarConce()
-- visualizarConceCiudad(char *ciudad)
-- visualizarConceMarca(char *marca)
+
 - modConce(char *ID)
 - elimConce(char *ID)
 - consultConce(char *ID)
@@ -72,13 +70,9 @@ FUNCIONES PROGRAMA PRINCIPAL:
 ---------------------
 |	veh.h & veh.c	|							-> Eneko
 ---------------------
-- visualizarVeh()
-- visualizarVehConce(int id)
-- visualizarVehCiudad(char *ciudad)
-- visualizarVehMarca(char *marca)
-- visualizarVehTipo(char *tipo)
-- visualizarVehEstado(char *tipo)
-- visualizarVehHistorial(char *matricula)
+- modVeh(char *ID)
+- elimVeh(char *ID)
+- consultVeh(char *ID)
 
 -----------------------------
 |	client.h & client.c		|					-> Eneko
@@ -121,7 +115,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - visualizarMantRevi(char *matricula)
 
 ---------------------
-|	emp.h & emp.c	|							-> Isasi & Declan & Eneko
+|	emp.h & emp.c	|							-> Eneko
 ---------------------
 - modEmp(char *DNI) 		- Isasi
 - elimEmp(char *DNI)		- Declan
