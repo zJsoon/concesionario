@@ -18,7 +18,7 @@
 #include "utils/vent/vent.h"
 
 int main() {
-	int op, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32;
+	int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22;
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
@@ -47,8 +47,8 @@ int main() {
 		case 1:
 			if (verificarEmpleado(le)) {
 				do {
-					op2 = mostrarMenuEmp();
-					switch (op2) {
+					op1 = mostrarMenuEmp();
+					switch (op1) {
 					case 0:
 						printf("Saliendo...\n");
 						fflush(stdout);
@@ -58,8 +58,8 @@ int main() {
 					 */
 					case 1:
 						do {
-							op21 = mostrarMenuEmpGest();
-							switch (op21) {
+							op11 = mostrarMenuEmpGest();
+							switch (op11) {
 							case 0:
 								printf("Saliendo...\n");
 								fflush(stdout);
@@ -85,15 +85,15 @@ int main() {
 								fflush(stdout);
 								break;
 							}
-						} while (op21 != 0);
+						} while (op11 != 0);
 						break;
 					/*
 					 * OPERACIONES
 					 */
 					case 2:
 						do {
-							op22 = mostrarMenuEmpOperaciones();
-							switch (op22) {
+							op12 = mostrarMenuEmpOperaciones();
+							switch (op12) {
 							case 0:
 								printf("Saliendo...\n");
 								fflush(stdout);
@@ -104,8 +104,8 @@ int main() {
 								break;
 							case 2: // Registrar alquiler
 								do {
-									op222 = mostrarMenuEmpOperacionesAlquiler();
-									switch (op222) {
+									op122 = mostrarMenuEmpOperacionesAlquiler();
+									switch (op122) {
 									case 0:
 										printf("Saliendo...\n");
 										break;
@@ -126,12 +126,12 @@ int main() {
 										fflush(stdout);
 										break;
 									}
-								} while (op222 != 0);
+								} while (op122 != 0);
 								break;
 							case 3:
 								do {
-									op223 = mostrarMenuEmpOperacionesRenting();
-									switch (op223) {
+									op123 = mostrarMenuEmpOperacionesRenting();
+									switch (op123) {
 									case 0:
 										printf("Saliendo...\n");
 										fflush(stdout);
@@ -154,7 +154,7 @@ int main() {
 										break;
 									}
 									break;
-								} while (op223 != 0);
+								} while (op123 != 0);
 								break;
 							case 4: // Registrar movimiento coche
 								printf("Registrar movimiento coche.\n");
@@ -165,15 +165,15 @@ int main() {
 								fflush(stdout);
 								break;
 							}
-						} while (op22 != 0);
+						} while (op12 != 0);
 						break;
 					/*
 					 * MANTENIMIENTO
 					 */
 					case 3:
 						do {
-							op23 = mostrarMenuEmpMantenimiento();
-							switch (op23) {
+							op13 = mostrarMenuEmpMantenimiento();
+							switch (op13) {
 							case 0:
 								printf("Saliendo...\n");
 								fflush(stdout);
@@ -199,23 +199,23 @@ int main() {
 								fflush(stdout);
 								break;
 							}
-						} while (op23 != 0);
+						} while (op13 != 0);
 						break;
 					/*
 					 * INFORMES
 					 */
 					case 4:
 						do {
-							op24 = mostrarMenuEmpInformes();
-							switch (op24) {
+							op14 = mostrarMenuEmpInformes();
+							switch (op14) {
 							case 0:
 								printf("Saliendo...\n");
 								fflush(stdout);
 								break;
 							case 1: // Generar informes
 								do {
-									op241 = mostrarMenuEmpInformesGenerar();
-									switch (op241) {
+									op141 = mostrarMenuEmpInformesGenerar();
+									switch (op141) {
 									case 0:
 										printf("Saliendo...\n");
 										fflush(stdout);
@@ -249,7 +249,7 @@ int main() {
 										fflush(stdout);
 										break;
 									}
-								} while (op241 != 0);
+								} while (op141 != 0);
 
 								break;
 							case 2: // Visualizar informes
@@ -262,14 +262,14 @@ int main() {
 								fflush(stdout);
 								break;
 							}
-						} while (op24 != 0);
+						} while (op14 != 0);
 						break;
 					default:
 						printf("Error! La opción seleccionada no es correcta\n");
 						fflush(stdout);
 						break;
 					}
-				} while (op2 != 0);
+				} while (op1 != 0);
 			}else{
 				printf("No estas autorizado para acceder a este menú.\n");
 				fflush(stdout);
@@ -281,8 +281,8 @@ int main() {
 		case 2:
 			if (verificarGerente(le)) {
 				do {
-					op3 = mostrarMenuGerente();
-					switch (op3) {
+					op2 = mostrarMenuGerente();
+					switch (op2) {
 					case 0:
 						printf("Saliendo...\n");
 						fflush(stdout);
@@ -292,8 +292,8 @@ int main() {
 					 */
 					case 1:
 						do {
-							op31 = mostrarMenuGerenteEmp();
-							switch (op31) {
+							op21 = mostrarMenuGerenteEmp();
+							switch (op21) {
 							case 0:
 								printf("Saliendo...\n");
 								fflush(stdout);
@@ -320,15 +320,15 @@ int main() {
 								fflush(stdout);
 								break;
 							}
-						} while (op31 != 0);
+						} while (op21 != 0);
 						break;
 					/*
 					 * GESTION CONCESIONARIOS
 					 */
 					case 2: // Gestión concesionarios
 						do {
-							op32 = mostrarMenuGerenteConce();
-							switch (op32) {
+							op22 = mostrarMenuGerenteConce();
+							switch (op22) {
 							case 0:
 								printf("Saliendo...");
 								fflush(stdout);
@@ -354,14 +354,14 @@ int main() {
 								fflush(stdout);
 								break;
 							}
-						} while (op32 != 0);
+						} while (op22 != 0);
 						break;
 					default:
 						printf("Error! La opción seleccionada no es correcta.\n");
 						fflush(stdout);
 						break;
 					}
-				} while (op3 != 0);
+				} while (op2 != 0);
 			}else{
 				printf("No estas autorizado para acceder a este menú.\n");
 				fflush(stdout);
