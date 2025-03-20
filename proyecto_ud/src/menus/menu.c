@@ -10,60 +10,10 @@ int mostrarMenuInicio() {
 	printf("| ------------- |\n");
 	printf("| IDENTIFÍCATE  |\n");
 	printf("| ------------- |\n");
-	printf("| 1. Cliente    |\n");
-	printf("| 2. Empleado   |\n");
-	printf("| 3. Gerente    |\n");
+	printf("| 1. Empleado   |\n");
+	printf("| 2. Gerente    |\n");
 	printf("| 0. Salir      |\n");
 	printf("| ------------- |\n");
-	printf("Selecciona una opción: ");
-
-	fflush(stdout);
-	return pedirOp();
-}
-
-/*
- * USUARIO
- */
-int mostrarMenuUsuario() {
-	printf("| ------------------------------- |\n");
-	printf("|             USUARIO             |\n");
-	printf("| ------------------------------- |\n");
-	printf("| 1. Ver concesionarios           |\n");
-	printf("| 2. Ver vehículos                |\n");
-	printf("| 3. Consultar historial vehículo |\n");
-	printf("| 0. Salir                        |\n");
-	printf("| ------------------------------- |\n");
-	printf("Selecciona una opción: ");
-
-	fflush(stdout);
-	return pedirOp();
-}
-int mostrarMenuUsuarioConce() {
-	printf("| ------------------------ |\n");
-	printf("| USUARIO - CONCESIONARIO  |\n");
-	printf("| ------------------------ |\n");
-	printf("| 1. Visualizar todos      |\n");
-	printf("| 2. Filtrar por ciudad    |\n");
-	printf("| 3. Filtrar por marca     |\n");
-	printf("| 0. Salir                 |\n");
-	printf("| ------------------------ |\n");
-	printf("Selecciona una opción: ");
-
-	fflush(stdout);
-	return pedirOp();
-}
-int mostrarMenuUsuarioVeh() {
-	printf("| ---------------------------- |\n");
-	printf("|      USUARIO - VEHÍCULO      |\n");
-	printf("| ---------------------------- |\n");
-	printf("| 1. Visualizar todos          |\n");
-	printf("| 2. Filtrar por concesionario |\n");
-	printf("| 3. Filtrar por marca         |\n");
-	printf("| 4. Filtrar por modelo        |\n");
-	printf("| 5. Filtrar por tipo          |\n");
-	printf("| 6. Filtrar por estado        |\n");
-	printf("| 0. Salir                     |\n");
-	printf("| ---------------------------- |\n");
 	printf("Selecciona una opción: ");
 
 	fflush(stdout);

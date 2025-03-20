@@ -18,7 +18,7 @@
 #include "utils/vent/vent.h"
 
 int main() {
-	int op, op1, op11, op12, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32;
+	int op, op2, op21, op22, op222, op223, op23, op24, op241, op3, op31, op32;
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
@@ -40,108 +40,11 @@ int main() {
 		case 0:
 			printf("Saliendo...\n");
 			break;
-		/*
-		 * MENU USUARIO
-		 */
-		case 1:
-			do {
-				op1 = mostrarMenuUsuario();
-				switch (op1) {
-				case 0: // Salir
-					printf("Saliendo...\n");
-					fflush(stdout);
-					break;
-				/*
-				 * CONCESIONARIOS
-				 */
-				case 1:
-					do {
-						op11 = mostrarMenuUsuarioConce();
-						switch (op11) {
-						case 0:
-							printf("Saliendo...\n");
-							fflush(stdout);
-							break;
-						case 1: // Visualizar todos
-							printf("Visualizar todos los concesionarios.\n");
-							fflush(stdout);
-							break;
-						case 2: // Filtrar por ciudad
-							printf("Filtrar concesionarios por ciudad.\n");
-							fflush(stdout);
-							break;
-						case 3: // Filtrar por marca
-							printf("Filtrar concesionarios por marca.\n");
-							fflush(stdout);
-							break;
-						default:
-							printf("Error! La opción seleccionada no es correcta\n");
-							fflush(stdout);
-							break;
-						}
-					} while (op11 != 0);
-					break;
-				/*
-				 * VER VEHICULOS
-				 */
-				case 2:
-					do {
-						op12 = mostrarMenuUsuarioVeh();
-						switch (op12) {
-						case 0:
-							printf("Saliendo...\n");
-							fflush(stdout);
-							break;
-						case 1: // Visualizar todos
-							printf("Visualizar todos los vehículos.\n");
-							fflush(stdout);
-							break;
-						case 2: // Filtrar por concesionario
-							printf("Filtrar por concesionarios\n");
-							fflush(stdout);
-							break;
-						case 3: // Filtrar por marca
-							printf("Filtrar por marca\n");
-							fflush(stdout);
-							break;
-						case 4: // Filtrar por modelo
-							printf("Filtrar por modelo\n");
-							fflush(stdout);
-							break;
-						case 5: // Filtrar por tipo
-							printf("Filtrar por tipo\n");
-							fflush(stdout);
-							break;
-						case 6: // Filtrar por estado
-							printf("Filtrar por estado\n");
-							fflush(stdout);
-							break;
-						default:
-							printf("Error! La opción seleccionada no es correcta\n");
-							fflush(stdout);
-							break;
-						}
-					} while (op12 != 0);
-					break;
-				/*
-				* HISTORIAL VEHICULO
-				*/
-				case 3: // Consultar historial un vehículo
-					printf("Consultar historial un vehículo.\n");
-					fflush(stdout);
-					break;
-				default:
-					printf("Error! La opción seleccionada no es correcta\n");
-					fflush(stdout);
-					break;
-				}
-			} while (op1 != 0);
-			break;
 
 		/*
 		* MENU EMPLEADO
 		*/
-		case 2:
+		case 1:
 			if (verificarEmpleado(le)) {
 				do {
 					op2 = mostrarMenuEmp();
@@ -375,7 +278,7 @@ int main() {
 		/*
 		* MENU GERENTE
 		*/
-		case 3:
+		case 2:
 			if (verificarGerente(le)) {
 				do {
 					op3 = mostrarMenuGerente();
