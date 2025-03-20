@@ -50,11 +50,14 @@ FUNCIONES OBLIGATORIAS:
 - void printLVent(ListaVent lvent)
 - Vent realizarVenta(ListaVent lvent)
 
+
+
 ---------------------------------------------------------------------
+
+
 
 FUNCIONES PROGRAMA PRINCIPAL:
 -----------------------------
-
 
 -----------------------------------------
 |	concesionario.h & concesionario.c	|		-> Eneko
