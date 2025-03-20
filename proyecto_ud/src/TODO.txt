@@ -88,7 +88,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - registrarVenta(char *matricula)
 
 ---------------------------------
-|	alquiler.h & alquiler.c		| 				-> Isasi
+|	alquiler.h & alquiler.c		| 				-> Eneko
 ---------------------------------
 - startAlquiler(char *matricula)
 - estadoAlquiler(char *matricula)
@@ -107,7 +107,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - registrarTranslado(char *matricula)
 
 -----------------------------------------
-|	mantenimiento.h & mantenimiento.c	|		-> Declan
+|	mantenimiento.h & mantenimiento.c	|		-> Eneko
 -----------------------------------------
 - registrarRep(char *matricula)
 - registrarRevi(char *matricula)
