@@ -28,7 +28,7 @@ void addClient(ListaClientes *lc, Client c) {
     lc->numClient++;
 }
 
-void printC(Client c) {
+void printCli(Client c) {
     printf("%5d%15s%20s%25s%30s%15s%25s%15s\n",
            c.ID,
            c.dni,
@@ -40,7 +40,7 @@ void printC(Client c) {
            c.fecha_registro);
 }
 
-void printLC(ListaClientes lc) {
+void printLCli(ListaClientes lc) {
     int i;
     printf("%5s%15s%20s%25s%30s%15s%25s%15s\n",
            "ID",
@@ -52,7 +52,7 @@ void printLC(ListaClientes lc) {
            "EMAIL",
            "FECHA_REG");
     for (i = 0; i < lc.numClient; i++) {
-        printC(lc.aClient[i]);
+        printCli(lc.aClient[i]);
     }
 }
 
