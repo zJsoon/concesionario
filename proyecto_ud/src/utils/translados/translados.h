@@ -18,5 +18,8 @@ typedef struct {
 } ListaTraslados;
 
 void iniLT(ListaTraslados *lt);
-
+void addTraslado(ListaTraslados *lt, Traslado t);
+void printT(Traslado t);
+void printLT(ListaTraslados lt);
+Traslado registrarTraslado(ListaTraslados lt);
 #endif /* TRANSLADOS_TRANSLADOS_H_ */
