@@ -16,5 +16,9 @@ typedef struct {
 } ListaVent;
 
 void iniLVent(ListaVent *lvent);
+void addVent(ListaVent *lvent, Vent v);
+void printVent(Vent v);
+void printLVent(ListaVent lvent);
+Vent registrarVent(ListaVent lvent);
 
 #endif /* VENT_H_ */
