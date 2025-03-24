@@ -55,7 +55,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - visualizarMantRevi(char *matricula)
 
 ---------------------
-|	emp.h & emp.c	|							-> 
+|	emp.h & emp.c	|
 ---------------------
 - modEmp(char *DNI) 		- Isasi
 - elimEmp(char *DNI)		- Declan
