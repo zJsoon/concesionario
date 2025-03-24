@@ -20,5 +20,8 @@ typedef struct {
 } ListaMantenimientos;
 
 void iniLM(ListaMantenimientos *lm);
-
+void addMantenimiento(ListaMantenimientos *lm, Mantenimiento m);
+void printM(Mantenimiento m);
+void printLM(ListaMantenimientos lm);
+Mantenimiento registrarMantenimiento(ListaMantenimientos lm);
 #endif /* MANTENIMIENTO_MANTENIMIENTO_H_ */
