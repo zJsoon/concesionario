@@ -20,5 +20,8 @@ typedef struct {
 
 void iniLAU(ListaAuditorias *lau);
 void addAudit(ListaAuditorias *lau, Auditoria a);
+void printAU(Auditoria a);
+void printLAU(ListaAuditorias lau);
+Auditoria realizarAuditoria(ListaAuditorias lau);
 
 #endif /* AUDIT_AUDIT_H_ */
