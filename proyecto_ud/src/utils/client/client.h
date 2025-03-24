@@ -26,5 +26,9 @@ typedef struct {
 } ListaClientes;
 
 void iniLC(ListaClientes *lc);
+void addClient(ListaClientes *lc, Client c);
+void printC(Client c);
+void printLC(ListaClientes lc);
+Client registrarCliente(ListaClientes lc);
 
 #endif /* CLIENT_CLIENT_H_ */
