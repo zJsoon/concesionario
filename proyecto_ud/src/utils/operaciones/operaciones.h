@@ -20,5 +20,8 @@ typedef struct {
 } ListaOperaciones;
 
 void iniLOP(ListaOperaciones *lop);
-
+void addOperacion(ListaOperaciones *lop, Operacion op);
+void printOP(Operacion op);
+void printLOP(ListaOperaciones lop);
+Operacion registrarOperacion(ListaOperaciones lop);
 #endif /* OPERACIONES_H_ */
