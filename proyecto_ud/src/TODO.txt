@@ -2,9 +2,8 @@ FUNCIONES PROGRAMA PRINCIPAL:
 -----------------------------
 
 -----------------------------------------
-|	concesionario.h & concesionario.c	|		-> Eneko
+|	concesionario.h & concesionario.c	|		-> Isasi
 -----------------------------------------
-
 - modConce(char *ID)
 - elimConce(char *ID)
 - consultConce(char *ID)
@@ -17,9 +16,8 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - consultVeh(char *ID)
 
 -----------------------------
-|	client.h & client.c		|					-> Eneko
+|	client.h & client.c		|					-> Declan
 -----------------------------
-- addClientes()
 - modClientes(char *DNI)
 - elimClientes(char *DNI)
 - consultClientes(char *DNI)
@@ -30,7 +28,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - registrarVenta(char *matricula)
 
 ---------------------------------
-|	alquiler.h & alquiler.c		| 				-> Eneko
+|	alquiler.h & alquiler.c		| 				-> Isasi
 ---------------------------------
 - startAlquiler(char *matricula)
 - estadoAlquiler(char *matricula)
@@ -57,7 +55,7 @@ FUNCIONES PROGRAMA PRINCIPAL:
 - visualizarMantRevi(char *matricula)
 
 ---------------------
-|	emp.h & emp.c	|							-> Eneko
+|	emp.h & emp.c	|							-> 
 ---------------------
 - modEmp(char *DNI) 		- Isasi
 - elimEmp(char *DNI)		- Declan
