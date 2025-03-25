@@ -46,7 +46,7 @@ void printLVent(ListaVent lvent) {
            "PRECIO_FINAL",
            "METODO_PAGO");
     for (i = 0; i < lvent.numVentas; i++) {
-        printVenta(lvent.aVent[i]);
+        printVent(lvent.aVent[i]);
     }
 }
 

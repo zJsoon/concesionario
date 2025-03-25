@@ -48,7 +48,7 @@ void printLT(ListaTraslados lt) {
            "FECHA_TRASLADO",
            "RESP_ID");
     for (i = 0; i < lt.numTraslados; i++) {
-        printTraslado(lt.aTraslado[i]);
+        printT(lt.aTraslado[i]);
     }
 }
 

@@ -51,7 +51,7 @@ void printLOP(ListaOperaciones lop) {
            "FECHA_OPER",
            "CONS_ID");
     for (i = 0; i < lop.numOperaciones; i++) {
-        printOperacion(lop.aOperaciones[i]);
+        printOp(lop.aOperaciones[i]);
     }
 }
 

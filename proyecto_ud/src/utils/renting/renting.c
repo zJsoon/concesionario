@@ -45,7 +45,7 @@ void printLR(ListaRenting lr) {
            "DURACION",
            "PRECIO_MENSUAL");
     for (i = 0; i < lr.numRenting; i++) {
-        printRenting(lr.aRenting[i]);
+        printR(lr.aRenting[i]);
     }
 }
 
