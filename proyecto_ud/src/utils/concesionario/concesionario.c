@@ -121,19 +121,14 @@ void copyConceCSV(char *csv, ListaConce lc) {
 }
 
 void visualizarConce(Conce c, ListaConce lc) {
+	int ID;
 	printf("Introduce el ID del concesionario que deseas visualizar: \n");
 	fflush(stdout);
 	fflush(stdin);
-	fgets(c.ID, 1, stdin);
+	scanf("%d", &ID);
 	for (int i = 0; i < lc.numConces; i++) {
-		if (c.ID == lc.numConces) {
-			printf("ID: \n", c.ID);
-			printf("Nombre: %s\n", c.nombre);
-			printf("Dirección: %s\n", c.direccion);
-			printf("Ciudad: %s\n", c.ciudad);
-			printf("Teléfono: %s\n", c.tlf);
-			printf("Email: %s\n", c.email);
-
+		if (ID == lc.aConce[i].ID) {
+			printC(lc.aConce[i]);
 		}
 
 	}
