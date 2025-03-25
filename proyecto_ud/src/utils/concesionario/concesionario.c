@@ -176,3 +176,28 @@ void elimConce(ListaConce *lista) {
     }
     printf("Concesionario con ID %d no encontrado.\n", idBuscado);
 }
+
+void visualizarConceCiudad(ListaConce lc) {
+    char ciudadBuscada[TAM_CID_TLF];
+    printf("Introduce la ciudad de los concesionarios que deseas visualizar: ");
+    scanf("%s", ciudadBuscada);
+
+    int encontrados = 0;
+    for (int i = 0; i < lc.numConces; i++) {
+        if (strcmp(lc.aConce[i].ciudad, ciudadBuscada) == 0) {
+            printf("ID: %d\n", lc.aConce[i].ID);
+            printf("Nombre: %s\n", lc.aConce[i].nombre);
+            printf("Dirección: %s\n", lc.aConce[i].direccion);
+            printf("Ciudad: %s\n", lc.aConce[i].ciudad);
+            printf("Teléfono: %s\n", lc.aConce[i].tlf);
+            printf("Email: %s\n", lc.aConce[i].email);
+            printf("\n");
+            encontrados++;
+        }
+    }
+    if (encontrados == 0) {
+        printf("No se encontraron concesionarios en la ciudad %s.\n", ciudadBuscada);
+    }
+}
+
+

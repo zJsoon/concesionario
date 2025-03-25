@@ -32,5 +32,6 @@ void copyConceCSV(char *csv, ListaConce lc);
 void visualizarConce(Conce c, ListaConce lc);
 void modConce(ListaConce *lista);
 void elimConce(ListaConce *lista);
+void visualizarConceCiudad(ListaConce lc);
 
 #endif /* CONCESIONARIO_CONCESIONARIO_H_ */
