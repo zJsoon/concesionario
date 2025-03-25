@@ -2,10 +2,9 @@ FUNCIONES:
 -----------------------------------------
 |	concesionario.h & concesionario.c	|			-> Isasi
 -----------------------------------------
-- void visualizarConce()
-- void visualizarConceCiudad(char *ciudad)
-- void visualizarConceMarca(char *marca)
-- void modConce(char *ID)
+- void visualizarConce()						HECHO / SIN REVISAR
+- void visualizarConceCiudad(char *ciudad)		
+- void modConce(char *ID)						HECHO / SIN REVISAR
 - void elimConce(char *ID)
 - void consultConce(char *ID)
 
