@@ -119,3 +119,65 @@ void copyConceCSV(char *csv, ListaConce lc) {
 
     fclose(pf);
 }
+
+void visualizarConce(Conce c, ListaConce lc) {
+	printf("Introduce el ID del concesionario que deseas visualizar: \n");
+	fflush(stdout);
+	fflush(stdin);
+	fgets(c.ID, 1, stdin);
+	for (int i = 0; i < lc.numConces; i++) {
+		if (c.ID == lc.numConces) {
+			printf("ID: \n", c.ID);
+			printf("Nombre: %s\n", c.nombre);
+			printf("Dirección: %s\n", c.direccion);
+			printf("Ciudad: %s\n", c.ciudad);
+			printf("Teléfono: %s\n", c.tlf);
+			printf("Email: %s\n", c.email);
+
+		}
+
+	}
+}
+
+void modConce(ListaConce *lista) {
+    int idBuscado;
+    printf("Introduce el ID del concesionario que deseas modificar: ");
+    scanf("%d", &idBuscado);
+
+    for (int i = 0; i < lista->numConces; i++) {
+        if (lista->aConce[i].ID == idBuscado) {
+            printf("Modificando concesionario con ID %d\n", idBuscado);
+            printf("Introduce el nuevo nombre: ");
+            scanf("%s", lista->aConce[i].nombre);
+            printf("Introduce la nueva dirección: ");
+            scanf("%s", lista->aConce[i].direccion);
+            printf("Introduce la nueva ciudad: ");
+            scanf("%s", lista->aConce[i].ciudad);
+            printf("Introduce el nuevo teléfono: ");
+            scanf("%s", lista->aConce[i].tlf);
+            printf("Introduce el nuevo email: ");
+            scanf("%s", lista->aConce[i].email);
+            printf("Concesionario modificado con éxito.\n");
+            return;
+        }
+    }
+    printf("Concesionario con ID %d no encontrado.\n", idBuscado);
+}
+
+void elimConce(ListaConce *lista) {
+    int idBuscado;
+    printf("Introduce el ID del concesionario que deseas eliminar: ");
+    scanf("%d", &idBuscado);
+
+    for (int i = 0; i < lista->numConces; i++) {
+        if (lista->aConce[i].ID == idBuscado) {
+            for (int j = i; j < lista->numConces - 1; j++) {
+                lista->aConce[j] = lista->aConce[j + 1];
+            }
+            lista->numConces--;
+            printf("Concesionario con ID %d eliminado con éxito.\n", idBuscado);
+            return;
+        }
+    }
+    printf("Concesionario con ID %d no encontrado.\n", idBuscado);
+}
