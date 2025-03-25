@@ -1,62 +1,67 @@
-FUNCIONES PROGRAMA PRINCIPAL:
------------------------------
-
+FUNCIONES:
 -----------------------------------------
-|	concesionario.h & concesionario.c	|		-> Isasi
+|	concesionario.h & concesionario.c	|			-> Isasi
 -----------------------------------------
-- modConce(char *ID)
-- elimConce(char *ID)
-- consultConce(char *ID)
+- void visualizarConce()
+- void visualizarConceCiudad(char *ciudad)
+- void visualizarConceMarca(char *marca)
+- void modConce(char *ID)
+- void elimConce(char *ID)
+- void consultConce(char *ID)
 
 ---------------------
-|	veh.h & veh.c	|							-> Eneko
+|	veh.h & veh.c	|								-> Eneko
 ---------------------
-- modVeh(char *ID)
-- elimVeh(char *ID)
-- consultVeh(char *ID)
+- void visualizarVeh()
+- void visualizarVehConce(int id)
+- void visualizarVehCiudad(char *ciudad)
+- void visualizarVehMarca(char *marca)
+- void visualizarVehTipo(char *tipo)
+- void visualizarVehEstado(char *tipo)
+- void visualizarVehHistorial(char *matricula)
 
 -----------------------------
-|	client.h & client.c		|					-> Declan
+|	client.h & client.c		|						-> Declan
 -----------------------------
-- modClientes(char *DNI)
-- elimClientes(char *DNI)
-- consultClientes(char *DNI)
+- void modClientes(char *DNI)
+- void elimClientes(char *DNI)
+- void consultClientes(char *DNI)
 
+-------------------------	
+|	vent.h & vent.c		|							-> Isasi
 -------------------------
-|	vent.h & vent.c		|						-> Isasi
--------------------------
-- registrarVenta(char *matricula)
+- Venta registrarVenta(char *matricula)
 
 ---------------------------------
-|	alquiler.h & alquiler.c		| 				-> Isasi
+|	alquiler.h & alquiler.c		| 					-> Isasi
 ---------------------------------
-- startAlquiler(char *matricula)
-- estadoAlquiler(char *matricula)
-- endAlquiler(char *matricula)
+- Alquiler startAlquiler(char *matricula)
+- void estadoAlquiler(char *matricula)
+- Alquiler endAlquiler(char *matricula)
 
 ---------------------------------
-|	renting.h & renting.c		|				-> Declan
+|	renting.h & renting.c		|					-> Declan
 ---------------------------------
-- startRenting(char *matricula)
-- estadoRenting(char *matricula)
-- endRenting(char *matricula)
+- Renting startRenting(char *matricula)
+- void estadoRenting(char *matricula)
+- Renting endRenting(char *matricula)
 
 -------------------------------------
-|	translados.h & translados.c		|			-> Declan
+|	translados.h & translados.c		|				-> Declan
 -------------------------------------
-- registrarTranslado(char *matricula)
+- Translado registrarTranslado(char *matricula)
 
 -----------------------------------------
-|	mantenimiento.h & mantenimiento.c	|		-> Eneko
+|	mantenimiento.h & mantenimiento.c	|			-> Eneko
 -----------------------------------------
-- registrarRep(char *matricula)
-- registrarRevi(char *matricula)
-- visualizarMantRep(char *matricula)
-- visualizarMantRevi(char *matricula)
+- Mantenimiento registrarRep(char *matricula)
+- Mantenimiento registrarRevi(char *matricula)
+- void visualizarMantRep(char *matricula)
+- void visualizarMantRevi(char *matricula)
 
 ---------------------
 |	emp.h & emp.c	|
 ---------------------
-- modEmp(char *DNI) 		- Isasi
-- elimEmp(char *DNI)		- Declan
-- consultEmp(char *DNI)		- Eneko
+- void modEmp(char *DNI)		- Isasi
+- void elimEmp(char *DNI)		- Declan
+- void consultEmp(char *DNI)	- Eneko
