@@ -31,9 +31,9 @@ FUNCIONES:
 ---------------------------------
 |	alquiler.h & alquiler.c		| 					-> Isasi
 ---------------------------------
-- Alquiler startAlquiler(char *matricula)
-- void estadoAlquiler(char *matricula)
-- Alquiler endAlquiler(char *matricula)
+- Alquiler startAlquiler(char *matricula)			HECHO / SIN REVISAR
+- void estadoAlquiler(char *matricula)				HECHO / SIN REVISAR
+- Alquiler endAlquiler(char *matricula)				HECHO / POR REVISAR
 
 ---------------------------------
 |	renting.h & renting.c		|					-> Declan
