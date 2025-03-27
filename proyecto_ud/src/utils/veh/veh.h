@@ -41,5 +41,13 @@ void printV(Veh v);
 void printLV(ListaVeh lv);
 Veh pedirVeh(ListaVeh lv);
 void copyVehCSV(char *csv, ListaVeh lv);
+void visualizarVeh(ListaVeh lv);
+void visualizarVehConce(ListaVeh lv, int id);
+void visualizarVehCiudad(ListaVeh lv, char *ciudad);
+void visualizarVehMarca(ListaVeh lv, char *marca);
+void visualizarVehTipo(ListaVeh lv, char *tipo);
+void visualizarVehEstado(ListaVeh lv, char *estado);
+void visualizarVehHistorial(ListaVeh lv, char *matricula);
+
 
 #endif /* VEH_H_ */

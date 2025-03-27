@@ -169,3 +169,109 @@ void copyVehCSV(char *csv, ListaVeh lv) {
 
 	fclose(pf);
 }
+
+void visualizarVeh(ListaVeh lv) {
+    if (lv.numVeh == 0) {
+        printf("No hay vehículos disponibles.\n");
+        return;
+    }
+
+    printf("\nLista de todos los vehículos:\n");
+    printLV(lv);
+}
+
+void visualizarVehConce(ListaVeh lv, int id) {
+    int encontrados = 0;
+    printf("\nVehículos del concesionario ID %d:\n", id);
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (lv.aVeh[i].concesionario_ID == id) {
+            printV(lv.aVeh[i]);
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        printf("No hay vehículos en este concesionario.\n");
+    }
+}
+
+void visualizarVehCiudad(ListaVeh lv, char *ciudad) {
+    int encontrados = 0;
+    printf("\nVehículos en la ciudad: %s\n", ciudad);
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (strstr(lv.aVeh[i].estado, ciudad)) {
+            printV(lv.aVeh[i]);
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        printf("No se encontraron vehículos en esta ciudad.\n");
+    }
+}
+
+void visualizarVehMarca(ListaVeh lv, char *marca) {
+    int encontrados = 0;
+    printf("\nVehículos de la marca: %s\n", marca);
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (strcmp(lv.aVeh[i].marca, marca) == 0) {
+            printV(lv.aVeh[i]);
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        printf("No se encontraron vehículos de esta marca.\n");
+    }
+}
+
+void visualizarVehTipo(ListaVeh lv, char *tipo) {
+    int encontrados = 0;
+    printf("\nVehículos tipo: %s\n", tipo);
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (strcmp(lv.aVeh[i].tipo, tipo) == 0) {
+            printV(lv.aVeh[i]);
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        printf("No se encontraron vehículos de este tipo.\n");
+    }
+}
+
+void visualizarVehEstado(ListaVeh lv, char *estado) {
+    int encontrados = 0;
+    printf("\nVehículos en estado: %s\n", estado);
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (strcmp(lv.aVeh[i].estado, estado) == 0) {
+            printV(lv.aVeh[i]);
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        printf("No hay vehículos con este estado.\n");
+    }
+}
+
+void visualizarVehHistorial(ListaVeh lv, char *matricula) {
+    int encontrados = 0;
+    printf("\nHistorial del vehículo con matrícula: %s\n", matricula);
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (strcmp(lv.aVeh[i].matricula, matricula) == 0) {
+            printV(lv.aVeh[i]);
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        printf("No se encontró ningún vehículo con esta matrícula.\n");
+    }
+}
