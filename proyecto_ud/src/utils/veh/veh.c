@@ -250,7 +250,7 @@ void visualizarVehEstado(ListaVeh lv, char *estado) {
     }
 }
 
-// TODO
+// TODO HAY QUE MIRAR EN RENTING, ALQUILER, MANTENIMIENTO y sacar si hay datos de ahí
 void visualizarVehHistorial(ListaVeh lv, char *matricula) {
     int encontrados = 0,i;
     printf("\nHistorial del vehículo con matrícula: %s\n", matricula);
