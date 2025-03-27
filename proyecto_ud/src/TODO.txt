@@ -9,13 +9,13 @@ FUNCIONES:
 ---------------------
 |	veh.h & veh.c	|								-> Eneko
 ---------------------
-- void visualizarVeh()
-- void visualizarVehConce(int id)
-- void visualizarVehCiudad(char *ciudad)
-- void visualizarVehMarca(char *marca)
-- void visualizarVehTipo(char *tipo)
-- void visualizarVehEstado(char *tipo)
-- void visualizarVehHistorial(char *matricula)
+- void visualizarVeh()								HECHO / SIN REVISAR
+- void visualizarVehConce(int id)					HECHO / SIN REVISAR
+- void visualizarVehCiudad(char *ciudad)			HECHO / SIN REVISAR
+- void visualizarVehMarca(char *marca)				HECHO / SIN REVISAR
+- void visualizarVehTipo(char *tipo)				HECHO / SIN REVISAR
+- void visualizarVehEstado(char *tipo)				HECHO / SIN REVISAR
+- void visualizarVehHistorial(char *matricula)		HECHO / SIN REVISAR
 
 -----------------------------
 |	client.h & client.c		|						-> Declan
