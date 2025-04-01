@@ -74,3 +74,38 @@ Mantenimiento registrarMantenimiento(ListaMantenimientos lm) {
 
     return m;
 }
+
+void registrarRep(ListaMantenimientos *lm, char *matricula) {
+    printf("Registrando reparación para el vehículo con matrícula: %s\n", matricula);
+    Mantenimiento m = registrarMantenimiento(*lm);
+    strcpy(m.tipo, "Reparacion");
+    addMantenimiento(lm, m);
+}
+
+void registrarRevi(ListaMantenimientos *lm, char *matricula) {
+    printf("Registrando revisión para el vehículo con matrícula: %s\n", matricula);
+    Mantenimiento m = registrarMantenimiento(*lm);
+    strcpy(m.tipo, "Revision");
+    addMantenimiento(lm, m);
+}
+
+void visualizarMantRep(ListaMantenimientos lm, char *matricula) {
+    printf("Lista de Mantenimientos de reparación para el vehículo con matrícula: %s\n", matricula);
+    printf("%5s%10s%15s%30s%10s%30s\n", "ID", "VEH_ID", "FECHA", "TIPO_MANTENIMIENTO", "COSTE", "DESCRIPCION");
+    for (int i = 0; i < lm.numMantenimientos; i++) {
+        if (strcmp(lm.aMantenimiento[i].tipo, "Reparacion") == 0) {
+            printM(lm.aMantenimiento[i]);
+        }
+    }
+}
+
+void visualizarMantRevi(ListaMantenimientos lm, char *matricula) {
+    printf("Mantenimientos de revisión para el vehículo con matrícula: %s\n", matricula);
+    printf("%5s%10s%15s%30s%10s%30s\n", "ID", "VEH_ID", "FECHA", "TIPO_MANTENIMIENTO", "COSTE", "DESCRIPCION");
+    for (int i = 0; i < lm.numMantenimientos; i++) {
+        if (strcmp(lm.aMantenimiento[i].tipo, "Revision") == 0) {
+            printM(lm.aMantenimiento[i]);
+        }
+    }
+}
+

@@ -24,4 +24,8 @@ void addMantenimiento(ListaMantenimientos *lm, Mantenimiento m);
 void printM(Mantenimiento m);
 void printLM(ListaMantenimientos lm);
 Mantenimiento registrarMantenimiento(ListaMantenimientos lm);
+void registrarRep(ListaMantenimientos *lm, char *matricula);
+void registrarRevi(ListaMantenimientos *lm, char *matricula);
+void visualizarMantRep(ListaMantenimientos lm, char *matricula);
+void visualizarMantRevi(ListaMantenimientos lm, char *matricula);
 #endif /* MANTENIMIENTO_MANTENIMIENTO_H_ */
