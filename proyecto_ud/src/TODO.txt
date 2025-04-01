@@ -50,10 +50,10 @@ FUNCIONES:
 -----------------------------------------
 |	mantenimiento.h & mantenimiento.c	|			-> Eneko
 -----------------------------------------
-- Mantenimiento registrarRep(char *matricula)
-- Mantenimiento registrarRevi(char *matricula)
-- void visualizarMantRep(char *matricula)
-- void visualizarMantRevi(char *matricula)
+- Mantenimiento registrarRep(char *matricula)		HECHO / SIN REVISAR
+- Mantenimiento registrarRevi(char *matricula)		HECHO / SIN REVISAR
+- void visualizarMantRep(char *matricula)			HECHO / SIN REVISAR
+- void visualizarMantRevi(char *matricula)			HECHO / SIN REVISAR
 
 ---------------------
 |	emp.h & emp.c	|
