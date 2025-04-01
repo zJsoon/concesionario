@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "vent.h"
+#include "../veh/veh.h"
+
 
 void iniLVent(ListaVent *lvent) {
     lvent->aVent = NULL;
@@ -64,4 +66,37 @@ Vent registrarVent(ListaVent lvent) {
     v.metodo_pago[strcspn(v.metodo_pago, "\n")] = 0;
 
     return v;
+}
+
+int obtenerVehiculoID(ListaVeh listaVehiculos, const char *matricula) {
+    for (int i = 0; i < listaVehiculos.numVeh; i++) {
+        if (strcmp(listaVehiculos.aVeh[i].matricula, matricula) == 0) {
+            return listaVehiculos.aVeh[i].ID;
+        }
+    }
+    return -1; //Vehiculo no encontrado
+}
+
+Vent registrarVenta(ListaVent *listaVentas, ListaVeh listaVehiculos, char *matricula) {
+    Vent nuevaVenta;
+    int vehiculo_id = obtenerVehiculoID(listaVehiculos, matricula);
+
+    if (vehiculo_id == -1) {
+        printf("Vehículo con matrícula %s no encontrado.\n", matricula);
+        return nuevaVenta;
+    }
+
+    nuevaVenta.vehiculo_id = vehiculo_id;
+    nuevaVenta.operacion_id = listaVentas->numVentas;
+    printf("Introduce el precio final: ");
+    scanf("%lf", &nuevaVenta.precio_final);
+    getchar();
+    printf("Introduce el método de pago: ");
+    fgets(nuevaVenta.metodo_pago, TAM_METODO_PAGO, stdin);
+    nuevaVenta.metodo_pago[strcspn(nuevaVenta.metodo_pago, "\n")] = 0;
+
+    addVent(listaVentas, nuevaVenta);
+    printf("Venta registrada con éxito.\n");
+
+    return nuevaVenta;
 }

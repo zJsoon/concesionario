@@ -4,7 +4,7 @@ FUNCIONES:
 -----------------------------------------
 - void visualizarConceCiudad(char *ciudad)		HECHO / SIN REVISAR
 - void modConce(char *ID)						HECHO / SIN REVISAR
-- void consultConce(char *ID)
+- void consultConce(char *ID)					HECHO / SIN REVISAR
 
 ---------------------
 |	veh.h & veh.c	|								-> Eneko
@@ -26,14 +26,14 @@ FUNCIONES:
 -------------------------	
 |	vent.h & vent.c		|							-> Isasi
 -------------------------
-- Venta registrarVenta(char *matricula)
+- Venta registrarVenta(char *matricula)				HECHO / SIN REVISAR
 
 ---------------------------------
 |	alquiler.h & alquiler.c		| 					-> Isasi
 ---------------------------------
 - Alquiler startAlquiler(char *matricula)			HECHO / SIN REVISAR
 - void estadoAlquiler(char *matricula)				HECHO / SIN REVISAR
-- Alquiler endAlquiler(char *matricula)				HECHO / POR REVISAR
+- Alquiler endAlquiler(char *matricula)				HECHO / SIN REVISAR
 
 ---------------------------------
 |	renting.h & renting.c		|					-> Declan
@@ -58,6 +58,6 @@ FUNCIONES:
 ---------------------
 |	emp.h & emp.c	|
 ---------------------
-- void modEmp(char *DNI)		- Isasi
+- void modEmp(char *DNI)		- Isasi				HECHO / SIN REVISAR
 - void elimEmp(char *DNI)		- Declan
 - void consultEmp(char *DNI)	- Eneko				HECHO / SIN REVISAR

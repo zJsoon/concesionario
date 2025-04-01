@@ -6,6 +6,8 @@
 #define TAM_DIREC 40
 #define TAM_CID_TLF 15
 
+#include "../veh/veh.h"
+
 typedef struct{
 	int ID;
 	char nombre[TAM_NOM_EMAIL];
@@ -33,5 +35,6 @@ void visualizarConce(Conce c, ListaConce lc);
 void modConce(ListaConce *lista);
 void elimConce(ListaConce *lista);
 void visualizarConceCiudad(ListaConce lc);
+void consultConce(ListaConce lc, ListaVeh lv, char *ID);
 
 #endif /* CONCESIONARIO_CONCESIONARIO_H_ */

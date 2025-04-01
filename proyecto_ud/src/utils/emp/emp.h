@@ -28,4 +28,6 @@ Emp pedirEmp(ListaEmp le);
 void copyEmpCSV(char *csv, ListaEmp le);
 void consultEmp(char *DNI, ListaEmp le);
 
+void modEmp(char *DNI, ListaEmp *le);
+
 #endif /* EMP_H_ */

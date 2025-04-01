@@ -2,7 +2,7 @@
 
 #include "logger.h"
 
-void writeLog(char *mensaje, , char *txt){
+void writeLog(char *mensaje, char *txt){
 	FILE *pf;
 	time_t fechaActual;
 	char *sfecha;

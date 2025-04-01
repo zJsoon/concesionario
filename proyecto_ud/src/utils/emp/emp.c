@@ -126,3 +126,28 @@ void consultEmp(char *DNI, ListaEmp le) {
     }
     printf("No se encontró ningún empleado con el DNI %s.\n", DNI);
 }
+
+void modEmp(char *DNI, ListaEmp *le) {
+    for (int i = 0; i < le->numEmp; i++) {
+        if (strcmp(le->aEmp[i].DNI, DNI) == 0) {
+            printf("Modificando empleado con DNI %s\n", DNI);
+            printf("Introduce el nuevo nombre: ");
+            fflush(stdout);
+            fflush(stdin);
+            fgets(le->aEmp[i].nombre, TAM_NOMBRE, stdin);
+            le->aEmp[i].nombre[strcspn(le->aEmp[i].nombre, "\n")] = 0; // Eliminar el salto de línea
+            printf("Introduce el nuevo cargo: ");
+            fflush(stdout);
+            fflush(stdin);
+            fgets(le->aEmp[i].cargo, TAM_CARGO, stdin);
+            le->aEmp[i].cargo[strcspn(le->aEmp[i].cargo, "\n")] = 0; // Eliminar el salto de línea
+            printf("Introduce el nuevo ID del concesionario: ");
+            fflush(stdout);
+            fflush(stdin);
+            scanf("%d", &le->aEmp[i].conce_id);
+            printf("Empleado modificado con éxito.\n");
+            return;
+        }
+    }
+    printf("No se encontró ningún empleado con el DNI %s.\n", DNI);
+}

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "concesionario.h"
+#include "../veh/veh.h"
 
 void iniLCon(ListaConce *lc) {
     lc->aConce = NULL;
@@ -200,4 +201,33 @@ void visualizarConceCiudad(ListaConce lc) {
     }
 }
 
+void consultConce(ListaConce lc, ListaVeh lv, char *ID) {
+
+	int idBuscado = atoi(ID);
+	    int encontrado = 0;
+
+	    for (int i = 0; i < lc.numConces; i++) {
+	        if (lc.aConce[i].ID == idBuscado) {
+	            printC(lc.aConce[i]);
+	            encontrado = 1;
+	            break;
+	        }
+	    }
+
+	    if (!encontrado) {
+	        printf("Concesionario con ID %d no encontrado.\n", idBuscado);
+	        return;
+	    }
+
+	    printf("\n--- Vehículos del Concesionario ---\n");
+	        for (int i = 0; i < lv.numVeh; i++) {
+	            if (lv.aVeh[i].ID == idBuscado) {
+	                printf("ID del vehículo: %d\n", lv.aVeh[i].ID);
+	                printf("Matrícula: %s\n", lv.aVeh[i].matricula);
+	                printf("Modelo: %s\n", lv.aVeh[i].modelo);
+	                printf("\n");
+	            }
+	        }
+
+}
 

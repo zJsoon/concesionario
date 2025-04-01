@@ -1,6 +1,9 @@
 #ifndef VENT_H_
 #define VENT_H_
 
+#include "../veh/veh.h"
+
+
 #define TAM_METODO_PAGO 20
 
 typedef struct {
