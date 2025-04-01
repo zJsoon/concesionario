@@ -116,3 +116,13 @@ void copyEmpCSV(char *csv, ListaEmp le) {
 
     fclose(pf);
 }
+
+void consultEmp(char *DNI, ListaEmp le) {
+    for (int i = 0; i < le.numEmp; i++) {
+        if (strcmp(le.aEmp[i].DNI, DNI) == 0) {
+            printE(le.aEmp[i]);
+            return;
+        }
+    }
+    printf("No se encontró ningún empleado con el DNI %s.\n", DNI);
+}

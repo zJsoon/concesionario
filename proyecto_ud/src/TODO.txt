@@ -60,4 +60,4 @@ FUNCIONES:
 ---------------------
 - void modEmp(char *DNI)		- Isasi
 - void elimEmp(char *DNI)		- Declan
-- void consultEmp(char *DNI)	- Eneko
+- void consultEmp(char *DNI)	- Eneko				HECHO / SIN REVISAR

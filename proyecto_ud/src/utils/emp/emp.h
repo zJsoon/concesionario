@@ -26,5 +26,6 @@ void printE(Emp e);
 void printLE(ListaEmp le);
 Emp pedirEmp(ListaEmp le);
 void copyEmpCSV(char *csv, ListaEmp le);
+void consultEmp(char *DNI, ListaEmp le);
 
 #endif /* EMP_H_ */
