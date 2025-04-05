@@ -83,4 +83,81 @@ Client registrarCliente(ListaClientes lc) {
     c.fecha_registro[strcspn(c.fecha_registro, "\n")] = 0;
 
     return c;
+
+    // Consultar cliente por DNI
+    void consultClientes(ListaClientes lc, char *DNI) {
+        int i, encontrado = 0;
+        for (i = 0; i < lc.numClient; i++) {
+            if (strcmp(lc.aClient[i].dni, DNI) == 0) {
+                printCli(lc.aClient[i]);
+                encontrado = 1;
+                break;
+            }
+        }
+        if (!encontrado) {
+            printf("Cliente con DNI %s no encontrado.\n", DNI);
+        }
+    }
+
+    // Eliminar cliente por DNI
+    void elimClientes(ListaClientes *lc, char *DNI) {
+        int i, j, encontrado = 0;
+        for (i = 0; i < lc->numClient; i++) {
+            if (strcmp(lc->aClient[i].dni, DNI) == 0) {
+                encontrado = 1;
+                for (j = i; j < lc->numClient - 1; j++) {
+                    lc->aClient[j] = lc->aClient[j + 1];
+                }
+                lc->numClient--;
+                lc->aClient = realloc(lc->aClient, lc->numClient * sizeof(Client));
+                printf("Cliente con DNI %s eliminado correctamente.\n", DNI);
+                break;
+            }
+        }
+        if (!encontrado) {
+            printf("Cliente con DNI %s no encontrado.\n", DNI);
+        }
+    }
+
+    // Modificar cliente por DNI
+    void modClientes(ListaClientes *lc, char *DNI) {
+        int i, encontrado = 0;
+        for (i = 0; i < lc->numClient; i++) {
+            if (strcmp(lc->aClient[i].dni, DNI) == 0) {
+                encontrado = 1;
+                printf("Modificando datos del cliente con DNI %s\n", DNI);
+
+                printf("Introduce el nuevo nombre: ");
+                fgets(lc->aClient[i].nombre, TAM_NOMBRE, stdin);
+                lc->aClient[i].nombre[strcspn(lc->aClient[i].nombre, "\n")] = 0;
+
+                printf("Introduce los nuevos apellidos: ");
+                fgets(lc->aClient[i].apellidos, TAM_APELLIDOS, stdin);
+                lc->aClient[i].apellidos[strcspn(lc->aClient[i].apellidos, "\n")] = 0;
+
+                printf("Introduce la nueva dirección: ");
+                fgets(lc->aClient[i].direccion, TAM_DIRECCION, stdin);
+                lc->aClient[i].direccion[strcspn(lc->aClient[i].direccion, "\n")] = 0;
+
+                printf("Introduce el nuevo teléfono: ");
+                fgets(lc->aClient[i].tlf, TAM_TELEFONO, stdin);
+                lc->aClient[i].tlf[strcspn(lc->aClient[i].tlf, "\n")] = 0;
+
+                printf("Introduce el nuevo email: ");
+                fgets(lc->aClient[i].email, TAM_EMAIL, stdin);
+                lc->aClient[i].email[strcspn(lc->aClient[i].email, "\n")] = 0;
+
+                printf("Introduce la nueva fecha de registro (YYYY-MM-DD): ");
+                fgets(lc->aClient[i].fecha_registro, TAM_FECHA, stdin);
+                lc->aClient[i].fecha_registro[strcspn(lc->aClient[i].fecha_registro, "\n")] = 0;
+
+                printf("Cliente modificado correctamente.\n");
+                break;
+            }
+        }
+        if (!encontrado) {
+            printf("Cliente con DNI %s no encontrado.\n", DNI);
+        }
+    }
+
 }

@@ -30,5 +30,9 @@ void addClient(ListaClientes *lc, Client c);
 void printCli(Client c);
 void printLCli(ListaClientes lc);
 Client registrarCliente(ListaClientes lc);
+void consultClientes(ListaClientes lc, char *DNI);
+void elimClientes(ListaClientes *lc, char *DNI);
+void modClientes(ListaClientes *lc, char *DNI);
+
 
 #endif /* CLIENT_CLIENT_H_ */
