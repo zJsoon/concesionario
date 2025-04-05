@@ -19,9 +19,9 @@ FUNCIONES:
 -----------------------------
 |	client.h & client.c		|						-> Declan
 -----------------------------
-- void modClientes(char *DNI)
-- void elimClientes(char *DNI)
-- void consultClientes(char *DNI)
+- void modClientes(char *DNI)						HECHO / SIN REVISAR
+- void elimClientes(char *DNI)						HECHO / SIN REVISAR
+- void consultClientes(char *DNI)					HECHO / SIN REVISAR
 
 -------------------------	
 |	vent.h & vent.c		|							-> Isasi
@@ -38,14 +38,14 @@ FUNCIONES:
 ---------------------------------
 |	renting.h & renting.c		|					-> Declan
 ---------------------------------
-- Renting startRenting(char *matricula)
-- void estadoRenting(char *matricula)
-- Renting endRenting(char *matricula)
+- Renting startRenting(char *matricula)				HECHO / SIN REVISAR
+- void estadoRenting(char *matricula)				HECHO / SIN REVISAR
+- Renting endRenting(char *matricula)				HECHO / SIN REVISAR
 
 -------------------------------------
 |	translados.h & translados.c		|				-> Declan
 -------------------------------------
-- Translado registrarTranslado(char *matricula)
+- Translado registrarTranslado(char *matricula)		HECHO / SIN REVISAR
 
 -----------------------------------------
 |	mantenimiento.h & mantenimiento.c	|			-> Eneko
