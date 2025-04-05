@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "translados.h"
+#include "veh.h"
 
 void iniLT(ListaTraslados *lt) {
     lt->aTraslado = NULL;
@@ -52,22 +53,40 @@ void printLT(ListaTraslados lt) {
     }
 }
 
-Traslado registrarTraslado(ListaTraslados lt) {
-    Traslado t;
+int obtenerVehiculoID(ListaVeh lv, char *matricula) {
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (strcmp(lv.aVeh[i].matricula, matricula) == 0) {
+            return lv.aVeh[i].ID;
+        }
+    }
+    return -1;
+}
 
-    t.id = lt.numTraslados;
-    printf("Introduce el ID del vehículo: ");
-    scanf("%d", &t.vehiculo_id);
+Traslado registrarTranslado(char *matricula, ListaVeh lv, ListaTraslados *lt) {
+    int id = obtenerVehiculoID(lv, matricula);
+    if (id == -1) {
+        printf("Vehículo con matrícula %s no encontrado.\n", matricula);
+        Traslado vacio = {.id = -1};
+        return vacio;
+    }
+
+    Traslado t;
+    t.id = lt->numTraslados;
+    t.vehiculo_id = id;
+
     printf("Introduce el ID del concesionario de origen: ");
     scanf("%d", &t.concesionario_origen_id);
     printf("Introduce el ID del concesionario de destino: ");
     scanf("%d", &t.concesionario_destino_id);
-    getchar(); // Limpiar el buffer
+    getchar(); // limpiar salto de línea pendiente
     printf("Introduce la fecha del traslado (YYYY-MM-DD): ");
     fgets(t.fecha_traslado, TAM_FECHA, stdin);
     t.fecha_traslado[strcspn(t.fecha_traslado, "\n")] = 0;
     printf("Introduce el ID del responsable: ");
     scanf("%d", &t.responsable_id);
 
+    addTraslado(lt, t);
+    printf("Traslado registrado correctamente.\n");
     return t;
+
 }
