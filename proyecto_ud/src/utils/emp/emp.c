@@ -151,3 +151,22 @@ void modEmp(char *DNI, ListaEmp *le) {
     }
     printf("No se encontró ningún empleado con el DNI %s.\n", DNI);
 }
+
+void elimEmp(char *DNI, ListaEmp *le)	{
+	int i, j, encontrado = 0;
+		for (i = 0; i < le->numEmp; i++) {
+			if (strcmp(le->aEmp[i].DNI, DNI) == 0) {
+				encontrado = 1;
+				for (j = i; j < le->numEmp - 1; j++) {
+					le->aEmp[j] = le->aEmp[j + 1];
+				}
+				le->numEmp--;
+				le->aEmp = realloc(le->aEmp, le->numEmp * sizeof(Client));
+				printf("Cliente con DNI %s eliminado correctamente.\n", DNI);
+				break;
+			}
+		}
+		if (!encontrado) {
+			printf("Cliente con DNI %s no encontrado.\n", DNI);
+		}
+}
