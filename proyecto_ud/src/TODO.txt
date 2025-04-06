@@ -61,3 +61,19 @@ FUNCIONES:
 - void modEmp(char *DNI)		- Isasi				HECHO / SIN REVISAR
 - void elimEmp(char *DNI)		- Declan			HECHO / SIN REVISAR
 - void consultEmp(char *DNI)	- Eneko				HECHO / SIN REVISAR
+
+
+IMPLEMENTAR:
+INFORMES (TODO REALIZADO EN LOCAL)
+- informeVenta
+- informeAlquiler
+- informeRenting
+- informeMovimientoCoche
+- informeReparaciones
+- informeRevisiones
+- visualizarInformes
+
+FIX ERROS:
+- Fixear todo lo que salga error.
+
+COMPROBAR LOGS
