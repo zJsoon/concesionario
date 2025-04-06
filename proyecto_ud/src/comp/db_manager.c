@@ -207,7 +207,7 @@ void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
 		} else {
 
 			Alquiler *temp = realloc(la->aAlquiler,
-					la->numAlquileres * sizeof(Alquiler));
+					(la->numAlquileres+1) * sizeof(Alquiler));
 			la->aAlquiler = temp;
 		}
 
