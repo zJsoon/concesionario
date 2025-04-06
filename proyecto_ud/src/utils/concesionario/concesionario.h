@@ -7,6 +7,7 @@
 #define TAM_CID_TLF 15
 
 #include "../veh/veh.h"
+#include "../../config/logger/logger.h"
 
 typedef struct{
 	int ID;

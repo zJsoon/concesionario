@@ -3,6 +3,7 @@
 
 #define TAM_TIPO_OPERACIONES 20
 #define TAM_FECHA 11
+#include "../../config/logger/logger.h"
 
 typedef struct {
     int ID;

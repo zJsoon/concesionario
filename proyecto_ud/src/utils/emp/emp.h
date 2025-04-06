@@ -5,6 +5,7 @@
 #define TAM_DNI 11
 #define TAM_NOMBRE 50
 #define TAM_CARGO 30
+#include "../../config/logger/logger.h"
 
 typedef struct{
 	int ID;

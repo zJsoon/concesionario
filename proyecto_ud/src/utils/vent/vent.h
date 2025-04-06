@@ -2,6 +2,7 @@
 #define VENT_H_
 
 #include "../veh/veh.h"
+#include "../../config/logger/logger.h"
 
 
 #define TAM_METODO_PAGO 20

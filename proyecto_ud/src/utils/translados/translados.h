@@ -1,8 +1,8 @@
 #ifndef TRANSLADOS_TRANSLADOS_H_
 #define TRANSLADOS_TRANSLADOS_H_
-#include "../veh/veh.h"
 #define TAM_FECHA 11
-
+#include "../veh/veh.h"
+#include "../../config/logger/logger.h"
 typedef struct {
     int id;
     int vehiculo_id;

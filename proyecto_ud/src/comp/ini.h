@@ -13,6 +13,7 @@
 #include "../utils/translados/translados.h"
 #include "../utils/veh/veh.h"
 #include "../utils/vent/vent.h"
+#include "../config/logger/logger.h"
 #include "db_manager.h"
 
 void iniListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,

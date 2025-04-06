@@ -4,6 +4,7 @@
 #define TAM_FECHA 11
 #define TAM_TIPO_MANTENIMIENTO 30
 #define TAM_DESCRIPCION 200
+#include "../../config/logger/logger.h"
 
 typedef struct {
     int id;

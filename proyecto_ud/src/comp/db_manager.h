@@ -5,6 +5,8 @@
 
 #include "sqlite3.h"
 
+#include "../config/logger/logger.h"
+
 #include "../utils/alquiler/alquiler.h"
 #include "../utils/audit/audit.h"
 #include "../utils/client/client.h"

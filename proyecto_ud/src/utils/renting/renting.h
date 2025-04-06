@@ -1,5 +1,6 @@
 #ifndef RENTING_RENTING_H_
 #define RENTING_RENTING_H_
+#include "../../config/logger/logger.h"
 
 typedef struct {
     int operacion_id;

@@ -8,6 +8,7 @@
 #define TAM_TELEFONO 15
 #define TAM_EMAIL 100
 #define TAM_FECHA 11
+#include "../../config/logger/logger.h"
 
 typedef struct {
     int ID;
