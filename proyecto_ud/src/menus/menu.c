@@ -15,7 +15,7 @@ int mostrarMenuInicio() {
 	printf("| 0. Salir      |\n");
 	printf("| ------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: Menu Inicio Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -34,7 +34,7 @@ int mostrarMenuEmp() {
 	printf("| 0. Salir            |\n");
 	printf("| ------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmp Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -49,7 +49,7 @@ int mostrarMenuEmpGest() {
 	printf("| 0. Salir               |\n");
 	printf("| ---------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmpGest Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 
@@ -65,7 +65,7 @@ int mostrarMenuEmpOperaciones() {
 	printf("| 0. Salir                      |\n");
 	printf("| ----------------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmpOperaciones Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -79,7 +79,7 @@ int mostrarMenuEmpOperacionesAlquiler() {
 	printf("| 0. Salir                         |\n");
 	printf("| -------------------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmpOperacionesAlquiler Ejecutado", FICHERO_MENU_LOG);//todo
 	fflush(stdout);
 	return pedirOp();
 }
@@ -93,7 +93,7 @@ int mostrarMenuEmpOperacionesRenting() {
 	printf("| 0. Salir                        |\n");
 	printf("| ------------------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmpOperacionesRenting Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -108,7 +108,7 @@ int mostrarMenuEmpMantenimiento() {
 	printf("| 0. Salir                   |\n");
 	printf("| -------------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmpMantenimiento Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -121,7 +121,7 @@ int mostrarMenuEmpInformes() {
 	printf("| 0. Salir               |\n");
 	printf("| ---------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmpInformes Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -138,7 +138,7 @@ int mostrarMenuEmpInformesGenerar() {
 	printf("| 0. Salir                    |\n");
 	printf("| --------------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuEmpInformesGenerar Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -155,7 +155,7 @@ int mostrarMenuGerente() {
 	printf("| 0. Salir                  |\n");
 	printf("| ------------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuGerente Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 }
@@ -170,7 +170,7 @@ int mostrarMenuGerenteEmp() {
 	printf("| 0. Salir              |\n");
 	printf("| --------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuGerenteEmp Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 
@@ -186,7 +186,7 @@ int mostrarMenuGerenteConce() {
 	printf("| 0. Salir                   |\n");
 	printf("| -------------------------- |\n");
 	printf("Selecciona una opción: ");
-
+	writeLog("MENUS: mostrarMenuGerenteConce Ejecutado", FICHERO_MENU_LOG);
 	fflush(stdout);
 	return pedirOp();
 

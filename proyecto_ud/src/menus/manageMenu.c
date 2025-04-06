@@ -8,7 +8,7 @@ int pedirOp(){
 
 	fflush(stdin);
 	scanf("%d", &op);
-
+	writeLog("MANAGE MENU: pedirOp Ejecutado", FICHERO_MANAGEMENU_LOG);
 	return op;
 }
 int verificarEmpleado(ListaEmp le) {
@@ -28,6 +28,7 @@ int verificarEmpleado(ListaEmp le) {
 			break;
 		}
 	}
+	writeLog("MANAGE MENU: verificarEmpleado Ejecutado", FICHERO_MANAGEMENU_LOG);
 	return enc;
 }
 
@@ -48,5 +49,6 @@ int verificarGerente(ListaEmp le) {
 			break;
 		}
 	}
+	writeLog("MANAGE MENU: verificarGerente Ejecutado", FICHERO_MANAGEMENU_LOG);
 	return enc;
 }

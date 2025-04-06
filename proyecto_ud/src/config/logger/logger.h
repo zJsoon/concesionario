@@ -18,6 +18,7 @@
 #define FICHERO_TRANSLADOS_LOG "../../../data/logs/translados_logs.txt"
 #define FICHERO_VEH_LOG "../../../data/logs/veh_logs.txt"
 #define FICHERO_VENT_LOG "../../../data/logs/vent_logs.txt"
+#define FICHERO_INI_LOG "../../../data/logs/ini_logs.txt"
 
 void writeLog(char *mensaje, char *txt);
 void printLog(char *mensaje);
