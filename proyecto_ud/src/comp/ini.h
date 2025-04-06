@@ -10,8 +10,11 @@
 #include "../utils/operaciones/operaciones.h"
 #include "../utils/renting/renting.h"
 #include "../utils/translados/translados.h"
+#include "../utils/translados/translados.h"
 #include "../utils/veh/veh.h"
 #include "../utils/vent/vent.h"
+#include "db_manager.h"
+
 
 void iniListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 		ListaConce *lcon, ListaEmp *le, ListaMantenimientos *lm,
@@ -24,4 +27,10 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 		ListaVeh *lv, ListaVent *lvent);
 
 void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv);
+
+void guardarDatosDB(ListaAlquileres la, ListaAuditorias lau, ListaClientes lc,
+		ListaConce lcon, ListaEmp le, ListaMantenimientos lm,
+		ListaOperaciones lop, ListaRenting lr, ListaTraslados lt,
+		ListaVeh lv, ListaVent lvent, sqlite3 db);
+
 #endif /* INI_H_ */

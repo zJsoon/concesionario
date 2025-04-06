@@ -43,8 +43,25 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	fflush(stdout);
 }
 
-void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv){
+void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv) {
 	copyEmpCSV(EMP_CSV, le);
 	copyConceCSV(CONC_CSV, lcon);
 	copyVehCSV(VEH_CSV, lv);
+}
+
+void guardarDatosDB(ListaAlquileres la, ListaAuditorias lau,
+		ListaClientes lc, ListaConce lcon, ListaEmp le,
+		ListaMantenimientos lm, ListaOperaciones lop, ListaRenting lr,
+		ListaTraslados lt, ListaVeh lv, ListaVent lvent, sqlite3 db) {
+	addAlquilerToDB(db, la);
+	addAuditoriaToDB(db, lau);
+	addClientToDB(db, lc);
+	addConceToDB(db, lcon);
+	addEmpToDB(db, le);
+	addMantenimientoToDB(db, lm);
+	addOperacionesToDB(db, lop);
+	addRentingToDB(db, lr);
+	addTransladosToDB(db, lt);
+	addVehToDB(db, lv);
+	addVentToDB(db, lvent);
 }
