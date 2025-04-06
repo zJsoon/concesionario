@@ -37,7 +37,7 @@ int main() {
 	ListaVeh lv;
 	ListaVent lvent;
 
-	Config c = leerConfiguracion("data/ini.config");
+	Config c = leerConfiguracion("../data/ini.config");
 
 	sqlite3 *db;
 
