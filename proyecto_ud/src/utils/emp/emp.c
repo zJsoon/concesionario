@@ -11,35 +11,6 @@ void iniLE(ListaEmp *le) {
     le->numEmp = 0;
 }
 
-void loadEmpCSV(char *csv, ListaEmp *le) {
-    char linea[500];
-    FILE *pf;
-    Emp e;
-
-    pf = fopen(csv, "r");
-
-    if (pf != (FILE*) NULL) {
-        while (fscanf(pf, "%s", linea) != EOF) {
-            char *id = strtok(linea, ";");
-            char *dni = strtok(NULL, ";");
-            char *nombre = strtok(NULL, ";");
-            char *cargo = strtok(NULL, ";");
-            char *conce_id = strtok(NULL, "");
-
-            e.ID = atoi(id);
-            strcpy(e.DNI, dni);
-            strcpy(e.nombre, nombre);
-            strcpy(e.cargo, cargo);
-            e.conce_id = atoi(conce_id);
-
-            addEmp(le, e);
-        }
-        fclose(pf);
-    }else{
-    	printf("No se encuenta el archivo.\n");
-    }
-}
-
 void addEmp(ListaEmp *le, Emp e) {
     int i;
 
@@ -100,22 +71,6 @@ Emp pedirEmp(ListaEmp le) {
     return e;
 }
 
-void copyEmpCSV(char *csv, ListaEmp le) {
-    FILE *pf = fopen(csv, "w");
-
-    if (pf != (FILE*) NULL) {
-        for (int i = 0; i < le.numEmp; i++) {
-            Emp e = le.aEmp[i];
-            fprintf(pf, "%d;%s;%s;%s;%d\n", e.ID, e.DNI, e.nombre, e.cargo, e.conce_id);
-        }
-        printf("Datos guardados en %s correctamente.\n", csv);
-        fflush(stdout);
-    } else {
-        perror("Error al abrir el archivo.\n");
-    }
-
-    fclose(pf);
-}
 
 void consultEmp(char *DNI, ListaEmp le) {
     for (int i = 0; i < le.numEmp; i++) {

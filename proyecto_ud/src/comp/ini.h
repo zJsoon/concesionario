@@ -26,8 +26,6 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 		ListaOperaciones *lop, ListaRenting *lr, ListaTraslados *lt,
 		ListaVeh *lv, ListaVent *lvent);
 
-void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv);
-
 void volcarDatosABD(sqlite3 *db, ListaAlquileres la, ListaAuditorias lau,
 		ListaClientes lc, ListaConce lcon, ListaEmp le, ListaMantenimientos lm,
 		ListaOperaciones lop, ListaRenting lr, ListaTraslados lt, ListaVeh lv,

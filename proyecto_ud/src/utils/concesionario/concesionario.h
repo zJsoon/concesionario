@@ -25,13 +25,10 @@ typedef struct{
 } ListaConce;
 
 void iniLCon(ListaConce *lc);
-void loadConceCSV(char *csv, ListaConce *lc);
 void addConce(ListaConce *lc, Conce c);
 void printC(Conce c);
 void printLC(ListaConce lc);
 Conce pedirConce(ListaConce lc);
-void copyConceCSV(char *csv, ListaConce lc);
-
 void visualizarConce(Conce c, ListaConce lc);
 void modConce(ListaConce *lista);
 void elimConce(ListaConce *lista);

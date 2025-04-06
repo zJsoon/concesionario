@@ -43,12 +43,6 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	fflush(stdout);
 }
 
-void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv) {
-	copyEmpCSV(EMP_CSV, le);
-	copyConceCSV(CONC_CSV, lcon);
-	copyVehCSV(VEH_CSV, lv);
-}
-
 void volcarDatosABD(sqlite3 *db, ListaAlquileres la, ListaAuditorias lau,
                     ListaClientes lc, ListaConce lcon, ListaEmp le,
                     ListaMantenimientos lm, ListaOperaciones lop, ListaRenting lr,

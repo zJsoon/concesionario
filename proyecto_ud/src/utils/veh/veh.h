@@ -36,12 +36,10 @@ typedef struct{
 } ListaVeh;
 
 void iniLV(ListaVeh *lv);
-void loadVehCSV(char *csv, ListaVeh *lv);
 void addVeh(ListaVeh *lv, Veh v);
 void printV(Veh v);
 void printLV(ListaVeh lv);
 Veh pedirVeh(ListaVeh lv);
-void copyVehCSV(char *csv, ListaVeh lv);
 void visualizarVeh(ListaVeh lv);
 void visualizarVehConce(ListaVeh lv, int id);
 void visualizarVehCiudad(ListaVeh lv, char *ciudad);

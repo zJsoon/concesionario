@@ -21,12 +21,10 @@ typedef struct{
 }ListaEmp;
 
 void iniLE(ListaEmp *le);
-void loadEmpCSV(char *csv, ListaEmp *le);
 void addEmp(ListaEmp *le, Emp e);
 void printE(Emp e);
 void printLE(ListaEmp le);
 Emp pedirEmp(ListaEmp le);
-void copyEmpCSV(char *csv, ListaEmp le);
 void consultEmp(char *DNI, ListaEmp le);
 void modEmp(char *DNI, ListaEmp *le);
 void elimEmp(char *DNI, ListaEmp *le);
