@@ -1,7 +1,10 @@
 #ifndef DB_MANAGER_H_
 #define DB_MANAGER_H_
+#include <string.h>
+#include <stdlib.h>
 
 #include "sqlite3.h"
+
 #include "../utils/alquiler/alquiler.h"
 #include "../utils/audit/audit.h"
 #include "../utils/client/client.h"

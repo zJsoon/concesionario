@@ -52,7 +52,7 @@ void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv) {
 void guardarDatosDB(ListaAlquileres la, ListaAuditorias lau,
 		ListaClientes lc, ListaConce lcon, ListaEmp le,
 		ListaMantenimientos lm, ListaOperaciones lop, ListaRenting lr,
-		ListaTraslados lt, ListaVeh lv, ListaVent lvent, sqlite3 db) {
+		ListaTraslados lt, ListaVeh lv, ListaVent lvent, sqlite3 *db) {
 	addAlquilerToDB(db, la);
 	addAuditoriaToDB(db, lau);
 	addClientToDB(db, lc);

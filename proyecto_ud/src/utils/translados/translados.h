@@ -1,6 +1,6 @@
 #ifndef TRANSLADOS_TRANSLADOS_H_
 #define TRANSLADOS_TRANSLADOS_H_
-
+#include "../veh/veh.h"
 #define TAM_FECHA 11
 
 typedef struct {

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "translados.h"
-#include "veh.h"
+
 
 void iniLT(ListaTraslados *lt) {
     lt->aTraslado = NULL;
