@@ -3,6 +3,7 @@
 
 #define TAM_FECHA 11
 #include "../veh/veh.h"
+#include "../../config/logger/logger.h"
 
 
 
