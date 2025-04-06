@@ -1,8 +1,11 @@
 #ifndef VEH_H_
 #define VEH_H_
 
-#define VEH_CSV "./data/csv/vehiculos.csv"
 #include "../../config/logger/logger.h"
+#include "../alquiler/alquiler.h"
+#include "../renting/renting.h"
+#include "../mantenimiento/mantenimiento.h"
+
 #define TAM_FECHA 11
 #define TAM_TIPO_VEH 30
 #define TAM_MATRICULA 10
@@ -46,7 +49,7 @@ void visualizarVehCiudad(ListaVeh lv, char *ciudad);
 void visualizarVehMarca(ListaVeh lv, char *marca);
 void visualizarVehTipo(ListaVeh lv, char *tipo);
 void visualizarVehEstado(ListaVeh lv, char *estado);
-void visualizarVehHistorial(ListaVeh lv, char *matricula);
+void visualizarVehHistorial(ListaVeh lv, ListaAlquileres la, ListaRenting lr, ListaMantenimientos lm, char *matricula);
 
 
 #endif /* VEH_H_ */
