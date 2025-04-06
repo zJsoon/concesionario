@@ -49,7 +49,8 @@ int main() {
 		fflush(stdout);
 		return result;
 	}
-
+	cargarDatosDesdeBD(db, &la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt,
+			&lv, &lvent);
 	do {
 		op = mostrarMenuInicio();
 		switch (op) {
