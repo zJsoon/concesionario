@@ -108,7 +108,7 @@ void visualizarVehConce(ListaVeh lv, int id) {
 	int i, encontrados = 0;
 	printf("\nVehículos del concesionario ID %d:\n", id);
 
-	for (int i = 0; i < lv.numVeh; i++) {
+	for (i = 0; i < lv.numVeh; i++) {
 		if (lv.aVeh[i].concesionario_ID == id) {
 			printV(lv.aVeh[i]);
 			encontrados++;
@@ -124,7 +124,7 @@ void visualizarVehCiudad(ListaVeh lv, char *ciudad) {
 	int i, encontrados = 0;
 	printf("\nVehículos en la ciudad: %s\n", ciudad);
 
-	for (int i = 0; i < lv.numVeh; i++) {
+	for (i = 0; i < lv.numVeh; i++) {
 		if (strstr(lv.aVeh[i].estado, ciudad)) {
 			printV(lv.aVeh[i]);
 			encontrados++;
@@ -140,7 +140,7 @@ void visualizarVehMarca(ListaVeh lv, char *marca) {
 	int i, encontrados = 0;
 	printf("\nVehículos de la marca: %s\n", marca);
 
-	for (int i = 0; i < lv.numVeh; i++) {
+	for (i = 0; i < lv.numVeh; i++) {
 		if (strcmp(lv.aVeh[i].marca, marca) == 0) {
 			printV(lv.aVeh[i]);
 			encontrados++;
@@ -156,7 +156,7 @@ void visualizarVehTipo(ListaVeh lv, char *tipo) {
 	int i, encontrados = 0;
 	printf("\nVehículos tipo: %s\n", tipo);
 
-	for (int i = 0; i < lv.numVeh; i++) {
+	for (i = 0; i < lv.numVeh; i++) {
 		if (strcmp(lv.aVeh[i].tipo, tipo) == 0) {
 			printV(lv.aVeh[i]);
 			encontrados++;
@@ -172,7 +172,7 @@ void visualizarVehEstado(ListaVeh lv, char *estado) {
 	int i, encontrados = 0;
 	printf("\nVehículos en estado: %s\n", estado);
 
-	for (int i = 0; i < lv.numVeh; i++) {
+	for (i = 0; i < lv.numVeh; i++) {
 		if (strcmp(lv.aVeh[i].estado, estado) == 0) {
 			printV(lv.aVeh[i]);
 			encontrados++;
@@ -184,34 +184,4 @@ void visualizarVehEstado(ListaVeh lv, char *estado) {
 	}
 }
 
-void visualizarVehHistorial(ListaVeh lv, ListaAlquileres la, ListaRenting lr,
-		ListaMantenimientos lm, char *matricula) {
-	int i, j, encontrados = 0;
-	printf("\nHistorial del vehículo con matrícula: %s\n", matricula);
 
-	for (int i = 0; i < lv.numVeh; i++) {
-		if (strcmp(lv.aVeh[i].matricula, matricula) == 0) {
-			printV(lv.aVeh[i]);
-			for (j = 0; j < la.numAlquileres; j++) {
-				if (lv.aVeh[i].ID == la.aAlquiler[j].vehiculo_id) {
-					printA(la.aAlquiler[j]);
-				}
-			}
-			for (j = 0; j < lr.numRenting; j++) {
-				if (lv.aVeh[i].ID == lr.aRenting[j].vehiculo_id) {
-					printR(lr.aRenting[j]);
-				}
-			}
-			for (j = 0; j < lm.numMantenimientos; j++) {
-				if (lv.aVeh[i].ID == lm.aMantenimiento[j].vehiculo_id) {
-					printM(lm.aMantenimiento[j]);
-				}
-			}
-			encontrados++;
-		}
-	}
-
-	if (encontrados == 0) {
-		printf("No se encontró ningún vehículo con esta matrícula.\n");
-	}
-}

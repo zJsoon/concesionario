@@ -2,7 +2,6 @@
 #define ALQUILER_ALQUILER_H_
 
 #define TAM_FECHA 11
-#include "../veh/veh.h"
 #include "../../config/logger/logger.h"
 
 
@@ -25,9 +24,5 @@ void addAlquiler(ListaAlquileres *la, Alquiler a);
 void printA(Alquiler a);
 void printLA(ListaAlquileres la);
 Alquiler realizarAlquiler(ListaAlquileres la);
-
-Alquiler startAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la);
-void estadoAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la);
-Alquiler endAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la);
 
 #endif /* ALQUILER_ALQUILER_H_ */
