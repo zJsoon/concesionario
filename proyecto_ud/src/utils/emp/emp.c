@@ -116,7 +116,7 @@ void elimEmp(char *DNI, ListaEmp *le)	{
 					le->aEmp[j] = le->aEmp[j + 1];
 				}
 				le->numEmp--;
-				le->aEmp = realloc(le->aEmp, le->numEmp * sizeof(Client));
+				le->aEmp = realloc(le->aEmp, le->numEmp * sizeof(Emp));
 				printf("Cliente con DNI %s eliminado correctamente.\n", DNI);
 				break;
 			}
