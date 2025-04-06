@@ -15,7 +15,6 @@
 #include "../utils/vent/vent.h"
 #include "db_manager.h"
 
-
 void iniListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 		ListaConce *lcon, ListaEmp *le, ListaMantenimientos *lm,
 		ListaOperaciones *lop, ListaRenting *lr, ListaTraslados *lt,
@@ -28,9 +27,14 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 
 void guardarDatos(ListaConce lcon, ListaEmp le, ListaVeh lv);
 
-void guardarDatosDB(ListaAlquileres la, ListaAuditorias lau, ListaClientes lc,
-		ListaConce lcon, ListaEmp le, ListaMantenimientos lm,
-		ListaOperaciones lop, ListaRenting lr, ListaTraslados lt,
-		ListaVeh lv, ListaVent lvent, sqlite3 db);
+void volcarDatosABD(sqlite3 *db, ListaAlquileres la, ListaAuditorias lau,
+		ListaClientes lc, ListaConce lcon, ListaEmp le, ListaMantenimientos lm,
+		ListaOperaciones lop, ListaRenting lr, ListaTraslados lt, ListaVeh lv,
+		ListaVent lvent);
+
+void cargarDatosDesdeBD(sqlite3 *db, ListaAlquileres *la, ListaAuditorias *lau,
+		ListaClientes *lc, ListaConce *lcon, ListaEmp *le,
+		ListaMantenimientos *lm, ListaOperaciones *lop, ListaRenting *lr,
+		ListaTraslados *lt, ListaVeh *lv, ListaVent *lvent);
 
 #endif /* INI_H_ */

@@ -400,7 +400,7 @@ int main() {
 		}
 	} while (op != 0);
 
-	guardarDatosDB(la, lau, lc, lcon, le, lm, lop, lr, lt, lv, lvent, db);
+	volcarDatosABD(db, la, lau, lc, lcon, le, lm, lop, lr, lt, lv, lvent);
 
 	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 }
