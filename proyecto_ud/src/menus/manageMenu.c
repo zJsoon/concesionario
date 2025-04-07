@@ -59,12 +59,23 @@ int verificarGerente(ListaEmp le) {
 }
 
 char* pedirDNI() {
-	char dni[10];
+	char* dni = malloc(TAM_DNI * sizeof(char)); // Asignar memoria dinámicamente
 
-	printf("Introduce tu DNI: ");
-	scanf("%s", dni);
+	    if (dni == NULL) {
+	        perror("Error al asignar memoria");
+	        return NULL; // Manejar el error de asignación de memoria
+	    }
 
-	return dni;
+	    printf("Introduce el DNI: ");
+	    fflush(stdout);
+	    fgets(dni, TAM_DNI, stdin);
+	    dni[strcspn(dni, "\n")] = 0; // Remueve el salto de línea y termina la cadena
+
+	    // Limpiar el buffer de entrada para evitar problemas futuros
+	    int c;
+	    while ((c = getchar()) != '\n' && c != EOF);
+
+	    return dni;
 }
 
 char* pedirMatricula() {

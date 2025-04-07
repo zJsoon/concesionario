@@ -33,7 +33,7 @@ void printLCli(ListaClientes lc);
 Client registrarCliente(ListaClientes lc);
 void consultClientes(ListaClientes lc, char *DNI);
 void elimClientes(ListaClientes *lc, char *DNI);
-void modClientes(ListaClientes *lc, char *DNI);
+void modClientes(ListaClientes *lc);
 void clearInputBuffer();
 
 #endif /* CLIENT_CLIENT_H_ */

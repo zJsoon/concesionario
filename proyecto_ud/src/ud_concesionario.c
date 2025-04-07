@@ -39,7 +39,6 @@ int main() {
 	ListaVeh lv;
 	ListaVent lvent;
 	Client c;
-	char *dni_r;
 	//Config c = leerConfiguracion("../data/ini.config");
 	//fflush(stdout);
 	sqlite3 *db;
@@ -99,8 +98,7 @@ int main() {
 								addClient(&lc, c);
 								break;
 							case 2: // Modificar Clientes
-								dni_r = pedirDNI();
-								modClientes(&lc, dni_r);
+								modClientes(&lc);
 								break;
 							case 3: // Eliminar Clientes
 								elimClientes(&lc, pedirDNI());
