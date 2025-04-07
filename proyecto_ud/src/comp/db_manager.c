@@ -21,7 +21,7 @@ void addAlquilerToDB(sqlite3 *db, ListaAlquileres la) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addAlquilerToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addAlquilerToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 	sprintf(sql, "DELETE FROM auditoria");
@@ -39,7 +39,7 @@ void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addAuditoriaToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addAuditoriaToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addClientToDB(sqlite3 *db, ListaClientes lc) {
 	sprintf(sql, "DELETE FROM cliente");
@@ -59,7 +59,7 @@ void addClientToDB(sqlite3 *db, ListaClientes lc) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addClientToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addClientToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addConceToDB(sqlite3 *db, ListaConce lcon) {
 	sprintf(sql, "DELETE FROM concesionario");
@@ -78,7 +78,7 @@ void addConceToDB(sqlite3 *db, ListaConce lcon) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addConceToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addConceToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addEmpToDB(sqlite3 *db, ListaEmp le) {
 	sprintf(sql, "DELETE FROM empleado");
@@ -95,7 +95,7 @@ void addEmpToDB(sqlite3 *db, ListaEmp le) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addEmpToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addEmpToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
 	sprintf(sql, "DELETE FROM mantenimiento");
@@ -114,7 +114,7 @@ void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addMantenimientoToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addMantenimientoToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addOperacionesToDB(sqlite3 *db, ListaOperaciones lop) {
 	sprintf(sql, "DELETE FROM operaciones");
@@ -135,7 +135,7 @@ void addOperacionesToDB(sqlite3 *db, ListaOperaciones lop) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addOperacionesToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addOperacionesToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addRentingToDB(sqlite3 *db, ListaRenting lr) {
 	sprintf(sql, "DELETE FROM renting");
@@ -151,7 +151,7 @@ void addRentingToDB(sqlite3 *db, ListaRenting lr) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addRentingToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addRentingToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 	sprintf(sql, "DELETE FROM translados");
@@ -169,7 +169,7 @@ void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addTransladosToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addTransladosToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addVehToDB(sqlite3 *db, ListaVeh lv) {
 	sprintf(sql, "DELETE FROM vehiculo");
@@ -190,7 +190,7 @@ void addVehToDB(sqlite3 *db, ListaVeh lv) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addVehToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addVehToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addVentToDB(sqlite3 *db, ListaVent lvent) {
 	sprintf(sql, "DELETE FROM venta");
@@ -206,14 +206,10 @@ void addVentToDB(sqlite3 *db, ListaVent lvent) {
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
 	}
-	writeLog("DB MANAGER: addVentToDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: addVentToDB Ejecutado.", FICHERO_DB_LOG);
 }
-
 void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
 	int rc;
-	char sql[256]; // or an appropriate size
-	sqlite3_stmt *stmt;
-
 	sprintf(sql, "SELECT * FROM alquileres");
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
 
@@ -223,7 +219,7 @@ void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
 		} else {
 
 			Alquiler *temp = realloc(la->aAlquiler,
-					(la->numAlquileres+1) * sizeof(Alquiler));
+					(la->numAlquileres + 1) * sizeof(Alquiler));
 			la->aAlquiler = temp;
 		}
 
@@ -256,628 +252,703 @@ void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
 	if (rc != SQLITE_DONE) {
 		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
 	}
-	writeLog("DB MANAGER: loadAlquileresFromDB Ejecutado.",FICHERO_DB_LOG);
+	writeLog("DB MANAGER: loadAlquileresFromDB Ejecutado.", FICHERO_DB_LOG);
 	sqlite3_finalize(stmt);
 }
 void loadAuditoriaFromDB(sqlite3 *db, ListaAuditorias *lau) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	    sqlite3_stmt *stmt;
+	    char sql[1000];
+	    Auditoria *temp;
+	    int capacidad = 10; // Capacidad inicial
 
-    sprintf(sql, "SELECT * FROM auditoria");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	    sprintf(sql, "SELECT * FROM auditoria");
+	    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lau->numAuditorias = 0;
+	    if (rc != SQLITE_OK) {
+	        fprintf(stderr, "Error al preparar la consulta: %s\n", sqlite3_errmsg(db));
+	        return;
+	    }
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lau->aAuditoria == NULL) {
-            lau->aAuditoria = malloc(1 * sizeof(Auditoria));
-        } else {
-            Auditoria *temp = realloc(lau->aAuditoria,
-                    (lau->numAuditorias + 1) * sizeof(Auditoria));
-            lau->aAuditoria = temp;
-        }
+	    lau->numAuditorias = 0;
+	    lau->aAuditoria = malloc(capacidad * sizeof(Auditoria));
 
-        Auditoria *a = &lau->aAuditoria[lau->numAuditorias];
+	    if (lau->aAuditoria == NULL) {
+	        fprintf(stderr, "Error al asignar memoria inicial.\n");
+	        sqlite3_finalize(stmt);
+	        return;
+	    }
 
-        a->id = sqlite3_column_int(stmt, 0);
-        a->operacion_id = sqlite3_column_int(stmt, 1);
+	    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+	        if (lau->numAuditorias >= capacidad) {
+	            capacidad *= 2;
+	            temp = realloc(lau->aAuditoria, capacidad * sizeof(Auditoria));
+	            if (temp == NULL) {
+	                fprintf(stderr, "Error al reasignar memoria.\n");
+	                free(lau->aAuditoria);
+	                lau->aAuditoria = NULL;
+	                sqlite3_finalize(stmt);
+	                return;
+	            }
+	            lau->aAuditoria = temp;
+	        }
 
-        const char *usuario = (const char*) sqlite3_column_text(stmt, 2);
-        if (usuario) {
-            strncpy(a->usuario, usuario, TAM_USUARIO - 1);
-            a->usuario[TAM_USUARIO - 1] = '\0';
-        } else {
-            strcpy(a->usuario, "");
-        }
+	        Auditoria *a = &lau->aAuditoria[lau->numAuditorias];
 
-        const char *fecha_modificacion = (const char*) sqlite3_column_text(stmt, 3);
-        if (fecha_modificacion) {
-            strncpy(a->fecha_modificacion, fecha_modificacion, TAM_FECHA - 1);
-            a->fecha_modificacion[TAM_FECHA - 1] = '\0';
-        } else {
-            strcpy(a->fecha_modificacion, "0000-00-00");
-        }
+	        a->id = sqlite3_column_int(stmt, 0);
+	        a->operacion_id = sqlite3_column_int(stmt, 1);
 
-        const char *cambios = (const char*) sqlite3_column_text(stmt, 4);
-        if (cambios) {
-            strncpy(a->cambios, cambios, TAM_CAMBIOS - 1);
-            a->cambios[TAM_CAMBIOS - 1] = '\0';
-        } else {
-            strcpy(a->cambios, "");
-        }
+	        const char *usuario = (const char*) sqlite3_column_text(stmt, 2);
+	        if (usuario) {
+	            strncpy(a->usuario, usuario, TAM_USUARIO - 1);
+	            a->usuario[TAM_USUARIO - 1] = '\0';
+	        } else {
+	            strcpy(a->usuario, "");
+	        }
 
-        lau->numAuditorias++;
-    }
+	        const char *fecha_modificacion = (const char*) sqlite3_column_text(stmt, 3);
+	        if (fecha_modificacion) {
+	            strncpy(a->fecha_modificacion, fecha_modificacion, TAM_FECHA - 1);
+	            a->fecha_modificacion[TAM_FECHA - 1] = '\0';
+	        } else {
+	            strcpy(a->fecha_modificacion, "0000-00-00");
+	        }
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadAuditoriaFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	        const char *cambios = (const char*) sqlite3_column_text(stmt, 4);
+	        if (cambios) {
+	            strncpy(a->cambios, cambios, TAM_CAMBIOS - 1);
+	            a->cambios[TAM_CAMBIOS - 1] = '\0';
+	        } else {
+	            strcpy(a->cambios, "");
+	        }
+
+	        lau->numAuditorias++;
+	    }
+
+	    if (rc != SQLITE_DONE && rc != SQLITE_ROW) {
+	        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	        free(lau->aAuditoria);
+	        lau->aAuditoria = NULL;
+	        lau->numAuditorias = 0;
+	    }
+
+	    writeLog("DB MANAGER: loadAuditoriaFromDB Ejecutado.", FICHERO_DB_LOG);
+	    sqlite3_finalize(stmt);
 }
 
 void loadClientesFromDB(sqlite3 *db, ListaClientes *lc) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	    sqlite3_stmt *stmt;
+	    char sql[1000];
+	    Client *temp;
+	    int capacidad = 10; // Capacidad inicial
 
-    sprintf(sql, "SELECT * FROM clientes");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	    sprintf(sql, "SELECT * FROM clientes");
+	    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lc->numClient = 0;
+	    if (rc != SQLITE_OK) {
+	        fprintf(stderr, "Error al preparar la consulta: %s\n", sqlite3_errmsg(db));
+	        return;
+	    }
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lc->aClient == NULL) {
-            lc->aClient = malloc(1 * sizeof(Client));
-        } else {
-            Client *temp = realloc(lc->aClient,
-                    (lc->numClient + 1) * sizeof(Client));
-            lc->aClient = temp;
-        }
+	    lc->numClient = 0;
+	    lc->aClient = malloc(capacidad * sizeof(Client));
 
-        Client *c = &lc->aClient[lc->numClient];
+	    if (lc->aClient == NULL) {
+	        fprintf(stderr, "Error al asignar memoria inicial.\n");
+	        sqlite3_finalize(stmt);
+	        return;
+	    }
 
-        c->ID = sqlite3_column_int(stmt, 0);
+	    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+	        if (lc->numClient >= capacidad) {
+	            capacidad *= 2;
+	            temp = realloc(lc->aClient, capacidad * sizeof(Client));
+	            if (temp == NULL) {
+	                fprintf(stderr, "Error al reasignar memoria.\n");
+	                free(lc->aClient);
+	                lc->aClient = NULL;
+	                sqlite3_finalize(stmt);
+	                return;
+	            }
+	            lc->aClient = temp;
+	        }
 
-        const char *dni = (const char*) sqlite3_column_text(stmt, 1);
-        if (dni) {
-            strncpy(c->dni, dni, TAM_DNI - 1);
-            c->dni[TAM_DNI - 1] = '\0';
-        } else {
-            strcpy(c->dni, "");
-        }
+	        Client *c = &lc->aClient[lc->numClient];
 
-        const char *nombre = (const char*) sqlite3_column_text(stmt, 2);
-        if (nombre) {
-            strncpy(c->nombre, nombre, TAM_NOMBRE - 1);
-            c->nombre[TAM_NOMBRE - 1] = '\0';
-        } else {
-            strcpy(c->nombre, "");
-        }
+	        c->ID = sqlite3_column_int(stmt, 0);
 
-        const char *apellidos = (const char*) sqlite3_column_text(stmt, 3);
-        if (apellidos) {
-            strncpy(c->apellidos, apellidos, TAM_APELLIDOS - 1);
-            c->apellidos[TAM_APELLIDOS - 1] = '\0';
-        } else {
-            strcpy(c->apellidos, "");
-        }
+	        const char *dni = (const char*) sqlite3_column_text(stmt, 1);
+	        if (dni) {
+	            strncpy(c->dni, dni, TAM_DNI - 1);
+	            c->dni[TAM_DNI - 1] = '\0';
+	        } else {
+	            strcpy(c->dni, "");
+	        }
 
-        const char *direccion = (const char*) sqlite3_column_text(stmt, 4);
-        if (direccion) {
-            strncpy(c->direccion, direccion, TAM_DIRECCION - 1);
-            c->direccion[TAM_DIRECCION - 1] = '\0';
-        } else {
-            strcpy(c->direccion, "");
-        }
+	        const char *nombre = (const char*) sqlite3_column_text(stmt, 2);
+	        if (nombre) {
+	            strncpy(c->nombre, nombre, TAM_NOMBRE - 1);
+	            c->nombre[TAM_NOMBRE - 1] = '\0';
+	        } else {
+	            strcpy(c->nombre, "");
+	        }
 
-        const char *tlf = (const char*) sqlite3_column_text(stmt, 5);
-        if (tlf) {
-            strncpy(c->tlf, tlf, TAM_TELEFONO - 1);
-            c->tlf[TAM_TELEFONO - 1] = '\0';
-        } else {
-            strcpy(c->tlf, "");
-        }
+	        const char *apellidos = (const char*) sqlite3_column_text(stmt, 3);
+	        if (apellidos) {
+	            strncpy(c->apellidos, apellidos, TAM_APELLIDOS - 1);
+	            c->apellidos[TAM_APELLIDOS - 1] = '\0';
+	        } else {
+	            strcpy(c->apellidos, "");
+	        }
 
-        const char *email = (const char*) sqlite3_column_text(stmt, 6);
-        if (email) {
-            strncpy(c->email, email, TAM_EMAIL - 1);
-            c->email[TAM_EMAIL - 1] = '\0';
-        } else {
-            strcpy(c->email, "");
-        }
+	        const char *direccion = (const char*) sqlite3_column_text(stmt, 4);
+	        if (direccion) {
+	            strncpy(c->direccion, direccion, TAM_DIRECCION - 1);
+	            c->direccion[TAM_DIRECCION - 1] = '\0';
+	        } else {
+	            strcpy(c->direccion, "");
+	        }
 
-        const char *fecha_registro = (const char*) sqlite3_column_text(stmt, 7);
-        if (fecha_registro) {
-            strncpy(c->fecha_registro, fecha_registro, TAM_FECHA - 1);
-            c->fecha_registro[TAM_FECHA - 1] = '\0';
-        } else {
-            strcpy(c->fecha_registro, "0000-00-00");
-        }
+	        const char *tlf = (const char*) sqlite3_column_text(stmt, 5);
+	        if (tlf) {
+	            strncpy(c->tlf, tlf, TAM_TELEFONO - 1);
+	            c->tlf[TAM_TELEFONO - 1] = '\0';
+	        } else {
+	            strcpy(c->tlf, "");
+	        }
 
-        lc->numClient++;
-    }
+	        const char *email = (const char*) sqlite3_column_text(stmt, 6);
+	        if (email) {
+	            strncpy(c->email, email, TAM_EMAIL - 1);
+	            c->email[TAM_EMAIL - 1] = '\0';
+	        } else {
+	            strcpy(c->email, "");
+	        }
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadClientesFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	        const char *fecha_registro = (const char*) sqlite3_column_text(stmt, 7);
+	        if (fecha_registro) {
+	            strncpy(c->fecha_registro, fecha_registro, TAM_FECHA - 1);
+	            c->fecha_registro[TAM_FECHA - 1] = '\0';
+	        } else {
+	            strcpy(c->fecha_registro, "0000-00-00");
+	        }
+
+	        lc->numClient++;
+	    }
+
+	    if (rc != SQLITE_DONE && rc != SQLITE_ROW) {
+	        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	        free(lc->aClient);
+	        lc->aClient = NULL;
+	        lc->numClient = 0;
+	    }
+
+	    writeLog("DB MANAGER: loadClientesFromDB Ejecutado.", FICHERO_DB_LOG);
+	    sqlite3_finalize(stmt);
 }
 
 void loadConceFromDB(sqlite3 *db, ListaConce *lcon) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	    sqlite3_stmt *stmt;
+	    char sql[1000];
+	    Conce *temp;
+	    int capacidad = 10; // Capacidad inicial
 
-    sprintf(sql, "SELECT * FROM concesionario");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	    sprintf(sql, "SELECT * FROM concesionario");
+	    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lcon->numConces = 0;
+	    if (rc != SQLITE_OK) {
+	        fprintf(stderr, "Error al preparar la consulta: %s\n", sqlite3_errmsg(db));
+	        return;
+	    }
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lcon->aConce == NULL) {
-            lcon->aConce = malloc(1 * sizeof(Conce));
-        } else {
-            Conce *temp = realloc(lcon->aConce,
-                    (lcon->numConces + 1) * sizeof(Conce));
-            lcon->aConce = temp;
-        }
+	    lcon->numConces = 0;
+	    lcon->aConce = malloc(capacidad * sizeof(Conce));
 
-        Conce *c = &lcon->aConce[lcon->numConces];
+	    if (lcon->aConce == NULL) {
+	        fprintf(stderr, "Error al asignar memoria inicial.\n");
+	        sqlite3_finalize(stmt);
+	        return;
+	    }
 
-        c->ID = sqlite3_column_int(stmt, 0);
+	    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+	        if (lcon->numConces >= capacidad) {
+	            capacidad *= 2;
+	            temp = realloc(lcon->aConce, capacidad * sizeof(Conce));
+	            if (temp == NULL) {
+	                fprintf(stderr, "Error al reasignar memoria.\n");
+	                free(lcon->aConce);
+	                lcon->aConce = NULL;
+	                sqlite3_finalize(stmt);
+	                return;
+	            }
+	            lcon->aConce = temp;
+	        }
 
-        const char *nombre = (const char*) sqlite3_column_text(stmt, 1);
-        if (nombre) {
-            strncpy(c->nombre, nombre, TAM_NOMBRE - 1);
-            c->nombre[TAM_NOMBRE - 1] = '\0';
-        } else {
-            strcpy(c->nombre, "");
-        }
+	        Conce *c = &lcon->aConce[lcon->numConces];
 
-        const char *direccion = (const char*) sqlite3_column_text(stmt, 2);
-        if (direccion) {
-            strncpy(c->direccion, direccion, TAM_DIRECCION - 1);
-            c->direccion[TAM_DIRECCION - 1] = '\0';
-        } else {
-            strcpy(c->direccion, "");
-        }
+	        c->ID = sqlite3_column_int(stmt, 0);
 
-        const char *ciudad = (const char*) sqlite3_column_text(stmt, 3);
-        if (ciudad) {
-            strncpy(c->ciudad, ciudad, TAM_CID_TLF - 1);
-            c->ciudad[TAM_CID_TLF - 1] = '\0';
-        } else {
-            strcpy(c->ciudad, "");
-        }
+	        const char *nombre = (const char*) sqlite3_column_text(stmt, 1);
+	        if (nombre) {
+	            strncpy(c->nombre, nombre, TAM_NOMBRE - 1);
+	            c->nombre[TAM_NOMBRE - 1] = '\0';
+	        } else {
+	            strcpy(c->nombre, "");
+	        }
 
-        const char *tlf = (const char*) sqlite3_column_text(stmt, 4);
-        if (tlf) {
-            strncpy(c->tlf, tlf, TAM_CID_TLF - 1);
-            c->tlf[TAM_CID_TLF - 1] = '\0';
-        } else {
-            strcpy(c->tlf, "");
-        }
+	        const char *direccion = (const char*) sqlite3_column_text(stmt, 2);
+	        if (direccion) {
+	            strncpy(c->direccion, direccion, TAM_DIRECCION - 1);
+	            c->direccion[TAM_DIRECCION - 1] = '\0';
+	        } else {
+	            strcpy(c->direccion, "");
+	        }
 
-        const char *email = (const char*) sqlite3_column_text(stmt, 5);
-        if (email) {
-            strncpy(c->email, email, TAM_EMAIL - 1);
-            c->email[TAM_EMAIL - 1] = '\0';
-        } else {
-            strcpy(c->email, "");
-        }
+	        const char *ciudad = (const char*) sqlite3_column_text(stmt, 3);
+	        if (ciudad) {
+	            strncpy(c->ciudad, ciudad, TAM_CID_TLF - 1);
+	            c->ciudad[TAM_CID_TLF - 1] = '\0';
+	        } else {
+	            strcpy(c->ciudad, "");
+	        }
 
-        lcon->numConces++;
-    }
+	        const char *tlf = (const char*) sqlite3_column_text(stmt, 4);
+	        if (tlf) {
+	            strncpy(c->tlf, tlf, TAM_CID_TLF - 1);
+	            c->tlf[TAM_CID_TLF - 1] = '\0';
+	        } else {
+	            strcpy(c->tlf, "");
+	        }
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadConceFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	        const char *email = (const char*) sqlite3_column_text(stmt, 5);
+	        if (email) {
+	            strncpy(c->email, email, TAM_EMAIL - 1);
+	            c->email[TAM_EMAIL - 1] = '\0';
+	        } else {
+	            strcpy(c->email, "");
+	        }
+
+	        lcon->numConces++;
+	    }
+
+	    if (rc != SQLITE_DONE && rc != SQLITE_ROW) {
+	        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	        free(lcon->aConce);
+	        lcon->aConce = NULL;
+	        lcon->numConces = 0;
+	    }
+
+	    writeLog("DB MANAGER: loadConceFromDB Ejecutado.", FICHERO_DB_LOG);
+	    sqlite3_finalize(stmt);
 }
 
 void loadEmpFromDB(sqlite3 *db, ListaEmp *le) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	sqlite3_stmt *stmt;
+	char sql[1000];
 
-    sprintf(sql, "SELECT * FROM empleado");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sprintf(sql, "SELECT * FROM empleado");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    le->numEmp = 0;
+	le->numEmp = 0;
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (le->aEmp == NULL) {
-            le->aEmp = malloc(1 * sizeof(Emp));
-        } else {
-            Emp *temp = realloc(le->aEmp,
-                    (le->numEmp + 1) * sizeof(Emp));
-            le->aEmp = temp;
-        }
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		if (le->aEmp == NULL) {
+			le->aEmp = malloc(1 * sizeof(Emp));
+		} else {
+			Emp *temp = realloc(le->aEmp, (le->numEmp + 1) * sizeof(Emp));
+			le->aEmp = temp;
+		}
 
-        Emp *e = &le->aEmp[le->numEmp];
+		Emp *e = &le->aEmp[le->numEmp];
 
-        e->ID = sqlite3_column_int(stmt, 0);
+		e->ID = sqlite3_column_int(stmt, 0);
 
-        const char *dni = (const char*) sqlite3_column_text(stmt, 1);
-        if (dni) {
-            strncpy(e->DNI, dni, TAM_DNI - 1);
-            e->DNI[TAM_DNI - 1] = '\0';
-        } else {
-            strcpy(e->DNI, "");
-        }
+		const char *dni = (const char*) sqlite3_column_text(stmt, 1);
+		if (dni) {
+			strncpy(e->DNI, dni, TAM_DNI - 1);
+			e->DNI[TAM_DNI - 1] = '\0';
+		} else {
+			strcpy(e->DNI, "");
+		}
 
-        const char *nombre = (const char*) sqlite3_column_text(stmt, 2);
-        if (nombre) {
-            strncpy(e->nombre, nombre, TAM_NOMBRE - 1);
-            e->nombre[TAM_NOMBRE - 1] = '\0';
-        } else {
-            strcpy(e->nombre, "");
-        }
+		const char *nombre = (const char*) sqlite3_column_text(stmt, 2);
+		if (nombre) {
+			strncpy(e->nombre, nombre, TAM_NOMBRE - 1);
+			e->nombre[TAM_NOMBRE - 1] = '\0';
+		} else {
+			strcpy(e->nombre, "");
+		}
 
-        const char *cargo = (const char*) sqlite3_column_text(stmt, 3);
-        if (cargo) {
-            strncpy(e->cargo, cargo, TAM_CARGO - 1);
-            e->cargo[TAM_CARGO - 1] = '\0';
-        } else {
-            strcpy(e->cargo, "");
-        }
+		const char *cargo = (const char*) sqlite3_column_text(stmt, 3);
+		if (cargo) {
+			strncpy(e->cargo, cargo, TAM_CARGO - 1);
+			e->cargo[TAM_CARGO - 1] = '\0';
+		} else {
+			strcpy(e->cargo, "");
+		}
 
-        e->conce_id = sqlite3_column_int(stmt, 4);
+		e->conce_id = sqlite3_column_int(stmt, 4);
 
-        le->numEmp++;
-    }
+		le->numEmp++;
+	}
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadEmpFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	if (rc != SQLITE_DONE) {
+		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	}
+	writeLog("DB MANAGER: loadEmpFromDB Ejecutado.", FICHERO_DB_LOG);
+	sqlite3_finalize(stmt);
 }
 
 void loadMantenimientosFromDB(sqlite3 *db, ListaMantenimientos *lm) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	sqlite3_stmt *stmt;
+	char sql[1000];
 
-    sprintf(sql, "SELECT * FROM mantenimiento");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sprintf(sql, "SELECT * FROM mantenimientos");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lm->numMantenimientos = 0;
+	lm->numMantenimientos = 0;
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lm->aMantenimiento == NULL) {
-            lm->aMantenimiento = malloc(1 * sizeof(Mantenimiento));
-        } else {
-            Mantenimiento *temp = realloc(lm->aMantenimiento,
-                    (lm->numMantenimientos + 1) * sizeof(Mantenimiento));
-            lm->aMantenimiento = temp;
-        }
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		if (lm->aMantenimiento == NULL) {
+			lm->aMantenimiento = malloc(1 * sizeof(Mantenimiento));
+		} else {
+			Mantenimiento *temp = realloc(lm->aMantenimiento,
+					(lm->numMantenimientos + 1) * sizeof(Mantenimiento));
+			lm->aMantenimiento = temp;
+		}
 
-        Mantenimiento *m = &lm->aMantenimiento[lm->numMantenimientos];
+		Mantenimiento *m = &lm->aMantenimiento[lm->numMantenimientos];
 
-        m->id = sqlite3_column_int(stmt, 0);
-        m->vehiculo_id = sqlite3_column_int(stmt, 1);
+		m->id = sqlite3_column_int(stmt, 0);
+		m->vehiculo_id = sqlite3_column_int(stmt, 1);
 
-        const char *fecha = (const char*) sqlite3_column_text(stmt, 2);
-        if (fecha) {
-            strncpy(m->fecha, fecha, TAM_FECHA - 1);
-            m->fecha[TAM_FECHA - 1] = '\0';
-        } else {
-            strcpy(m->fecha, "0000-00-00");
-        }
+		const char *fecha = (const char*) sqlite3_column_text(stmt, 2);
+		if (fecha) {
+			strncpy(m->fecha, fecha, TAM_FECHA - 1);
+			m->fecha[TAM_FECHA - 1] = '\0';
+		} else {
+			strcpy(m->fecha, "0000-00-00");
+		}
 
-        const char *tipo = (const char*) sqlite3_column_text(stmt, 3);
-        if (tipo) {
-            strncpy(m->tipo, tipo, TAM_TIPO_MANTENIMIENTO - 1);
-            m->tipo[TAM_TIPO_MANTENIMIENTO - 1] = '\0';
-        } else {
-            strcpy(m->tipo, "");
-        }
+		const char *tipo = (const char*) sqlite3_column_text(stmt, 3);
+		if (tipo) {
+			strncpy(m->tipo, tipo, TAM_TIPO_MANTENIMIENTO - 1);
+			m->tipo[TAM_TIPO_MANTENIMIENTO - 1] = '\0';
+		} else {
+			strcpy(m->tipo, "");
+		}
 
-        m->coste = sqlite3_column_double(stmt, 4);
+		m->coste = sqlite3_column_double(stmt, 4);
 
-        const char *descripcion = (const char*) sqlite3_column_text(stmt, 5);
-        if (descripcion) {
-            strncpy(m->descripcion, descripcion, TAM_DESCRIPCION - 1);
-            m->descripcion[TAM_DESCRIPCION - 1] = '\0';
-        } else {
-            strcpy(m->descripcion, "");
-        }
+		const char *descripcion = (const char*) sqlite3_column_text(stmt, 5);
+		if (descripcion) {
+			strncpy(m->descripcion, descripcion, TAM_DESCRIPCION - 1);
+			m->descripcion[TAM_DESCRIPCION - 1] = '\0';
+		} else {
+			strcpy(m->descripcion, "");
+		}
 
-        lm->numMantenimientos++;
-    }
+		lm->numMantenimientos++;
+	}
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadMantenimientosFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	if (rc != SQLITE_DONE) {
+		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	}
+	writeLog("DB MANAGER: loadMantenimientosFromDB Ejecutado.", FICHERO_DB_LOG);
+	sqlite3_finalize(stmt);
 }
 void loadOperacionesFromDB(sqlite3 *db, ListaOperaciones *lop) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	sqlite3_stmt *stmt;
+	char sql[1000];
 
-    sprintf(sql, "SELECT * FROM operaciones");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sprintf(sql, "SELECT * FROM operaciones");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lop->numOperaciones = 0;
+	lop->numOperaciones = 0;
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lop->aOperaciones == NULL) {
-            lop->aOperaciones = malloc(1 * sizeof(Operacion));
-        } else {
-            Operacion *temp = realloc(lop->aOperaciones,
-                    (lop->numOperaciones + 1) * sizeof(Operacion));
-            lop->aOperaciones = temp;
-        }
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		if (lop->aOperaciones == NULL) {
+			lop->aOperaciones = malloc(1 * sizeof(Operacion));
+		} else {
+			Operacion *temp = realloc(lop->aOperaciones,
+					(lop->numOperaciones + 1) * sizeof(Operacion));
+			lop->aOperaciones = temp;
+		}
 
-        Operacion *o = &lop->aOperaciones[lop->numOperaciones];
+		Operacion *o = &lop->aOperaciones[lop->numOperaciones];
 
-        o->ID = sqlite3_column_int(stmt, 0);
+		o->ID = sqlite3_column_int(stmt, 0);
 
-        const char *tipo = (const char*) sqlite3_column_text(stmt, 1);
-        if (tipo) {
-            strncpy(o->tipo, tipo, TAM_TIPO_OPERACIONES - 1);
-            o->tipo[TAM_TIPO_OPERACIONES - 1] = '\0';
-        } else {
-            strcpy(o->tipo, "");
-        }
+		const char *tipo = (const char*) sqlite3_column_text(stmt, 1);
+		if (tipo) {
+			strncpy(o->tipo, tipo, TAM_TIPO_OPERACIONES - 1);
+			o->tipo[TAM_TIPO_OPERACIONES - 1] = '\0';
+		} else {
+			strcpy(o->tipo, "");
+		}
 
-        o->vehiculo_ID = sqlite3_column_int(stmt, 2);
-        o->cliente_ID = sqlite3_column_int(stmt, 3);
-        o->empleado_ID = sqlite3_column_int(stmt, 4);
+		o->vehiculo_ID = sqlite3_column_int(stmt, 2);
+		o->cliente_ID = sqlite3_column_int(stmt, 3);
+		o->empleado_ID = sqlite3_column_int(stmt, 4);
 
-        const char *fecha_operacion = (const char*) sqlite3_column_text(stmt, 5);
-        if (fecha_operacion) {
-            strncpy(o->fecha_operacion, fecha_operacion, TAM_FECHA - 1);
-            o->fecha_operacion[TAM_FECHA - 1] = '\0';
-        } else {
-            strcpy(o->fecha_operacion, "0000-00-00");
-        }
+		const char *fecha_operacion = (const char*) sqlite3_column_text(stmt,
+				5);
+		if (fecha_operacion) {
+			strncpy(o->fecha_operacion, fecha_operacion, TAM_FECHA - 1);
+			o->fecha_operacion[TAM_FECHA - 1] = '\0';
+		} else {
+			strcpy(o->fecha_operacion, "0000-00-00");
+		}
 
-        o->concesionario_ID = sqlite3_column_int(stmt, 6);
+		o->concesionario_ID = sqlite3_column_int(stmt, 6);
 
-        lop->numOperaciones++;
-    }
+		lop->numOperaciones++;
+	}
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadOperacionesFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	if (rc != SQLITE_DONE) {
+		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	}
+	writeLog("DB MANAGER: loadOperacionesFromDB Ejecutado.", FICHERO_DB_LOG);
+	sqlite3_finalize(stmt);
 }
 
 void loadRentingFromDB(sqlite3 *db, ListaRenting *lr) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	sqlite3_stmt *stmt;
+	char sql[1000];
 
-    sprintf(sql, "SELECT * FROM renting");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sprintf(sql, "SELECT * FROM renting");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lr->numRenting = 0;
+	lr->numRenting = 0;
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lr->aRenting == NULL) {
-            lr->aRenting = malloc(1 * sizeof(Renting));
-        } else {
-            Renting *temp = realloc(lr->aRenting,
-                    (lr->numRenting + 1) * sizeof(Renting));
-            lr->aRenting = temp;
-        }
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		if (lr->aRenting == NULL) {
+			lr->aRenting = malloc(1 * sizeof(Renting));
+		} else {
+			Renting *temp = realloc(lr->aRenting,
+					(lr->numRenting + 1) * sizeof(Renting));
+			lr->aRenting = temp;
+		}
 
-        Renting *r = &lr->aRenting[lr->numRenting];
+		Renting *r = &lr->aRenting[lr->numRenting];
 
-        r->operacion_id = sqlite3_column_int(stmt, 0);
-        r->vehiculo_id = sqlite3_column_int(stmt, 1);
-        r->duracion_meses = sqlite3_column_int(stmt, 2);
-        r->precio_mensual = sqlite3_column_double(stmt, 3);
+		r->operacion_id = sqlite3_column_int(stmt, 0);
+		r->vehiculo_id = sqlite3_column_int(stmt, 1);
+		r->duracion_meses = sqlite3_column_int(stmt, 2);
+		r->precio_mensual = sqlite3_column_double(stmt, 3);
 
-        lr->numRenting++;
-    }
+		lr->numRenting++;
+	}
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadRentingFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	if (rc != SQLITE_DONE) {
+		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	}
+	writeLog("DB MANAGER: loadRentingFromDB Ejecutado.", FICHERO_DB_LOG);
+	sqlite3_finalize(stmt);
 }
 
 void loadTrasladosFromDB(sqlite3 *db, ListaTraslados *lt) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	sqlite3_stmt *stmt;
+	char sql[1000];
 
-    sprintf(sql, "SELECT * FROM translados");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sprintf(sql, "SELECT * FROM traslados");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lt->numTraslados = 0;
+	lt->numTraslados = 0;
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lt->aTraslado == NULL) {
-            lt->aTraslado = malloc(1 * sizeof(Traslado));
-        } else {
-            Traslado *temp = realloc(lt->aTraslado,
-                    (lt->numTraslados + 1) * sizeof(Traslado));
-            lt->aTraslado = temp;
-        }
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		if (lt->aTraslado == NULL) {
+			lt->aTraslado = malloc(1 * sizeof(Traslado));
+		} else {
+			Traslado *temp = realloc(lt->aTraslado,
+					(lt->numTraslados + 1) * sizeof(Traslado));
+			lt->aTraslado = temp;
+		}
 
-        Traslado *t = &lt->aTraslado[lt->numTraslados];
+		Traslado *t = &lt->aTraslado[lt->numTraslados];
 
-        t->id = sqlite3_column_int(stmt, 0);
-        t->vehiculo_id = sqlite3_column_int(stmt, 1);
-        t->concesionario_origen_id = sqlite3_column_int(stmt, 2);
-        t->concesionario_destino_id = sqlite3_column_int(stmt, 3);
+		t->id = sqlite3_column_int(stmt, 0);
+		t->vehiculo_id = sqlite3_column_int(stmt, 1);
+		t->concesionario_origen_id = sqlite3_column_int(stmt, 2);
+		t->concesionario_destino_id = sqlite3_column_int(stmt, 3);
 
-        const char *fecha_traslado = (const char*) sqlite3_column_text(stmt, 4);
-        if (fecha_traslado) {
-            strncpy(t->fecha_traslado, fecha_traslado, TAM_FECHA - 1);
-            t->fecha_traslado[TAM_FECHA - 1] = '\0';
-        } else {
-            strcpy(t->fecha_traslado, "0000-00-00");
-        }
+		const char *fecha_traslado = (const char*) sqlite3_column_text(stmt, 4);
+		if (fecha_traslado) {
+			strncpy(t->fecha_traslado, fecha_traslado, TAM_FECHA - 1);
+			t->fecha_traslado[TAM_FECHA - 1] = '\0';
+		} else {
+			strcpy(t->fecha_traslado, "0000-00-00");
+		}
 
-        t->responsable_id = sqlite3_column_int(stmt, 5);
+		t->responsable_id = sqlite3_column_int(stmt, 5);
 
-        lt->numTraslados++;
-    }
+		lt->numTraslados++;
+	}
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadTrasladosFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	if (rc != SQLITE_DONE) {
+		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	}
+	writeLog("DB MANAGER: loadTrasladosFromDB Ejecutado.", FICHERO_DB_LOG);
+	sqlite3_finalize(stmt);
 }
 
 void loadVehFromDB(sqlite3 *db, ListaVeh *lv) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	sqlite3_stmt *stmt;
+	char sql[1000];
 
-    sprintf(sql, "SELECT * FROM vehiculo");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sprintf(sql, "SELECT * FROM vehiculo");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lv->numVeh = 0;
+	lv->numVeh = 0;
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lv->aVeh == NULL) {
-            lv->aVeh = malloc(1 * sizeof(Veh));
-        } else {
-            Veh *temp = realloc(lv->aVeh,
-                    (lv->numVeh + 1) * sizeof(Veh));
-            lv->aVeh = temp;
-        }
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		if (lv->aVeh == NULL) {
+			lv->aVeh = malloc(1 * sizeof(Veh));
+		} else {
+			Veh *temp = realloc(lv->aVeh, (lv->numVeh + 1) * sizeof(Veh));
+			lv->aVeh = temp;
+		}
 
-        Veh *v = &lv->aVeh[lv->numVeh];
+		Veh *v = &lv->aVeh[lv->numVeh];
 
-        v->ID = sqlite3_column_int(stmt, 0);
+		v->ID = sqlite3_column_int(stmt, 0);
 
-        const char *matricula = (const char*) sqlite3_column_text(stmt, 1);
-        if (matricula) {
-            strncpy(v->matricula, matricula, TAM_MATRICULA - 1);
-            v->matricula[TAM_MATRICULA - 1] = '\0';
-        } else {
-            strcpy(v->matricula, "");
-        }
+		const char *matricula = (const char*) sqlite3_column_text(stmt, 1);
+		if (matricula) {
+			strncpy(v->matricula, matricula, TAM_MATRICULA - 1);
+			v->matricula[TAM_MATRICULA - 1] = '\0';
+		} else {
+			strcpy(v->matricula, "");
+		}
 
-        const char *marca = (const char*) sqlite3_column_text(stmt, 2);
-        if (marca) {
-            strncpy(v->marca, marca, TAM_MARCA - 1);
-            v->marca[TAM_MARCA - 1] = '\0';
-        } else {
-            strcpy(v->marca, "");
-        }
+		const char *marca = (const char*) sqlite3_column_text(stmt, 2);
+		if (marca) {
+			strncpy(v->marca, marca, TAM_MARCA - 1);
+			v->marca[TAM_MARCA - 1] = '\0';
+		} else {
+			strcpy(v->marca, "");
+		}
 
-        const char *modelo = (const char*) sqlite3_column_text(stmt, 3);
-        if (modelo) {
-            strncpy(v->modelo, modelo, TAM_MODELO - 1);
-            v->modelo[TAM_MODELO - 1] = '\0';
-        } else {
-            strcpy(v->modelo, "");
-        }
+		const char *modelo = (const char*) sqlite3_column_text(stmt, 3);
+		if (modelo) {
+			strncpy(v->modelo, modelo, TAM_MODELO - 1);
+			v->modelo[TAM_MODELO - 1] = '\0';
+		} else {
+			strcpy(v->modelo, "");
+		}
 
-        v->year = sqlite3_column_int(stmt, 4);
+		v->year = sqlite3_column_int(stmt, 4);
 
-        const char *tipo = (const char*) sqlite3_column_text(stmt, 5);
-        if (tipo) {
-            strncpy(v->tipo, tipo, TAM_TIPO_VEH - 1);
-            v->tipo[TAM_TIPO_VEH - 1] = '\0';
-        } else {
-            strcpy(v->tipo, "");
-        }
+		const char *tipo = (const char*) sqlite3_column_text(stmt, 5);
+		if (tipo) {
+			strncpy(v->tipo, tipo, TAM_TIPO_VEH - 1);
+			v->tipo[TAM_TIPO_VEH - 1] = '\0';
+		} else {
+			strcpy(v->tipo, "");
+		}
 
-        const char *color = (const char*) sqlite3_column_text(stmt, 6);
-        if (color) {
-            strncpy(v->color, color, TAM_COLOR - 1);
-            v->color[TAM_COLOR - 1] = '\0';
-        } else {
-            strcpy(v->color, "");
-        }
+		const char *color = (const char*) sqlite3_column_text(stmt, 6);
+		if (color) {
+			strncpy(v->color, color, TAM_COLOR - 1);
+			v->color[TAM_COLOR - 1] = '\0';
+		} else {
+			strcpy(v->color, "");
+		}
 
-        v->precio_compra = sqlite3_column_double(stmt, 7);
-        v->precio_venta = sqlite3_column_double(stmt, 8);
+		v->precio_compra = sqlite3_column_double(stmt, 7);
+		v->precio_venta = sqlite3_column_double(stmt, 8);
 
-        const char *estado = (const char*) sqlite3_column_text(stmt, 9);
-        if (estado) {
-            strncpy(v->estado, estado, TAM_ESTADO - 1);
-            v->estado[TAM_ESTADO - 1] = '\0';
-        } else {
-            strcpy(v->estado, "");
-        }
+		const char *estado = (const char*) sqlite3_column_text(stmt, 9);
+		if (estado) {
+			strncpy(v->estado, estado, TAM_ESTADO - 1);
+			v->estado[TAM_ESTADO - 1] = '\0';
+		} else {
+			strcpy(v->estado, "");
+		}
 
-        const char *fecha_adquisicion = (const char*) sqlite3_column_text(stmt, 10);
-        if (fecha_adquisicion) {
-            strncpy(v->fecha_adquisicion, fecha_adquisicion, TAM_FECHA - 1);
-            v->fecha_adquisicion[TAM_FECHA - 1] = '\0';
-        } else {
-            strcpy(v->fecha_adquisicion, "0000-00-00");
-        }
+		const char *fecha_adquisicion = (const char*) sqlite3_column_text(stmt,
+				10);
+		if (fecha_adquisicion) {
+			strncpy(v->fecha_adquisicion, fecha_adquisicion, TAM_FECHA - 1);
+			v->fecha_adquisicion[TAM_FECHA - 1] = '\0';
+		} else {
+			strcpy(v->fecha_adquisicion, "0000-00-00");
+		}
 
-        v->concesionario_ID = sqlite3_column_int(stmt, 11);
-        v->kilometraje = sqlite3_column_double(stmt, 12);
+		v->concesionario_ID = sqlite3_column_int(stmt, 11);
+		v->kilometraje = sqlite3_column_double(stmt, 12);
 
-        const char *tipo_combustible = (const char*) sqlite3_column_text(stmt, 13);
-        if (tipo_combustible) {
-            strncpy(v->tipo_combustible, tipo_combustible, TAM_COMBUSTIBLE - 1);
-            v->tipo_combustible[TAM_COMBUSTIBLE - 1] = '\0';
-        } else {
-            strcpy(v->tipo_combustible, "");
-        }
+		const char *tipo_combustible = (const char*) sqlite3_column_text(stmt,
+				13);
+		if (tipo_combustible) {
+			strncpy(v->tipo_combustible, tipo_combustible, TAM_COMBUSTIBLE - 1);
+			v->tipo_combustible[TAM_COMBUSTIBLE - 1] = '\0';
+		} else {
+			strcpy(v->tipo_combustible, "");
+		}
 
-        lv->numVeh++;
-    }
+		lv->numVeh++;
+	}
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadVehFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+	if (rc != SQLITE_DONE) {
+		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	}
+	writeLog("DB MANAGER: loadVehFromDB Ejecutado.", FICHERO_DB_LOG);
+	sqlite3_finalize(stmt);
 }
 
 void loadVentasFromDB(sqlite3 *db, ListaVent *lvent) {
-    int rc;
-    sqlite3_stmt *stmt;
-    char sql[1000];
+	int rc;
+	sqlite3_stmt *stmt;
+	char sql[1000];  // Changed from char sql[1000] to char sql[1000]
 
-    sprintf(sql, "SELECT * FROM ventas");
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sprintf(sql, "SELECT * FROM ventas");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    lvent->numVentas = 0;
+	lvent->numVentas = 0;
 
-    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        if (lvent->aVent == NULL) {
-            lvent->aVent = malloc(1 * sizeof(Vent));
-        } else {
-            Vent *temp = realloc(lvent->aVent,
-                    (lvent->numVentas + 1) * sizeof(Vent));
-            lvent->aVent = temp;
-        }
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		if (lvent->aVent == NULL) {
+			lvent->aVent = malloc(1 * sizeof(Vent));
+		} else {
+			Vent *temp = realloc(lvent->aVent,
+					(lvent->numVentas + 1) * sizeof(Vent));
+			lvent->aVent = temp;
+		}
 
-        Vent *v = &lvent->aVent[lvent->numVentas];
+		// Use a pointer to the allocated memory instead of a local variable
+		Vent *v = &(lvent->aVent[lvent->numVentas]);
 
-        v->operacion_id = sqlite3_column_int(stmt, 0);
-        v->vehiculo_id = sqlite3_column_int(stmt, 1);
-        v->precio_final = sqlite3_column_double(stmt, 2);
+		v->operacion_id = sqlite3_column_int(stmt, 0);
+		v->vehiculo_id = sqlite3_column_int(stmt, 1);
+		v->precio_final = sqlite3_column_double(stmt, 2);
 
-        const char *metodo_pago = (const char*) sqlite3_column_text(stmt, 3);
-        if (metodo_pago) {
-            strncpy(v->metodo_pago, metodo_pago, TAM_METODO_PAGO - 1);
-            v->metodo_pago[TAM_METODO_PAGO - 1] = '\0';
-        } else {
-            strcpy(v->metodo_pago, "");
-        }
+		const char *metodo_pago = (const char*) sqlite3_column_text(stmt, 3);
+		if (metodo_pago) {
+			strncpy(v->metodo_pago, metodo_pago, TAM_METODO_PAGO - 1);
+			v->metodo_pago[TAM_METODO_PAGO - 1] = '\0';
+		} else {
+			strcpy(v->metodo_pago, "");
+		}
 
-        lvent->numVentas++;
-    }
+		// No need for this line since we're directly modifying the element in the array
+		// lvent->aVent[lvent->numVentas] = v;
 
-    if (rc != SQLITE_DONE) {
-        fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
-    }
-    writeLog("DB MANAGER: loadVentasFromDB Ejecutado.",FICHERO_DB_LOG);
-    sqlite3_finalize(stmt);
+		lvent->numVentas++;
+	}
+
+	if (rc != SQLITE_DONE) {
+		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
+	}
+	writeLog("DB MANAGER: loadVentasFromDB Ejecutado.", FICHERO_DB_LOG);
+	sqlite3_finalize(stmt);
 }
+

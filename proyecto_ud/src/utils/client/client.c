@@ -49,30 +49,51 @@ void printLCli(ListaClientes lc) {
 Client registrarCliente(ListaClientes lc) {
 	Client c;
 
-	c.ID = lc.numClient;
-	printf("Introduce el DNI/NIE: ");
-	fgets(c.dni, TAM_DNI_NIE, stdin);
-	c.dni[strcspn(c.dni, "\n")] = 0;
-	printf("Introduce el nombre: ");
-	fgets(c.nombre, TAM_NOMBRE, stdin);
-	c.nombre[strcspn(c.nombre, "\n")] = 0;
-	printf("Introduce los apellidos: ");
-	fgets(c.apellidos, TAM_APELLIDOS, stdin);
-	c.apellidos[strcspn(c.apellidos, "\n")] = 0;
-	printf("Introduce la dirección: ");
-	fgets(c.direccion, TAM_DIRECCION, stdin);
-	c.direccion[strcspn(c.direccion, "\n")] = 0;
-	printf("Introduce el teléfono: ");
-	fgets(c.tlf, TAM_TELEFONO, stdin);
-	c.tlf[strcspn(c.tlf, "\n")] = 0;
-	printf("Introduce el email: ");
-	fgets(c.email, TAM_EMAIL, stdin);
-	c.email[strcspn(c.email, "\n")] = 0;
-	printf("Introduce la fecha de registro (YYYY-MM-DD): ");
-	fgets(c.fecha_registro, TAM_FECHA, stdin);
-	c.fecha_registro[strcspn(c.fecha_registro, "\n")] = 0;
-	writeLog("CLIENTES: registrarCliente Ejecutado", FICHERO_CLIENT_LOG);
-	return c;
+		c.ID = lc.numClient+1; // Ojo, esto puede causar IDs duplicados
+	    printf("Introduce el DNI/NIE: ");
+	    fflush(stdout); // Asegura que el mensaje se muestre antes de la entrada
+	    fgets(c.dni, TAM_DNI_NIE, stdin);
+	    c.dni[strcspn(c.dni, "\n")] = 0;
+	    fflush(stdin); // Limpia el buffer de entrada
+
+	    printf("Introduce el nombre: ");
+	    fflush(stdout);
+	    fgets(c.nombre, TAM_NOMBRE, stdin);
+	    c.nombre[strcspn(c.nombre, "\n")] = 0;
+	    fflush(stdin);
+
+	    printf("Introduce los apellidos: ");
+	    fflush(stdout);
+	    fgets(c.apellidos, TAM_APELLIDOS, stdin);
+	    c.apellidos[strcspn(c.apellidos, "\n")] = 0;
+	    fflush(stdin);
+
+	    printf("Introduce la dirección: ");
+	    fflush(stdout);
+	    fgets(c.direccion, TAM_DIRECCION, stdin);
+	    c.direccion[strcspn(c.direccion, "\n")] = 0;
+	    fflush(stdin);
+
+	    printf("Introduce el teléfono: ");
+	    fflush(stdout);
+	    fgets(c.tlf, TAM_TELEFONO, stdin);
+	    c.tlf[strcspn(c.tlf, "\n")] = 0;
+	    fflush(stdin);
+
+	    printf("Introduce el email: ");
+	    fflush(stdout);
+	    fgets(c.email, TAM_EMAIL, stdin);
+	    c.email[strcspn(c.email, "\n")] = 0;
+	    fflush(stdin);
+
+	    printf("Introduce la fecha de registro (YYYY-MM-DD): ");
+	    fflush(stdout);
+	    fgets(c.fecha_registro, TAM_FECHA, stdin);
+	    c.fecha_registro[strcspn(c.fecha_registro, "\n")] = 0;
+	    fflush(stdin);
+
+	    writeLog("CLIENTES: registrarCliente Ejecutado", FICHERO_CLIENT_LOG);
+	    return c;
 }
 
 // Consultar cliente por DNI

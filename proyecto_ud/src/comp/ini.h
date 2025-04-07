@@ -26,14 +26,4 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 		ListaOperaciones *lop, ListaRenting *lr, ListaTraslados *lt,
 		ListaVeh *lv, ListaVent *lvent);
 
-void volcarDatosABD(sqlite3 *db, ListaAlquileres la, ListaAuditorias lau,
-		ListaClientes lc, ListaConce lcon, ListaEmp le, ListaMantenimientos lm,
-		ListaOperaciones lop, ListaRenting lr, ListaTraslados lt, ListaVeh lv,
-		ListaVent lvent);
-
-void cargarDatosDesdeBD(sqlite3 *db, ListaAlquileres *la, ListaAuditorias *lau,
-		ListaClientes *lc, ListaConce *lcon, ListaEmp *le,
-		ListaMantenimientos *lm, ListaOperaciones *lop, ListaRenting *lr,
-		ListaTraslados *lt, ListaVeh *lv, ListaVent *lvent);
-
 #endif /* INI_H_ */

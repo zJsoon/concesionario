@@ -35,5 +35,4 @@ void consultClientes(ListaClientes lc, char *DNI);
 void elimClientes(ListaClientes *lc, char *DNI);
 void modClientes(ListaClientes *lc, char *DNI);
 
-
 #endif /* CLIENT_CLIENT_H_ */

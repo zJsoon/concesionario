@@ -38,7 +38,7 @@ int main() {
 	ListaTraslados lt;
 	ListaVeh lv;
 	ListaVent lvent;
-
+	Client c;
 	//Config c = leerConfiguracion("../data/ini.config");
 	//fflush(stdout);
 	sqlite3 *db;
@@ -50,9 +50,19 @@ int main() {
 		fflush(stdout);
 		return result;
 	}
-	cargarDatosDesdeBD(db, &la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt,
-			&lv, &lvent);
-	printLE(le);
+
+	loadAlquileresFromDB(db, &la);
+	loadAuditoriaFromDB(db, &lau);
+	loadClientesFromDB(db, &lc);
+	loadConceFromDB(db, &lcon);
+	loadEmpFromDB(db, &le);
+	loadMantenimientosFromDB(db, &lm);
+	loadOperacionesFromDB(db, &lop);
+	loadRentingFromDB(db, &lr);
+	loadTrasladosFromDB(db, &lt);
+	loadVehFromDB(db, &lv);
+	loadVentasFromDB(db, &lvent);
+	printLCli(lc);
 	do {
 		op = mostrarMenuInicio();
 		switch (op) {
@@ -84,16 +94,17 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Añadir Clientes
-								addClient(&lc,registrarCliente(lc));
+								c = registrarCliente(lc);
+								addClient(&lc, c);
 								break;
 							case 2: // Modificar Clientes
 								modClientes(&lc, pedirDNI());
 								break;
 							case 3: // Eliminar Clientes
-								elimClientes(&lc,pedirDNI());
+								elimClientes(&lc, pedirDNI());
 								break;
 							case 4: // Consultar Clientes
-								consultClientes(lc,pedirDNI());
+								consultClientes(lc, pedirDNI());
 								break;
 							default:
 								printf(
@@ -125,10 +136,12 @@ int main() {
 										printf("Saliendo...\n");
 										break;
 									case 1: // Inicio alquiler
-										startAlquiler(pedirMatricula(), &lv, &la);
+										startAlquiler(pedirMatricula(), &lv,
+												&la);
 										break;
 									case 2: // Estado alquiler
-										estadoAlquiler(pedirMatricula(), &lv, &la);
+										estadoAlquiler(pedirMatricula(), &lv,
+												&la);
 										break;
 									case 3: // Fin alquiler
 										endAlquiler(pedirMatricula(), &lv, &la);
@@ -150,13 +163,19 @@ int main() {
 										fflush(stdout);
 										break;
 									case 1: // Inicio renting
-										startRenting(&lr,obtenerVehiculoID(lv,pedirMatricula()));
+										startRenting(&lr,
+												obtenerVehiculoID(lv,
+														pedirMatricula()));
 										break;
 									case 2: // Estado renting
-										estadoRenting(lr,obtenerVehiculoID(lv,pedirMatricula()));
+										estadoRenting(lr,
+												obtenerVehiculoID(lv,
+														pedirMatricula()));
 										break;
 									case 3: // Fin reinting
-										endRenting(&lr,obtenerVehiculoID(lv,pedirMatricula()));
+										endRenting(&lr,
+												obtenerVehiculoID(lv,
+														pedirMatricula()));
 										break;
 									default:
 										printf(
@@ -168,7 +187,7 @@ int main() {
 								} while (op123 != 0);
 								break;
 							case 4: // Registrar movimiento coche
-								registrarTranslado(pedirMatricula(),lv,&lt);
+								registrarTranslado(pedirMatricula(), lv, &lt);
 								break;
 							default:
 								printf(
@@ -190,16 +209,16 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Registrar reparaciones
-								registrarRep(&lm,pedirMatricula());
+								registrarRep(&lm, pedirMatricula());
 								break;
 							case 2: // Registrar revisiones
-								registrarRevi(&lm,pedirMatricula());
+								registrarRevi(&lm, pedirMatricula());
 								break;
 							case 3: // Visualizar reparaciones
-								visualizarMantRep(lm,pedirMatricula());
+								visualizarMantRep(lm, pedirMatricula());
 								break;
 							case 4: // Visualizar revisiones
-								visualizarMantRevi(lm,pedirMatricula());
+								visualizarMantRevi(lm, pedirMatricula());
 								break;
 							default:
 								printf(
@@ -229,16 +248,20 @@ int main() {
 										fflush(stdout);
 										break;
 									case 1: // Informe venta
-										informeVenta(lv,lvent,pedirMatricula());
+										informeVenta(lv, lvent,
+												pedirMatricula());
 										break;
 									case 2: // Informe alquiler
-										informeAlquiler(lv,la,pedirMatricula());
+										informeAlquiler(lv, la,
+												pedirMatricula());
 										break;
 									case 3: // Informe renting
-										informeRenting(lv,lr,pedirMatricula());
+										informeRenting(lv, lr,
+												pedirMatricula());
 										break;
 									case 4: // Informe movimiento coche
-										informeMovimientoCoche(lv,lt,pedirMatricula());
+										informeMovimientoCoche(lv, lt,
+												pedirMatricula());
 										break;
 									default:
 										printf(
@@ -250,7 +273,8 @@ int main() {
 
 								break;
 							case 2: // Visualizar informes
-								visualizarInformes(lv,lvent,la,lr,lt,pedirMatricula());
+								visualizarInformes(lv, lvent, la, lr, lt,
+										pedirMatricula());
 								break;
 							default:
 								printf(
@@ -299,13 +323,13 @@ int main() {
 								addEmp(&le, pedirEmp(le));
 								break;
 							case 2: // Modificar empleado
-								modEmp(pedirDNI(),&le);
+								modEmp(pedirDNI(), &le);
 								break;
 							case 3: // Eliminar empleado
-								elimEmp(pedirDNI(),&le);
+								elimEmp(pedirDNI(), &le);
 								break;
 							case 4: // Consultar empleado
-								consultEmp(pedirDNI(),le);
+								consultEmp(pedirDNI(), le);
 								break;
 							default:
 								printf(
@@ -327,7 +351,7 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Añadir concesionarios
-								addConce(&lcon,pedirConce(lcon));
+								addConce(&lcon, pedirConce(lcon));
 								break;
 							case 2: // Modificar concesionarios
 								modConce(&lcon);
@@ -336,7 +360,7 @@ int main() {
 								elimConce(&lcon);
 								break;
 							case 4: // Consultar concesionarios
-								consultConce(lcon,lv,pedirIDConce());
+								consultConce(lcon, lv, pedirIDConce());
 								break;
 							default:
 								printf(
@@ -365,7 +389,18 @@ int main() {
 		}
 	} while (op != 0);
 
-	//volcarDatosABD(db, la, lau, lc, lcon, le, lm, lop, lr, lt, lv, lvent);
+	addAlquilerToDB(db, la);
+	addAuditoriaToDB(db, lau);
+	addClientToDB(db, lc);
+	addConceToDB(db, lcon);
+	addEmpToDB(db, le);
+	addMantenimientoToDB(db, lm);
+	addOperacionesToDB(db, lop);
+	addRentingToDB(db, lr);
+	addTransladosToDB(db, lt);
+	addVehToDB(db, lv);
+	addVentToDB(db, lvent);
 
+	sqlite3_close(db);
 	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 }
