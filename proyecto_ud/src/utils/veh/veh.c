@@ -8,51 +8,6 @@ void iniLV(ListaVeh *lv) {
 	lv->numVeh = 0;
 }
 
-void loadVehCSV(char *csv, ListaVeh *lv) {
-	char linea[500];
-	FILE *pf;
-	Veh v;
-
-	pf = fopen(csv, "r");
-
-	if (pf != (FILE*) NULL) {
-		while (fscanf(pf, "%s", linea) != EOF) {
-			char *id = strtok(linea, ";");
-			char *matricula = strtok(NULL, ";");
-			char *marca = strtok(NULL, ";");
-			char *modelo = strtok(NULL, ";");
-			char *year = strtok(NULL, ";");
-			char *tipo = strtok(NULL, ";");
-			char *color = strtok(NULL, ";");
-			char *precio_compra = strtok(NULL, ";");
-			char *precio_venta = strtok(NULL, ";");
-			char *estado = strtok(NULL, ";");
-			char *fecha_adquisicion = strtok(NULL, ";");
-			char *concesionario_ID = strtok(NULL, ";");
-			char *kilometraje = strtok(NULL, ";");
-			char *tipo_combustible = strtok(NULL, "");
-
-			v.ID = atoi(id);
-			strcpy(v.matricula, matricula);
-			strcpy(v.marca, marca);
-			strcpy(v.modelo, modelo);
-			v.year = atoi(year);
-			strcpy(v.tipo, tipo);
-			strcpy(v.color, color);
-			v.precio_compra = atof(precio_compra);
-			v.precio_venta = atof(precio_venta);
-			strcpy(v.estado, estado);
-			strcpy(v.fecha_adquisicion, fecha_adquisicion);
-			v.concesionario_ID = atoi(concesionario_ID);
-			v.kilometraje = atoi(kilometraje);
-			strcpy(v.tipo_combustible, tipo_combustible);
-
-			addVeh(lv, v);
-		}
-		fclose(pf);
-	}
-}
-
 void addVeh(ListaVeh *lv, Veh v) {
 	int i;
 
@@ -149,120 +104,84 @@ Veh pedirVeh(ListaVeh lv) {
 	return v;
 }
 
-void copyVehCSV(char *csv, ListaVeh lv) {
-	FILE *pf = fopen(csv, "w");
+void visualizarVehConce(ListaVeh lv, int id) {
+	int i, encontrados = 0;
+	printf("\nVehículos del concesionario ID %d:\n", id);
 
-	if (pf != (FILE*) NULL) {
-		for (int i = 0; i < lv.numVeh; i++) {
-			Veh v = lv.aVeh[i];
-			fprintf(pf, "%d;%s;%s;%s;%d;%s;%s;%.2f;%.2f;%s;%s;%d;%.2f;%s\n", v.ID,
-					v.matricula, v.marca, v.modelo, v.year, v.tipo, v.color,
-					v.precio_compra, v.precio_venta, v.estado,
-					v.fecha_adquisicion, v.concesionario_ID, v.kilometraje,
-					v.tipo_combustible);
+	for (i = 0; i < lv.numVeh; i++) {
+		if (lv.aVeh[i].concesionario_ID == id) {
+			printV(lv.aVeh[i]);
+			encontrados++;
 		}
-		printf("Datos guardados en %s correctamente.\n", csv);
-		fflush(stdout);
-	} else {
-		perror("Error al abrir el archivo.\n");
 	}
 
-	fclose(pf);
-}
-
-void visualizarVehConce(ListaVeh lv, int id) {
-    int encontrados = 0,i;
-    printf("\nVehículos del concesionario ID %d:\n", id);
-
-    for (int i = 0; i < lv.numVeh; i++) {
-        if (lv.aVeh[i].concesionario_ID == id) {
-            printV(lv.aVeh[i]);
-            encontrados++;
-        }
-    }
-
-    if (encontrados == 0) {
-        printf("No hay vehículos en este concesionario.\n");
-    }
+	if (encontrados == 0) {
+		printf("No hay vehículos en este concesionario.\n");
+	}
 }
 
 void visualizarVehCiudad(ListaVeh lv, char *ciudad) {
-    int encontrados = 0,i;
-    printf("\nVehículos en la ciudad: %s\n", ciudad);
+	int i, encontrados = 0;
+	printf("\nVehículos en la ciudad: %s\n", ciudad);
 
-    for (int i = 0; i < lv.numVeh; i++) {
-        if (strstr(lv.aVeh[i].estado, ciudad)) {
-            printV(lv.aVeh[i]);
-            encontrados++;
-        }
-    }
+	for (i = 0; i < lv.numVeh; i++) {
+		if (strstr(lv.aVeh[i].estado, ciudad)) {
+			printV(lv.aVeh[i]);
+			encontrados++;
+		}
+	}
 
-    if (encontrados == 0) {
-        printf("No se encontraron vehículos en esta ciudad.\n");
-    }
+	if (encontrados == 0) {
+		printf("No se encontraron vehículos en esta ciudad.\n");
+	}
 }
 
 void visualizarVehMarca(ListaVeh lv, char *marca) {
-    int encontrados = 0,i;
-    printf("\nVehículos de la marca: %s\n", marca);
+	int i, encontrados = 0;
+	printf("\nVehículos de la marca: %s\n", marca);
 
-    for (int i = 0; i < lv.numVeh; i++) {
-        if (strcmp(lv.aVeh[i].marca, marca) == 0) {
-            printV(lv.aVeh[i]);
-            encontrados++;
-        }
-    }
+	for (i = 0; i < lv.numVeh; i++) {
+		if (strcmp(lv.aVeh[i].marca, marca) == 0) {
+			printV(lv.aVeh[i]);
+			encontrados++;
+		}
+	}
 
-    if (encontrados == 0) {
-        printf("No se encontraron vehículos de esta marca.\n");
-    }
+	if (encontrados == 0) {
+		printf("No se encontraron vehículos de esta marca.\n");
+	}
 }
 
 void visualizarVehTipo(ListaVeh lv, char *tipo) {
-    int encontrados = 0,i;
-    printf("\nVehículos tipo: %s\n", tipo);
+	int i, encontrados = 0;
+	printf("\nVehículos tipo: %s\n", tipo);
 
-    for (int i = 0; i < lv.numVeh; i++) {
-        if (strcmp(lv.aVeh[i].tipo, tipo) == 0) {
-            printV(lv.aVeh[i]);
-            encontrados++;
-        }
-    }
+	for (i = 0; i < lv.numVeh; i++) {
+		if (strcmp(lv.aVeh[i].tipo, tipo) == 0) {
+			printV(lv.aVeh[i]);
+			encontrados++;
+		}
+	}
 
-    if (encontrados == 0) {
-        printf("No se encontraron vehículos de este tipo.\n");
-    }
+	if (encontrados == 0) {
+		printf("No se encontraron vehículos de este tipo.\n");
+	}
 }
 
 void visualizarVehEstado(ListaVeh lv, char *estado) {
-    int encontrados = 0,i;
-    printf("\nVehículos en estado: %s\n", estado);
+	int i, encontrados = 0;
+	printf("\nVehículos en estado: %s\n", estado);
 
-    for (int i = 0; i < lv.numVeh; i++) {
-        if (strcmp(lv.aVeh[i].estado, estado) == 0) {
-            printV(lv.aVeh[i]);
-            encontrados++;
-        }
-    }
+	for (i = 0; i < lv.numVeh; i++) {
+		if (strcmp(lv.aVeh[i].estado, estado) == 0) {
+			printV(lv.aVeh[i]);
+			encontrados++;
+		}
+	}
 
-    if (encontrados == 0) {
-        printf("No hay vehículos con este estado.\n");
-    }
+	if (encontrados == 0) {
+		printf("No hay vehículos con este estado.\n");
+	}
 }
 
-// TODO HAY QUE MIRAR EN RENTING, ALQUILER, MANTENIMIENTO y sacar si hay datos de ahí
-void visualizarVehHistorial(ListaVeh lv, char *matricula) {
-    int encontrados = 0,i;
-    printf("\nHistorial del vehículo con matrícula: %s\n", matricula);
 
-    for (int i = 0; i < lv.numVeh; i++) {
-        if (strcmp(lv.aVeh[i].matricula, matricula) == 0) {
-            printV(lv.aVeh[i]);
-            encontrados++;
-        }
-    }
-
-    if (encontrados == 0) {
-        printf("No se encontró ningún vehículo con esta matrícula.\n");
-    }
-}

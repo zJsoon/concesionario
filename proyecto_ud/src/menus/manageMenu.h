@@ -2,6 +2,7 @@
 #define MANAGEMENU_H_
 
 #include "../utils/emp/emp.h"
+#include "../config/logger/logger.h"
 
 int pedirOp();
 int verificarEmpleado(ListaEmp le);

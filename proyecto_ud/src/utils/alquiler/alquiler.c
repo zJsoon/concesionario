@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "alquiler.h"
-#include "../veh/veh.h"
 
 void iniLA(ListaAlquileres *la) {
     la->aAlquiler = NULL;
     la->numAlquileres = 0;
+    writeLog("Inicializada lista.",FICHERO_ALQUILER_LOG);
 }
 
 void addAlquiler(ListaAlquileres *la, Alquiler a) {
@@ -28,6 +28,7 @@ void addAlquiler(ListaAlquileres *la, Alquiler a) {
     }
     la->aAlquiler[la->numAlquileres] = a;
     la->numAlquileres++;
+    writeLog("Añadido alquiler.",FICHERO_ALQUILER_LOG);
 }
 
 void printA(Alquiler a) {
@@ -37,6 +38,7 @@ void printA(Alquiler a) {
            a.fecha_inicio,
            a.fecha_fin,
            a.precio_diario);
+    writeLog("Print alquiler.",FICHERO_ALQUILER_LOG);
 }
 
 void printLA(ListaAlquileres la) {
@@ -50,6 +52,7 @@ void printLA(ListaAlquileres la) {
     for (i = 0; i < la.numAlquileres; i++) {
         printA(la.aAlquiler[i]);
     }
+    writeLog("Print lista alquiler.",FICHERO_ALQUILER_LOG);
 }
 
 Alquiler realizarAlquiler(ListaAlquileres la) {
@@ -76,132 +79,5 @@ Alquiler realizarAlquiler(ListaAlquileres la) {
     scanf("%lf", &a.precio_diario);
 
     return a;
-}
-
-Alquiler startAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
-    Alquiler nuevoAlquiler;
-    int vehiculoEncontrado = 0;
-
-    for (int i = 0; i < lv->numVeh; i++) {
-        if (strcmp(lv->aVeh[i].matricula, matricula) == 0) {
-            vehiculoEncontrado = 1;
-            nuevoAlquiler.vehiculo_id = lv->aVeh[i].ID;
-            break;
-        }
-    }
-
-    if (!vehiculoEncontrado) {
-        printf("Vehículo con matrícula %s no encontrado.\n", matricula);
-        exit(1);
-    }
-
-    nuevoAlquiler.operacion_id = la->numAlquileres;
-
-
-    printf("Introduce la fecha de inicio (YYYY-MM-DD): ");
-    fflush(stdout);
-    fflush(stdin);
-    fgets(nuevoAlquiler.fecha_inicio, TAM_FECHA, stdin);
-    nuevoAlquiler.fecha_inicio[strcspn(nuevoAlquiler.fecha_inicio, "\n")] = 0;  // Eliminar el salto de línea
-
-    printf("Introduce la fecha de fin (YYYY-MM-DD): ");
-    fflush(stdout);
-    fflush(stdin);
-    fgets(nuevoAlquiler.fecha_fin, TAM_FECHA, stdin);
-    nuevoAlquiler.fecha_fin[strcspn(nuevoAlquiler.fecha_fin, "\n")] = 0;  // Eliminar el salto de línea
-
-    printf("Introduce el precio diario: ");
-    fflush(stdout);
-    fflush(stdin);
-    scanf("%lf", &nuevoAlquiler.precio_diario);
-
-
-    addAlquiler(la, nuevoAlquiler);
-
-    return nuevoAlquiler;
-}
-
-void estadoAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
-    int vehiculoEncontrado = 0;
-    int alquilerEncontrado = 0;
-    int vehiculoID;
-
-    // Buscar el vehículo por matrícula
-    for (int i = 0; i < lv->numVeh; i++) {
-        if (strcmp(lv->aVeh[i].matricula, matricula) == 0) {
-            vehiculoEncontrado = 1;
-            vehiculoID = lv->aVeh[i].ID;
-            break;
-        }
-    }
-
-    if (!vehiculoEncontrado) {
-        printf("Vehículo con matrícula %s no encontrado.\n", matricula);
-        return;
-    }
-
-    // Buscar el alquiler por ID de vehículo
-    for (int i = 0; i < la->numAlquileres; i++) {
-        if (la->aAlquiler[i].vehiculo_id == vehiculoID) {
-            alquilerEncontrado = 1;
-            printf("Estado del alquiler para el vehículo con matrícula %s:\n", matricula);
-            printA(la->aAlquiler[i]);
-            break;
-        }
-    }
-
-    if (!alquilerEncontrado) {
-        printf("No se encontró ningún alquiler para el vehículo con matrícula %s.\n", matricula);
-    }
-}
-
-Alquiler endAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
-    int vehiculoEncontrado = 0;
-    int alquilerEncontrado = 0;
-    int vehiculoID;
-    Alquiler alquilerFinalizado;
-
-    for (int i = 0; i < lv->numVeh; i++) {
-        if (strcmp(lv->aVeh[i].matricula, matricula) == 0) {
-            vehiculoEncontrado = 1;
-            vehiculoID = lv->aVeh[i].ID;
-            break;
-        }
-    }
-
-    if (!vehiculoEncontrado) {
-        printf("Vehículo con matrícula %s no encontrado.\n", matricula);
-        exit(1);
-    }
-
-
-    for (int i = 0; i < la->numAlquileres; i++) {
-        if (la->aAlquiler[i].vehiculo_id == vehiculoID) {
-            alquilerEncontrado = 1;
-            alquilerFinalizado = la->aAlquiler[i];
-            break;
-        }
-    }
-
-    if (!alquilerEncontrado) {
-        printf("No se encontró ningún alquiler activo para el vehículo con matrícula %s.\n", matricula);
-        exit(1);
-    }
-
-
-    printf("Introduce la fecha de fin del alquiler (YYYY-MM-DD): ");
-    fflush(stdout);
-    fflush(stdin);
-    fgets(alquilerFinalizado.fecha_fin, TAM_FECHA, stdin);
-    alquilerFinalizado.fecha_fin[strcspn(alquilerFinalizado.fecha_fin, "\n")] = 0;  // Eliminar el salto de línea
-
-
-    for (int i = 0; i < la->numAlquileres; i++) {
-        if (la->aAlquiler[i].vehiculo_id == vehiculoID) {
-            la->aAlquiler[i] = alquilerFinalizado;
-            break;
-        }
-    }
-
-    return alquilerFinalizado;
+    writeLog("Pedido alquiler a usuario.",FICHERO_ALQUILER_LOG);
 }

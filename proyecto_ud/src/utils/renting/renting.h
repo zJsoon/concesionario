@@ -1,5 +1,6 @@
 #ifndef RENTING_RENTING_H_
 #define RENTING_RENTING_H_
+#include "../../config/logger/logger.h"
 
 typedef struct {
     int operacion_id;
@@ -18,4 +19,8 @@ void addRenting(ListaRenting *lr, Renting r);
 void printR(Renting r);
 void printLR(ListaRenting lr);
 Renting registrarRenting(ListaRenting lr);
+Renting startRenting(ListaRenting *lr, int vehiculo_id);
+void estadoRenting(ListaRenting lr, int vehiculo_id);
+Renting endRenting(ListaRenting *lr, int vehiculo_id);
+
 #endif /* RENTING_RENTING_H_ */

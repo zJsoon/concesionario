@@ -9,35 +9,6 @@ void iniLCon(ListaConce *lc) {
     lc->numConces = 0;
 }
 
-void loadConceCSV(char *csv, ListaConce *lc) {
-    char linea[500];
-    FILE *pf;
-    Conce c;
-
-    pf = fopen(csv, "r");
-
-    if (pf != (FILE*) NULL) {
-        while (fscanf(pf, "%s", linea) != EOF) {
-            char *id = strtok(linea, ";");
-            char *nombre = strtok(NULL, ";");
-            char *direccion = strtok(NULL, ";");
-            char *ciudad = strtok(NULL, ";");
-            char *tlf = strtok(NULL, ";");
-            char *email = strtok(NULL, "");
-
-            c.ID = atoi(id);
-            strcpy(c.nombre, nombre);
-            strcpy(c.direccion, direccion);
-            strcpy(c.ciudad, ciudad);
-            strcpy(c.tlf, tlf);
-            strcpy(c.email, email);
-
-            addConce(lc, c);
-        }
-        fclose(pf);
-    }
-}
-
 void addConce(ListaConce *lc, Conce c) {
     int i;
 

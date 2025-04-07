@@ -1,7 +1,8 @@
 #ifndef VEH_H_
 #define VEH_H_
 
-#define VEH_CSV "./data/csv/vehiculos.csv"
+#include "../../config/logger/logger.h"
+
 #define TAM_FECHA 11
 #define TAM_TIPO_VEH 30
 #define TAM_MATRICULA 10
@@ -35,19 +36,15 @@ typedef struct{
 } ListaVeh;
 
 void iniLV(ListaVeh *lv);
-void loadVehCSV(char *csv, ListaVeh *lv);
 void addVeh(ListaVeh *lv, Veh v);
 void printV(Veh v);
 void printLV(ListaVeh lv);
 Veh pedirVeh(ListaVeh lv);
-void copyVehCSV(char *csv, ListaVeh lv);
 void visualizarVeh(ListaVeh lv);
 void visualizarVehConce(ListaVeh lv, int id);
 void visualizarVehCiudad(ListaVeh lv, char *ciudad);
 void visualizarVehMarca(ListaVeh lv, char *marca);
 void visualizarVehTipo(ListaVeh lv, char *tipo);
 void visualizarVehEstado(ListaVeh lv, char *estado);
-void visualizarVehHistorial(ListaVeh lv, char *matricula);
-
 
 #endif /* VEH_H_ */

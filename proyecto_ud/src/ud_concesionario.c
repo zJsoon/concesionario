@@ -4,6 +4,10 @@
 #include "menus/manageMenu.h"
 
 #include "comp/ini.h"
+#include "comp/db_manager.h"
+#include "comp/sqlite3.h"
+
+#include "config/config.h"
 
 #include "utils/alquiler/alquiler.h"
 #include "utils/audit/audit.h"
@@ -18,7 +22,8 @@
 #include "utils/vent/vent.h"
 
 int main() {
-	int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22;
+	int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22,
+			result;
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
@@ -32,8 +37,20 @@ int main() {
 	ListaVeh lv;
 	ListaVent lvent;
 
+	Config c = leerConfiguracion("../data/ini.config");
+
+	sqlite3 *db;
+
 	iniListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 
+	result = sqlite3_open(c.nombreBD, &db);
+	if (result != SQLITE_OK) {
+		printf("Error al abrir DB.\n");
+		fflush(stdout);
+		return result;
+	}
+	cargarDatosDesdeBD(db, &la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt,
+			&lv, &lvent);
 	do {
 		op = mostrarMenuInicio();
 		switch (op) {
@@ -41,9 +58,9 @@ int main() {
 			printf("Saliendo...\n");
 			break;
 
-		/*
-		* MENU EMPLEADO
-		*/
+			/*
+			 * MENU EMPLEADO
+			 */
 		case 1:
 			if (verificarEmpleado(le)) {
 				do {
@@ -53,9 +70,9 @@ int main() {
 						printf("Saliendo...\n");
 						fflush(stdout);
 						break;
-					/*
-					 * GESTION CLIENTES
-					 */
+						/*
+						 * GESTION CLIENTES
+						 */
 					case 1:
 						do {
 							op11 = mostrarMenuEmpGest();
@@ -81,15 +98,16 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf("Error! La opción seleccionada no es correcta\n");
+								printf(
+										"Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
 						} while (op11 != 0);
 						break;
-					/*
-					 * OPERACIONES
-					 */
+						/*
+						 * OPERACIONES
+						 */
 					case 2:
 						do {
 							op12 = mostrarMenuEmpOperaciones();
@@ -122,7 +140,8 @@ int main() {
 										fflush(stdout);
 										break;
 									default:
-										printf("Error! La opción seleccionada no es correcta\n");
+										printf(
+												"Error! La opción seleccionada no es correcta\n");
 										fflush(stdout);
 										break;
 									}
@@ -149,7 +168,8 @@ int main() {
 										fflush(stdout);
 										break;
 									default:
-										printf("Error! La opción seleccionada no es correcta\n");
+										printf(
+												"Error! La opción seleccionada no es correcta\n");
 										fflush(stdout);
 										break;
 									}
@@ -161,15 +181,16 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf("Error! La opción seleccionada no es correcta\n");
+								printf(
+										"Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
 						} while (op12 != 0);
 						break;
-					/*
-					 * MANTENIMIENTO
-					 */
+						/*
+						 * MANTENIMIENTO
+						 */
 					case 3:
 						do {
 							op13 = mostrarMenuEmpMantenimiento();
@@ -195,15 +216,16 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf("Error! La opción seleccionada no es correcta\n");
+								printf(
+										"Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
 						} while (op13 != 0);
 						break;
-					/*
-					 * INFORMES
-					 */
+						/*
+						 * INFORMES
+						 */
 					case 4:
 						do {
 							op14 = mostrarMenuEmpInformes();
@@ -245,7 +267,8 @@ int main() {
 										fflush(stdout);
 										break;
 									default:
-										printf("Error! La opción seleccionada no es correcta\n");
+										printf(
+												"Error! La opción seleccionada no es correcta\n");
 										fflush(stdout);
 										break;
 									}
@@ -265,19 +288,20 @@ int main() {
 						} while (op14 != 0);
 						break;
 					default:
-						printf("Error! La opción seleccionada no es correcta\n");
+						printf(
+								"Error! La opción seleccionada no es correcta\n");
 						fflush(stdout);
 						break;
 					}
 				} while (op1 != 0);
-			}else{
+			} else {
 				printf("No estas autorizado para acceder a este menú.\n");
 				fflush(stdout);
 			}
 			break;
-		/*
-		* MENU GERENTE
-		*/
+			/*
+			 * MENU GERENTE
+			 */
 		case 2:
 			if (verificarGerente(le)) {
 				do {
@@ -287,9 +311,9 @@ int main() {
 						printf("Saliendo...\n");
 						fflush(stdout);
 						break;
-					/*
-					 * GESTION EMPLEADO
-					 */
+						/*
+						 * GESTION EMPLEADO
+						 */
 					case 1:
 						do {
 							op21 = mostrarMenuGerenteEmp();
@@ -316,15 +340,16 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf("Error! La opción seleccionada no es correcta\n");
+								printf(
+										"Error! La opción seleccionada no es correcta\n");
 								fflush(stdout);
 								break;
 							}
 						} while (op21 != 0);
 						break;
-					/*
-					 * GESTION CONCESIONARIOS
-					 */
+						/*
+						 * GESTION CONCESIONARIOS
+						 */
 					case 2: // Gestión concesionarios
 						do {
 							op22 = mostrarMenuGerenteConce();
@@ -350,19 +375,21 @@ int main() {
 								fflush(stdout);
 								break;
 							default:
-								printf("Error! La opción seleccionada no es correcta.\n");
+								printf(
+										"Error! La opción seleccionada no es correcta.\n");
 								fflush(stdout);
 								break;
 							}
 						} while (op22 != 0);
 						break;
 					default:
-						printf("Error! La opción seleccionada no es correcta.\n");
+						printf(
+								"Error! La opción seleccionada no es correcta.\n");
 						fflush(stdout);
 						break;
 					}
 				} while (op2 != 0);
-			}else{
+			} else {
 				printf("No estas autorizado para acceder a este menú.\n");
 				fflush(stdout);
 			}
@@ -374,7 +401,7 @@ int main() {
 		}
 	} while (op != 0);
 
-	guardarDatos(lcon, le, lv);
+	volcarDatosABD(db, la, lau, lc, lcon, le, lm, lop, lr, lt, lv, lvent);
 
 	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 }

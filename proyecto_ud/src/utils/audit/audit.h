@@ -4,6 +4,7 @@
 #define TAM_USUARIO 50
 #define TAM_FECHA 11
 #define TAM_CAMBIOS 500
+#include "../../config/logger/logger.h"
 
 typedef struct {
     int id;
