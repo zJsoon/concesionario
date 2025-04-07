@@ -7,9 +7,9 @@ sqlite3_stmt *stmt;
 
 void addAlquilerToDB(sqlite3 *db, ListaAlquileres la) {
 	sprintf(sql, "DELETE FROM alquiler");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 
 	for (i = 0; i < la.numAlquileres; i++) {
 		sprintf(sql, "INSERT INTO alquiler VALUES(%i,%i,'%s','%s',%f)",
@@ -17,17 +17,17 @@ void addAlquilerToDB(sqlite3 *db, ListaAlquileres la) {
 				la.aAlquiler[i].fecha_inicio, la.aAlquiler[i].fecha_fin,
 				la.aAlquiler[i].precio_diario);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addAlquilerToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 	sprintf(sql, "DELETE FROM auditoria");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 
 	for (i = 0; i < lau.numAuditorias; i++) {
 		sprintf(sql, "INSERT INTO auditoria VALUES(%i,%i,'%s','%s','%s')",
@@ -35,17 +35,17 @@ void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 				lau.aAuditoria[i].usuario, lau.aAuditoria[i].fecha_modificacion,
 				lau.aAuditoria[i].cambios);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addAuditoriaToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addClientToDB(sqlite3 *db, ListaClientes lc) {
 	sprintf(sql, "DELETE FROM cliente");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 
 	for (i = 0; i < lc.numClient; i++) {
 		sprintf(sql,
@@ -55,17 +55,17 @@ void addClientToDB(sqlite3 *db, ListaClientes lc) {
 				lc.aClient[i].tlf, lc.aClient[i].email,
 				lc.aClient[i].fecha_registro);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addClientToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addConceToDB(sqlite3 *db, ListaConce lcon) {
 	sprintf(sql, "DELETE FROM concesionario");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 
 	for (i = 0; i < lcon.numConces; i++) {
 		sprintf(sql,
@@ -74,34 +74,34 @@ void addConceToDB(sqlite3 *db, ListaConce lcon) {
 				lcon.aConce[i].direccion, lcon.aConce[i].ciudad,
 				lcon.aConce[i].tlf, lcon.aConce[i].email);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addConceToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addEmpToDB(sqlite3 *db, ListaEmp le) {
 	sprintf(sql, "DELETE FROM empleado");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 
 	for (i = 0; i < le.numEmp; i++) {
 		sprintf(sql, "INSERT INTO empleado VALUES(%i,'%s','%s','%s',%i)",
 				le.aEmp[i].ID, le.aEmp[i].DNI, le.aEmp[i].nombre,
 				le.aEmp[i].cargo, le.aEmp[i].conce_id);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addEmpToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
 	sprintf(sql, "DELETE FROM mantenimiento");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 
 	for (i = 0; i < lm.numMantenimientos; i++) {
 		sprintf(sql,
@@ -110,17 +110,17 @@ void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
 				lm.aMantenimiento[i].fecha, lm.aMantenimiento[i].tipo,
 				lm.aMantenimiento[i].coste, lm.aMantenimiento[i].descripcion);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addMantenimientoToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addOperacionesToDB(sqlite3 *db, ListaOperaciones lop) {
 	sprintf(sql, "DELETE FROM operaciones");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 
 	for (i = 0; i < lop.numOperaciones; i++) {
 		sprintf(sql,
@@ -131,33 +131,33 @@ void addOperacionesToDB(sqlite3 *db, ListaOperaciones lop) {
 				lop.aOperaciones[i].fecha_operacion,
 				lop.aOperaciones[i].concesionario_ID);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addOperacionesToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addRentingToDB(sqlite3 *db, ListaRenting lr) {
 	sprintf(sql, "DELETE FROM renting");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 	for (i = 0; i < lr.numRenting; i++) {
 		sprintf(sql, "INSERT INTO renting VALUES(%i,%i,%i,%f)",
 				lr.aRenting[i].operacion_id, lr.aRenting[i].vehiculo_id,
 				lr.aRenting[i].duracion_meses, lr.aRenting[i].precio_mensual);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addRentingToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 	sprintf(sql, "DELETE FROM translados");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 	for (i = 0; i < lt.numTraslados; i++) {
 		sprintf(sql, "INSERT INTO renting VALUES(%i,%i,%i,%i,'%s', %i)",
 				lt.aTraslado[i].id, lt.aTraslado[i].vehiculo_id,
@@ -165,17 +165,17 @@ void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 				lt.aTraslado[i].concesionario_destino_id,
 				lt.aTraslado[i].fecha_traslado, lt.aTraslado[i].responsable_id);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addTransladosToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addVehToDB(sqlite3 *db, ListaVeh lv) {
 	sprintf(sql, "DELETE FROM vehiculo");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 	for (i = 0; i < lv.numVeh; i++) {
 		sprintf(sql,
 				"INSERT INTO renting VALUES(%i,'%s','%s','%s',%i,'%s','%s',%f,%f,'%s','%s',%i,%f,'%s')",
@@ -186,25 +186,25 @@ void addVehToDB(sqlite3 *db, ListaVeh lv) {
 				lv.aVeh[i].fecha_adquisicion, lv.aVeh[i].concesionario_ID,
 				lv.aVeh[i].kilometraje, lv.aVeh[i].tipo_combustible);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addVehToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addVentToDB(sqlite3 *db, ListaVent lvent) {
 	sprintf(sql, "DELETE FROM venta");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-	sqlite3_step(stmt); //Ejecutar la sentencia
-	sqlite3_finalize(stmt); //Cerrar la sentencia
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	sqlite3_step(stmt);
+	sqlite3_finalize(stmt);
 	for (i = 0; i < lvent.numVentas; i++) {
 		sprintf(sql, "INSERT INTO renting VALUES(%i,%i,%f,'%s')",
 				lvent.aVent[i].operacion_id, lvent.aVent[i].vehiculo_id,
 				lvent.aVent[i].precio_final, lvent.aVent[i].metodo_pago);
 		printf("%s\n", sql);
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
-		sqlite3_step(stmt); //Ejecutar la sentencia
-		sqlite3_finalize(stmt); //Cerrar la sentencia
+		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 	}
 	writeLog("DB MANAGER: addVentToDB Ejecutado.",FICHERO_DB_LOG);
 }
@@ -224,11 +224,9 @@ void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
 
 		Alquiler *a = &la->aAlquiler[la->numAlquileres];
 
-		// Extraer datos con manejo de posibles NULLs
 		a->operacion_id = sqlite3_column_int(stmt, 0);
 		a->vehiculo_id = sqlite3_column_int(stmt, 1);
 
-		// Manejo seguro de strings
 		const char *fecha_inicio = (const char*) sqlite3_column_text(stmt, 2);
 		if (fecha_inicio) {
 			strncpy(a->fecha_inicio, fecha_inicio, TAM_FECHA - 1);
@@ -277,11 +275,9 @@ void loadAuditoriaFromDB(sqlite3 *db, ListaAuditorias *lau) {
 
         Auditoria *a = &lau->aAuditoria[lau->numAuditorias];
 
-        // Extraer datos con manejo de posibles NULLs
         a->id = sqlite3_column_int(stmt, 0);
         a->operacion_id = sqlite3_column_int(stmt, 1);
 
-        // Manejo seguro de strings
         const char *usuario = (const char*) sqlite3_column_text(stmt, 2);
         if (usuario) {
             strncpy(a->usuario, usuario, TAM_USUARIO - 1);
@@ -337,10 +333,8 @@ void loadClientesFromDB(sqlite3 *db, ListaClientes *lc) {
 
         Client *c = &lc->aClient[lc->numClient];
 
-        // Extraer datos con manejo de posibles NULLs
         c->ID = sqlite3_column_int(stmt, 0);
 
-        // Manejo seguro de strings
         const char *dni = (const char*) sqlite3_column_text(stmt, 1);
         if (dni) {
             strncpy(c->dni, dni, TAM_DNI - 1);
@@ -428,10 +422,8 @@ void loadConceFromDB(sqlite3 *db, ListaConce *lcon) {
 
         Conce *c = &lcon->aConce[lcon->numConces];
 
-        // Extraer datos con manejo de posibles NULLs
         c->ID = sqlite3_column_int(stmt, 0);
 
-        // Manejo seguro de strings
         const char *nombre = (const char*) sqlite3_column_text(stmt, 1);
         if (nombre) {
             strncpy(c->nombre, nombre, TAM_NOMBRE - 1);
@@ -503,10 +495,8 @@ void loadEmpFromDB(sqlite3 *db, ListaEmp *le) {
 
         Emp *e = &le->aEmp[le->numEmp];
 
-        // Extraer datos con manejo de posibles NULLs
         e->ID = sqlite3_column_int(stmt, 0);
 
-        // Manejo seguro de strings
         const char *dni = (const char*) sqlite3_column_text(stmt, 1);
         if (dni) {
             strncpy(e->DNI, dni, TAM_DNI - 1);
@@ -564,11 +554,9 @@ void loadMantenimientosFromDB(sqlite3 *db, ListaMantenimientos *lm) {
 
         Mantenimiento *m = &lm->aMantenimiento[lm->numMantenimientos];
 
-        // Extraer datos con manejo de posibles NULLs
         m->id = sqlite3_column_int(stmt, 0);
         m->vehiculo_id = sqlite3_column_int(stmt, 1);
 
-        // Manejo seguro de strings
         const char *fecha = (const char*) sqlite3_column_text(stmt, 2);
         if (fecha) {
             strncpy(m->fecha, fecha, TAM_FECHA - 1);
@@ -604,7 +592,6 @@ void loadMantenimientosFromDB(sqlite3 *db, ListaMantenimientos *lm) {
     writeLog("DB MANAGER: loadMantenimientosFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
-
 void loadOperacionesFromDB(sqlite3 *db, ListaOperaciones *lop) {
     int rc;
     sqlite3_stmt *stmt;
@@ -626,10 +613,8 @@ void loadOperacionesFromDB(sqlite3 *db, ListaOperaciones *lop) {
 
         Operacion *o = &lop->aOperaciones[lop->numOperaciones];
 
-        // Extraer datos con manejo de posibles NULLs
         o->ID = sqlite3_column_int(stmt, 0);
 
-        // Manejo seguro de strings
         const char *tipo = (const char*) sqlite3_column_text(stmt, 1);
         if (tipo) {
             strncpy(o->tipo, tipo, TAM_TIPO_OPERACIONES - 1);
@@ -683,7 +668,6 @@ void loadRentingFromDB(sqlite3 *db, ListaRenting *lr) {
 
         Renting *r = &lr->aRenting[lr->numRenting];
 
-        // Extraer datos con manejo de posibles NULLs
         r->operacion_id = sqlite3_column_int(stmt, 0);
         r->vehiculo_id = sqlite3_column_int(stmt, 1);
         r->duracion_meses = sqlite3_column_int(stmt, 2);
@@ -720,7 +704,6 @@ void loadTrasladosFromDB(sqlite3 *db, ListaTraslados *lt) {
 
         Traslado *t = &lt->aTraslado[lt->numTraslados];
 
-        // Extraer datos con manejo de posibles NULLs
         t->id = sqlite3_column_int(stmt, 0);
         t->vehiculo_id = sqlite3_column_int(stmt, 1);
         t->concesionario_origen_id = sqlite3_column_int(stmt, 2);
@@ -767,10 +750,8 @@ void loadVehFromDB(sqlite3 *db, ListaVeh *lv) {
 
         Veh *v = &lv->aVeh[lv->numVeh];
 
-        // Extraer datos con manejo de posibles NULLs
         v->ID = sqlite3_column_int(stmt, 0);
 
-        // Manejo seguro de strings
         const char *matricula = (const char*) sqlite3_column_text(stmt, 1);
         if (matricula) {
             strncpy(v->matricula, matricula, TAM_MATRICULA - 1);
@@ -874,7 +855,6 @@ void loadVentasFromDB(sqlite3 *db, ListaVent *lvent) {
 
         Vent *v = &lvent->aVent[lvent->numVentas];
 
-        // Extraer datos con manejo de posibles NULLs
         v->operacion_id = sqlite3_column_int(stmt, 0);
         v->vehiculo_id = sqlite3_column_int(stmt, 1);
         v->precio_final = sqlite3_column_double(stmt, 2);

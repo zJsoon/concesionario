@@ -6,7 +6,6 @@ typedef struct{
 	char nombreBD[TAM];
 	char admin[TAM];
 	char con[TAM];
-	int puerto;
 }Config;
 
 Config leerConfiguracion(char *nomfich);

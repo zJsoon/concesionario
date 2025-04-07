@@ -77,7 +77,7 @@ void volcarDatosABD(sqlite3 *db, ListaAlquileres la, ListaAuditorias lau,
     if (sqlite3_exec(db, "COMMIT", NULL, NULL, &errMsg) != SQLITE_OK) {
         fprintf(stderr, "Error al confirmar transacción: %s\n", errMsg);
         sqlite3_free(errMsg);
-        sqlite3_exec(db, "ROLLBACK", NULL, NULL, NULL); // Deshacer cambios en caso de error
+        sqlite3_exec(db, "ROLLBACK", NULL, NULL, NULL);
         return;
     }
     writeLog("INI: volcarDatosABD Ejecutado.",FICHERO_INI_LOG);

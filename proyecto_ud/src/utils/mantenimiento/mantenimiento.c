@@ -62,8 +62,11 @@ Mantenimiento registrarMantenimiento(ListaMantenimientos lm) {
 
     m.id = lm.numMantenimientos;
     printf("Introduce el ID del vehículo: ");
+    fflush(stdout);
+    fflush(stdin);
     scanf("%d", &m.vehiculo_id);
-    getchar(); // Limpiar el buffer
+    fflush(stdout);
+    fflush(stdin);
     printf("Introduce la fecha (YYYY-MM-DD): ");
     fgets(m.fecha, TAM_FECHA, stdin);
     m.fecha[strcspn(m.fecha, "\n")] = 0;
@@ -72,7 +75,8 @@ Mantenimiento registrarMantenimiento(ListaMantenimientos lm) {
     m.tipo[strcspn(m.tipo, "\n")] = 0;
     printf("Introduce el coste: ");
     scanf("%lf", &m.coste);
-    getchar(); // Limpiar el buffer
+    fflush(stdout);
+    fflush(stdin);
     printf("Introduce la descripción: ");
     fgets(m.descripcion, TAM_DESCRIPCION, stdin);
     m.descripcion[strcspn(m.descripcion, "\n")] = 0;

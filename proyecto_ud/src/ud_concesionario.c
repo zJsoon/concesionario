@@ -189,20 +189,16 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Registrar reparaciones
-								printf("Registrar reparaciones.\n");
-								fflush(stdout);
+								registrarRep(&lm,pedirMatricula());
 								break;
 							case 2: // Registrar revisiones
-								printf("Registrar revisiones.\n");
-								fflush(stdout);
+								registrarRevi(&lm,pedirMatricula());
 								break;
 							case 3: // Visualizar reparaciones
-								printf("Visualizar reparaciones.\n");
-								fflush(stdout);
+								visualizarMantRep(lm,pedirMatricula());
 								break;
 							case 4: // Visualizar revisiones
-								printf("Visualizar revisiones.\n");
-								fflush(stdout);
+								visualizarMantRevi(lm,pedirMatricula());
 								break;
 							default:
 								printf(
@@ -330,8 +326,7 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Añadir concesionarios
-								printf("Añadir concesionario.\n");
-								fflush(stdout);
+								addConce(&lcon,pedirConce(lcon));
 								break;
 							case 2: // Modificar concesionarios
 								modConce(&lcon);

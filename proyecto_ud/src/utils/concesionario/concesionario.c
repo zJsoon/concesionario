@@ -56,27 +56,27 @@ Conce pedirConce(ListaConce lc) {
 	fflush(stdout);
 	fflush(stdin);
 	fgets(c.nombre, TAM_NOM_EMAIL, stdin);
-	c.nombre[strcspn(c.nombre, "\n")] = 0;  // Eliminar el salto de línea
+	c.nombre[strcspn(c.nombre, "\n")] = 0;
 	printf("Introduce la dirección: ");
 	fflush(stdout);
 	fflush(stdin);
 	fgets(c.direccion, TAM_DIREC, stdin);
-	c.direccion[strcspn(c.direccion, "\n")] = 0;  // Eliminar el salto de línea
+	c.direccion[strcspn(c.direccion, "\n")] = 0;
 	printf("Introduce la ciudad: ");
 	fflush(stdout);
 	fflush(stdin);
 	fgets(c.ciudad, TAM_CID_TLF, stdin);
-	c.ciudad[strcspn(c.ciudad, "\n")] = 0;  // Eliminar el salto de línea
+	c.ciudad[strcspn(c.ciudad, "\n")] = 0;
 	printf("Introduce el teléfono: ");
 	fflush(stdout);
 	fflush(stdin);
 	fgets(c.tlf, TAM_CID_TLF, stdin);
-	c.tlf[strcspn(c.tlf, "\n")] = 0;  // Eliminar el salto de línea
+	c.tlf[strcspn(c.tlf, "\n")] = 0;
 	printf("Introduce el email: ");
 	fflush(stdout);
 	fflush(stdin);
 	fgets(c.email, TAM_NOM_EMAIL, stdin);
-	c.email[strcspn(c.email, "\n")] = 0;  // Eliminar el salto de línea
+	c.email[strcspn(c.email, "\n")] = 0;
 
 	return c;
 	writeLog("CONCE: pedirConce Ejecutado", FICHERO_CONCE_LOG);

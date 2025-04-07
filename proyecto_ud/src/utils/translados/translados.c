@@ -73,7 +73,8 @@ Traslado registrarTranslado(char *matricula, ListaVeh lv, ListaTraslados *lt) {
     scanf("%d", &t.concesionario_origen_id);
     printf("Introduce el ID del concesionario de destino: ");
     scanf("%d", &t.concesionario_destino_id);
-    getchar(); // limpiar salto de línea pendiente
+    fflush(stdout);
+    fflush(stdin);
     printf("Introduce la fecha del traslado (YYYY-MM-DD): ");
     fgets(t.fecha_traslado, TAM_FECHA, stdin);
     t.fecha_traslado[strcspn(t.fecha_traslado, "\n")] = 0;

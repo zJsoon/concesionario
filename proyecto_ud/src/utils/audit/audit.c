@@ -60,8 +60,8 @@ Auditoria realizarAuditoria(ListaAuditorias la) {
     a.id = la.numAuditorias;
     printf("Introduce el ID de la operación: ");
     fflush(stdout);
+    fflush(stdin);
     scanf("%d", &a.operacion_id);
-    getchar(); // Limpiar el buffer
     printf("Introduce el nombre de usuario: ");
     fgets(a.usuario, TAM_USUARIO, stdin);
     a.usuario[strcspn(a.usuario, "\n")] = 0;

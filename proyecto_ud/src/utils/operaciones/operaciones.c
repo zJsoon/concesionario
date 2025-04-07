@@ -64,23 +64,29 @@ Operacion registrarOperacion(ListaOperaciones lop) {
 
     op.ID = lop.numOperaciones;
     printf("Introduce el tipo de operación: ");
+    fflush(stdout);
+    fflush(stdin);
     fgets(op.tipo, TAM_TIPO_OPERACIONES, stdin);
     op.tipo[strcspn(op.tipo, "\n")] = 0;
     printf("Introduce el ID del vehículo: ");
     scanf("%d", &op.vehiculo_ID);
-    getchar(); // Limpiar el buffer
+    fflush(stdout);
+    fflush(stdin);
     printf("Introduce el ID del cliente: ");
     scanf("%d", &op.cliente_ID);
-    getchar(); // Limpiar el buffer
+    fflush(stdout);
+    fflush(stdin);
     printf("Introduce el ID del empleado: ");
     scanf("%d", &op.empleado_ID);
-    getchar(); // Limpiar el buffer
+    fflush(stdout);
+    fflush(stdin);
     printf("Introduce la fecha de la operación (YYYY-MM-DD): ");
     fgets(op.fecha_operacion, TAM_FECHA, stdin);
     op.fecha_operacion[strcspn(op.fecha_operacion, "\n")] = 0;
     printf("Introduce el ID del concesionario: ");
     scanf("%d", &op.concesionario_ID);
-    getchar(); // Limpiar el buffer
+    fflush(stdout);
+    fflush(stdin);
     writeLog("OPERACIONES: registrarOperacion Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
     return op;
 }

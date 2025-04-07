@@ -56,17 +56,17 @@ Emp pedirEmp(ListaEmp le) {
     fflush(stdout);
     fflush(stdin);
     fgets(e.DNI, TAM_DNI, stdin);
-    e.DNI[strcspn(e.DNI, "\n")] = 0; // Eliminar el salto de línea
+    e.DNI[strcspn(e.DNI, "\n")] = 0;
     printf("Introduce el nombre: ");
     fflush(stdout);
     fflush(stdin);
     fgets(e.nombre, TAM_NOMBRE, stdin);
-    e.nombre[strcspn(e.nombre, "\n")] = 0; // Eliminar el salto de línea
+    e.nombre[strcspn(e.nombre, "\n")] = 0;
     printf("Introduce el cargo: ");
     fflush(stdout);
     fflush(stdin);
     fgets(e.cargo, TAM_CARGO, stdin);
-    e.cargo[strcspn(e.cargo, "\n")] = 0; // Eliminar el salto de línea
+    e.cargo[strcspn(e.cargo, "\n")] = 0;
     printf("Introduce el ID del concesionario: ");
     fflush(stdout);
     fflush(stdin);
@@ -95,12 +95,12 @@ void modEmp(char *DNI, ListaEmp *le) {
             fflush(stdout);
             fflush(stdin);
             fgets(le->aEmp[i].nombre, TAM_NOMBRE, stdin);
-            le->aEmp[i].nombre[strcspn(le->aEmp[i].nombre, "\n")] = 0; // Eliminar el salto de línea
+            le->aEmp[i].nombre[strcspn(le->aEmp[i].nombre, "\n")] = 0;
             printf("Introduce el nuevo cargo: ");
             fflush(stdout);
             fflush(stdin);
             fgets(le->aEmp[i].cargo, TAM_CARGO, stdin);
-            le->aEmp[i].cargo[strcspn(le->aEmp[i].cargo, "\n")] = 0; // Eliminar el salto de línea
+            le->aEmp[i].cargo[strcspn(le->aEmp[i].cargo, "\n")] = 0;
             printf("Introduce el nuevo ID del concesionario: ");
             fflush(stdout);
             fflush(stdin);

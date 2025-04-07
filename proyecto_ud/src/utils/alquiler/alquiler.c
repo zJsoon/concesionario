@@ -67,12 +67,12 @@ Alquiler realizarAlquiler(ListaAlquileres la) {
     fflush(stdout);
     fflush(stdin);
     fgets(a.fecha_inicio, TAM_FECHA, stdin);
-    a.fecha_inicio[strcspn(a.fecha_inicio, "\n")] = 0;  // Eliminar el salto de línea
+    a.fecha_inicio[strcspn(a.fecha_inicio, "\n")] = 0;
     printf("Introduce la fecha de fin (YYYY-MM-DD): ");
     fflush(stdout);
     fflush(stdin);
     fgets(a.fecha_fin, TAM_FECHA, stdin);
-    a.fecha_fin[strcspn(a.fecha_fin, "\n")] = 0;  // Eliminar el salto de línea
+    a.fecha_fin[strcspn(a.fecha_fin, "\n")] = 0;
     printf("Introduce el precio diario: ");
     fflush(stdout);
     fflush(stdin);
