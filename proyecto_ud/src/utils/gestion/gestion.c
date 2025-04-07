@@ -34,6 +34,7 @@ void visualizarVehHistorial(ListaVeh lv, ListaAlquileres la, ListaRenting lr,
 	if (encontrados == 0) {
 		printf("No se encontró ningún vehículo con esta matrícula.\n");
 	}
+	writeLog("GESTION: visualizarVehHistorial Ejecutado", FICHERO_VEH_LOG);
 }
 
 
@@ -45,7 +46,7 @@ Alquiler startAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
         if (strcmp(lv->aVeh[i].matricula, matricula) == 0) {
             vehiculoEncontrado = 1;
             nuevoAlquiler.vehiculo_id = lv->aVeh[i].ID;
-            writeLog("Start Alquiler: Vehiculo encontrado.",FICHERO_ALQUILER_LOG);
+            writeLog("GESTION: VEHICULO ENCONTRADO",FICHERO_ALQUILER_LOG);
             break;
         }
     }
@@ -53,7 +54,7 @@ Alquiler startAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
     if (!vehiculoEncontrado) {
         printf("Vehículo con matrícula %s no encontrado.\n", matricula);
         exit(1);
-        writeLog("Start Alquiler: No se encuentra matricula.",FICHERO_ALQUILER_LOG);
+        writeLog("GESTION: VEHICULO NO ENCONTRADO.",FICHERO_ALQUILER_LOG);
     }
 
     nuevoAlquiler.operacion_id = la->numAlquileres;
@@ -78,8 +79,7 @@ Alquiler startAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
 
 
     addAlquiler(la, nuevoAlquiler);
-    writeLog("Start Alquiler: Alquiler guardado.",FICHERO_ALQUILER_LOG);
-
+    writeLog("GESTION: visualizarVehHistorial Ejecutado", FICHERO_ALQUILER_LOG);
     return nuevoAlquiler;
 }
 
@@ -95,12 +95,12 @@ void estadoAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
             vehiculoID = lv->aVeh[i].ID;
             break;
         }
-        writeLog("Estado Alquiler: Vehiculo encontrado.",FICHERO_ALQUILER_LOG);
+        writeLog("GESTION - Estado Alquiler: Vehiculo encontrado.",FICHERO_ALQUILER_LOG);
     }
 
     if (!vehiculoEncontrado) {
         printf("Vehículo con matrícula %s no encontrado.\n", matricula);
-        writeLog("Estado Alquiler: Vehiculo no encontrado.",FICHERO_ALQUILER_LOG);
+        writeLog("GESTION - Estado Alquiler: Vehiculo no encontrado.",FICHERO_ALQUILER_LOG);
         return;
     }
 
@@ -110,14 +110,14 @@ void estadoAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
             alquilerEncontrado = 1;
             printf("Estado del alquiler para el vehículo con matrícula %s:\n", matricula);
             printA(la->aAlquiler[i]);
-            writeLog("Estado Alquiler: Vehiculo encontrado y se dice su estado.",FICHERO_ALQUILER_LOG);
+            writeLog("GESTION - Estado Alquiler: Vehiculo encontrado y se dice su estado.",FICHERO_ALQUILER_LOG);
             break;
         }
     }
 
     if (!alquilerEncontrado) {
         printf("No se encontró ningún alquiler para el vehículo con matrícula %s.\n", matricula);
-        writeLog("Estado Alquiler: No hay alquileres registrados sobre ese vehiculo.",FICHERO_ALQUILER_LOG);
+        writeLog("GESTION - Estado Alquiler: No hay alquileres registrados sobre ese vehiculo.",FICHERO_ALQUILER_LOG);
     }
 }
 
@@ -131,14 +131,14 @@ Alquiler endAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
         if (strcmp(lv->aVeh[i].matricula, matricula) == 0) {
             vehiculoEncontrado = 1;
             vehiculoID = lv->aVeh[i].ID;
-            writeLog("End Alquiler: Vehiculo encontrado.",FICHERO_ALQUILER_LOG);
+            writeLog("GESTION - End Alquiler: Vehiculo encontrado.",FICHERO_ALQUILER_LOG);
             break;
         }
     }
 
     if (!vehiculoEncontrado) {
         printf("Vehículo con matrícula %s no encontrado.\n", matricula);
-        writeLog("End Alquiler: Vehiculo no encontrado.",FICHERO_ALQUILER_LOG);
+        writeLog("GESTION - End Alquiler: Vehiculo no encontrado.",FICHERO_ALQUILER_LOG);
         exit(1);
     }
 
@@ -153,7 +153,7 @@ Alquiler endAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
 
     if (!alquilerEncontrado) {
         printf("No se encontró ningún alquiler activo para el vehículo con matrícula %s.\n", matricula);
-        writeLog("End Alquiler: Vehiculo encontrado en alquiler.",FICHERO_ALQUILER_LOG);
+        writeLog("GESTION - End Alquiler: Vehiculo encontrado en alquiler.",FICHERO_ALQUILER_LOG);
         exit(1);
     }
 
@@ -168,7 +168,7 @@ Alquiler endAlquiler(char *matricula, ListaVeh *lv, ListaAlquileres *la) {
     for (int i = 0; i < la->numAlquileres; i++) {
         if (la->aAlquiler[i].vehiculo_id == vehiculoID) {
             la->aAlquiler[i] = alquilerFinalizado;
-            writeLog("End Alquiler: Alquiler cambiado.",FICHERO_ALQUILER_LOG);
+            writeLog("GESTION - End Alquiler: Alquiler cambiado.",FICHERO_ALQUILER_LOG);
             break;
         }
     }

@@ -7,6 +7,7 @@
 void iniLT(ListaTraslados *lt) {
     lt->aTraslado = NULL;
     lt->numTraslados = 0;
+    writeLog("TRANSLADOS: iniLT Ejecutado.",FICHERO_TRANSLADOS_LOG);
 }
 void addTraslado(ListaTraslados *lt, Traslado t) {
     int i;
@@ -27,6 +28,7 @@ void addTraslado(ListaTraslados *lt, Traslado t) {
     }
     lt->aTraslado[lt->numTraslados] = t;
     lt->numTraslados++;
+    writeLog("TRANSLADOS: addTraslado Ejecutado.",FICHERO_TRANSLADOS_LOG);
 }
 
 void printT(Traslado t) {
@@ -37,6 +39,7 @@ void printT(Traslado t) {
            t.concesionario_destino_id,
            t.fecha_traslado,
            t.responsable_id);
+    writeLog("TRANSLADOS: printT Ejecutado.",FICHERO_TRANSLADOS_LOG);
 }
 
 void printLT(ListaTraslados lt) {
@@ -51,15 +54,7 @@ void printLT(ListaTraslados lt) {
     for (i = 0; i < lt.numTraslados; i++) {
         printT(lt.aTraslado[i]);
     }
-}
-
-int obtenerVehiculoID(ListaVeh lv, char *matricula) {
-    for (int i = 0; i < lv.numVeh; i++) {
-        if (strcmp(lv.aVeh[i].matricula, matricula) == 0) {
-            return lv.aVeh[i].ID;
-        }
-    }
-    return -1;
+    writeLog("TRANSLADOS: printLT Ejecutado.",FICHERO_TRANSLADOS_LOG);
 }
 
 Traslado registrarTranslado(char *matricula, ListaVeh lv, ListaTraslados *lt) {
@@ -84,9 +79,10 @@ Traslado registrarTranslado(char *matricula, ListaVeh lv, ListaTraslados *lt) {
     t.fecha_traslado[strcspn(t.fecha_traslado, "\n")] = 0;
     printf("Introduce el ID del responsable: ");
     scanf("%d", &t.responsable_id);
-
+    lv.aVeh[id].concesionario_ID = t.concesionario_destino_id;
     addTraslado(lt, t);
     printf("Traslado registrado correctamente.\n");
     return t;
+    writeLog("TRANSLADOS: registrarTranslado Ejecutado.",FICHERO_TRANSLADOS_LOG);
 
 }

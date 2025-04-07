@@ -21,6 +21,7 @@ void addAlquilerToDB(sqlite3 *db, ListaAlquileres la) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addAlquilerToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 	sprintf(sql, "DELETE FROM auditoria");
@@ -38,6 +39,7 @@ void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addAuditoriaToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addClientToDB(sqlite3 *db, ListaClientes lc) {
 	sprintf(sql, "DELETE FROM cliente");
@@ -57,6 +59,7 @@ void addClientToDB(sqlite3 *db, ListaClientes lc) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addClientToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addConceToDB(sqlite3 *db, ListaConce lcon) {
 	sprintf(sql, "DELETE FROM concesionario");
@@ -75,6 +78,7 @@ void addConceToDB(sqlite3 *db, ListaConce lcon) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addConceToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addEmpToDB(sqlite3 *db, ListaEmp le) {
 	sprintf(sql, "DELETE FROM empleado");
@@ -91,6 +95,7 @@ void addEmpToDB(sqlite3 *db, ListaEmp le) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addEmpToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
 	sprintf(sql, "DELETE FROM mantenimiento");
@@ -109,6 +114,7 @@ void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addMantenimientoToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addOperacionesToDB(sqlite3 *db, ListaOperaciones lop) {
 	sprintf(sql, "DELETE FROM operaciones");
@@ -129,6 +135,7 @@ void addOperacionesToDB(sqlite3 *db, ListaOperaciones lop) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addOperacionesToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addRentingToDB(sqlite3 *db, ListaRenting lr) {
 	sprintf(sql, "DELETE FROM renting");
@@ -144,6 +151,7 @@ void addRentingToDB(sqlite3 *db, ListaRenting lr) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addRentingToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 	sprintf(sql, "DELETE FROM translados");
@@ -161,6 +169,7 @@ void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addTransladosToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addVehToDB(sqlite3 *db, ListaVeh lv) {
 	sprintf(sql, "DELETE FROM vehiculo");
@@ -181,6 +190,7 @@ void addVehToDB(sqlite3 *db, ListaVeh lv) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addVehToDB Ejecutado.",FICHERO_DB_LOG);
 }
 void addVentToDB(sqlite3 *db, ListaVent lvent) {
 	sprintf(sql, "DELETE FROM venta");
@@ -196,6 +206,7 @@ void addVentToDB(sqlite3 *db, ListaVent lvent) {
 		sqlite3_step(stmt); //Ejecutar la sentencia
 		sqlite3_finalize(stmt); //Cerrar la sentencia
 	}
+	writeLog("DB MANAGER: addVentToDB Ejecutado.",FICHERO_DB_LOG);
 }
 
 void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
@@ -242,7 +253,7 @@ void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
 	if (rc != SQLITE_DONE) {
 		fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
 	}
-
+	writeLog("DB MANAGER: loadAlquileresFromDB Ejecutado.",FICHERO_DB_LOG);
 	sqlite3_finalize(stmt);
 }
 void loadAuditoriaFromDB(sqlite3 *db, ListaAuditorias *lau) {
@@ -301,7 +312,7 @@ void loadAuditoriaFromDB(sqlite3 *db, ListaAuditorias *lau) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadAuditoriaFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -392,7 +403,7 @@ void loadClientesFromDB(sqlite3 *db, ListaClientes *lc) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadClientesFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -467,7 +478,7 @@ void loadConceFromDB(sqlite3 *db, ListaConce *lcon) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadConceFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -528,7 +539,7 @@ void loadEmpFromDB(sqlite3 *db, ListaEmp *le) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadEmpFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -590,7 +601,7 @@ void loadMantenimientosFromDB(sqlite3 *db, ListaMantenimientos *lm) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadMantenimientosFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -647,7 +658,7 @@ void loadOperacionesFromDB(sqlite3 *db, ListaOperaciones *lop) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadOperacionesFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -684,7 +695,7 @@ void loadRentingFromDB(sqlite3 *db, ListaRenting *lr) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadRentingFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -731,7 +742,7 @@ void loadTrasladosFromDB(sqlite3 *db, ListaTraslados *lt) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadTrasladosFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -838,7 +849,7 @@ void loadVehFromDB(sqlite3 *db, ListaVeh *lv) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadVehFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }
 
@@ -882,6 +893,6 @@ void loadVentasFromDB(sqlite3 *db, ListaVent *lvent) {
     if (rc != SQLITE_DONE) {
         fprintf(stderr, "Error en lectura: %s\n", sqlite3_errmsg(db));
     }
-
+    writeLog("DB MANAGER: loadVentasFromDB Ejecutado.",FICHERO_DB_LOG);
     sqlite3_finalize(stmt);
 }

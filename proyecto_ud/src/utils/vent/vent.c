@@ -8,6 +8,7 @@
 void iniLVent(ListaVent *lvent) {
     lvent->aVent = NULL;
     lvent->numVentas = 0;
+    writeLog("VENT: iniLVent Ejecutado.",FICHERO_VENT_LOG);
 }
 
 
@@ -30,6 +31,7 @@ void addVent(ListaVent *lvent, Vent v) {
     }
     lvent->aVent[lvent->numVentas] = v;
     lvent->numVentas++;
+    writeLog("VENT: addVent Ejecutado.",FICHERO_VENT_LOG);
 }
 
 void printVent(Vent v) {
@@ -38,6 +40,7 @@ void printVent(Vent v) {
            v.vehiculo_id,
            v.precio_final,
            v.metodo_pago);
+    writeLog("VENT: printVent Ejecutado.",FICHERO_VENT_LOG);
 }
 
 void printLVent(ListaVent lvent) {
@@ -50,6 +53,7 @@ void printLVent(ListaVent lvent) {
     for (i = 0; i < lvent.numVentas; i++) {
         printVent(lvent.aVent[i]);
     }
+    writeLog("VENT: printLVent Ejecutado.",FICHERO_VENT_LOG);
 }
 
 Vent registrarVent(ListaVent lvent) {
@@ -64,17 +68,8 @@ Vent registrarVent(ListaVent lvent) {
     printf("Introduce el método de pago: ");
     fgets(v.metodo_pago, TAM_METODO_PAGO, stdin);
     v.metodo_pago[strcspn(v.metodo_pago, "\n")] = 0;
-
+    writeLog("VENT: registrarVent Ejecutado.",FICHERO_VENT_LOG);
     return v;
-}
-
-int obtenerVehiculoID(ListaVeh listaVehiculos, const char *matricula) {
-    for (int i = 0; i < listaVehiculos.numVeh; i++) {
-        if (strcmp(listaVehiculos.aVeh[i].matricula, matricula) == 0) {
-            return listaVehiculos.aVeh[i].ID;
-        }
-    }
-    return -1; //Vehiculo no encontrado
 }
 
 Vent registrarVenta(ListaVent *listaVentas, ListaVeh listaVehiculos, char *matricula) {
@@ -97,6 +92,6 @@ Vent registrarVenta(ListaVent *listaVentas, ListaVeh listaVehiculos, char *matri
 
     addVent(listaVentas, nuevaVenta);
     printf("Venta registrada con éxito.\n");
-
+    writeLog("VENT: registrarVenta Ejecutado.",FICHERO_VENT_LOG);
     return nuevaVenta;
 }

@@ -12,7 +12,6 @@ int pedirOp(){
 	return op;
 }
 int verificarEmpleado(ListaEmp le) {
-	loadEmpCSV(EMP_CSV, &le);
 	int enc = 0, i;
 	Emp e;
 
@@ -33,7 +32,6 @@ int verificarEmpleado(ListaEmp le) {
 }
 
 int verificarGerente(ListaEmp le) {
-	loadEmpCSV(EMP_CSV, &le);
 	int enc = 0, i;
 	Emp e;
 

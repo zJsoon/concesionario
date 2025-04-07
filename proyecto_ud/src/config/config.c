@@ -18,8 +18,6 @@ Config leerConfiguracion(char *nomfich){
 				strcpy(c.admin,valor);
 			}else if(strncmp(campo,"con",3)==0){
 				strcpy(c.con, valor);
-			}else if(campo==2222){
-				strcpy(c.puerto, valor);
 			}
 		}
 		fclose(pf);

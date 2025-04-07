@@ -46,5 +46,6 @@ void visualizarVehCiudad(ListaVeh lv, char *ciudad);
 void visualizarVehMarca(ListaVeh lv, char *marca);
 void visualizarVehTipo(ListaVeh lv, char *tipo);
 void visualizarVehEstado(ListaVeh lv, char *estado);
+int obtenerVehiculoID(ListaVeh listaVehiculos, char *matricula) ;
 
 #endif /* VEH_H_ */

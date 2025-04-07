@@ -6,6 +6,7 @@
 void iniLV(ListaVeh *lv) {
 	lv->aVeh = NULL;
 	lv->numVeh = 0;
+	writeLog("VEH: iniLV Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void addVeh(ListaVeh *lv, Veh v) {
@@ -27,6 +28,7 @@ void addVeh(ListaVeh *lv, Veh v) {
 	}
 	lv->aVeh[lv->numVeh] = v;
 	lv->numVeh++;
+	writeLog("VEH: addVeh Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void printV(Veh v) {
@@ -34,6 +36,7 @@ void printV(Veh v) {
 			v.ID, v.matricula, v.marca, v.modelo, v.year, v.tipo, v.color,
 			v.precio_compra, v.precio_venta, v.estado, v.fecha_adquisicion,
 			v.concesionario_ID, v.kilometraje, v.tipo_combustible);
+	writeLog("VEH: printV Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void printLV(ListaVeh lv) {
@@ -45,6 +48,7 @@ void printLV(ListaVeh lv) {
 	for (i = 0; i < lv.numVeh; i++) {
 		printV(lv.aVeh[i]);
 	}
+	writeLog("VEH: printLV Ejecutado.",FICHERO_VEH_LOG);
 }
 
 Veh pedirVeh(ListaVeh lv) {
@@ -100,7 +104,7 @@ Veh pedirVeh(ListaVeh lv) {
 	fflush(stdout);
 	fflush(stdin);
 	fgets(v.estado, TAM_COMBUSTIBLE, stdin);
-
+	writeLog("VEH: pedirVeh Ejecutado.",FICHERO_VEH_LOG);
 	return v;
 }
 
@@ -118,6 +122,7 @@ void visualizarVehConce(ListaVeh lv, int id) {
 	if (encontrados == 0) {
 		printf("No hay vehículos en este concesionario.\n");
 	}
+	writeLog("VEH: visualizarVehConce Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehCiudad(ListaVeh lv, char *ciudad) {
@@ -134,6 +139,7 @@ void visualizarVehCiudad(ListaVeh lv, char *ciudad) {
 	if (encontrados == 0) {
 		printf("No se encontraron vehículos en esta ciudad.\n");
 	}
+	writeLog("VEH: visualizarVehCiudad Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehMarca(ListaVeh lv, char *marca) {
@@ -150,6 +156,7 @@ void visualizarVehMarca(ListaVeh lv, char *marca) {
 	if (encontrados == 0) {
 		printf("No se encontraron vehículos de esta marca.\n");
 	}
+	writeLog("VEH: visualizarVehMarca Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehTipo(ListaVeh lv, char *tipo) {
@@ -166,6 +173,7 @@ void visualizarVehTipo(ListaVeh lv, char *tipo) {
 	if (encontrados == 0) {
 		printf("No se encontraron vehículos de este tipo.\n");
 	}
+	writeLog("VEH: visualizarVehTipo Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehEstado(ListaVeh lv, char *estado) {
@@ -182,6 +190,15 @@ void visualizarVehEstado(ListaVeh lv, char *estado) {
 	if (encontrados == 0) {
 		printf("No hay vehículos con este estado.\n");
 	}
+	writeLog("VEH: visualizarVehEstado Ejecutado.",FICHERO_VEH_LOG);
 }
-
+int obtenerVehiculoID(ListaVeh listaVehiculos, char *matricula) {
+    for (int i = 0; i < listaVehiculos.numVeh; i++) {
+        if (strcmp(listaVehiculos.aVeh[i].matricula, matricula) == 0) {
+            return listaVehiculos.aVeh[i].ID;
+        }
+    }
+    return -1; //Vehiculo no encontrado
+    writeLog("VENT: obtenerVehiculoID Ejecutado.",FICHERO_VENT_LOG);
+}
 

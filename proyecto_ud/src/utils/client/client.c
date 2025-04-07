@@ -6,6 +6,7 @@
 void iniLC(ListaClientes *lc) {
 	lc->aClient = NULL;
 	lc->numClient = 0;
+	writeLog("CLIENTES: iniLC Ejecutado", FICHERO_CLIENT_LOG);
 }
 void addClient(ListaClientes *lc, Client c) {
 	int i;
@@ -26,11 +27,13 @@ void addClient(ListaClientes *lc, Client c) {
 	}
 	lc->aClient[lc->numClient] = c;
 	lc->numClient++;
+	writeLog("CLIENTES: addClient Ejecutado", FICHERO_CLIENT_LOG);
 }
 
 void printCli(Client c) {
 	printf("%5d%15s%20s%25s%30s%15s%25s%15s\n", c.ID, c.dni, c.nombre,
 			c.apellidos, c.direccion, c.tlf, c.email, c.fecha_registro);
+	writeLog("CLIENTES: printCli Ejecutado", FICHERO_CLIENT_LOG);
 }
 
 void printLCli(ListaClientes lc) {
@@ -40,6 +43,7 @@ void printLCli(ListaClientes lc) {
 	for (i = 0; i < lc.numClient; i++) {
 		printCli(lc.aClient[i]);
 	}
+	writeLog("CLIENTES: printLCli Ejecutado", FICHERO_CLIENT_LOG);
 }
 
 Client registrarCliente(ListaClientes lc) {
@@ -67,7 +71,7 @@ Client registrarCliente(ListaClientes lc) {
 	printf("Introduce la fecha de registro (YYYY-MM-DD): ");
 	fgets(c.fecha_registro, TAM_FECHA, stdin);
 	c.fecha_registro[strcspn(c.fecha_registro, "\n")] = 0;
-
+	writeLog("CLIENTES: registrarCliente Ejecutado", FICHERO_CLIENT_LOG);
 	return c;
 }
 
@@ -84,6 +88,7 @@ void consultClientes(ListaClientes lc, char *DNI) {
 	if (!encontrado) {
 		printf("Cliente con DNI %s no encontrado.\n", DNI);
 	}
+	writeLog("CLIENTES: consultClientes Ejecutado", FICHERO_CLIENT_LOG);
 }
 
 // Eliminar cliente por DNI
@@ -104,6 +109,7 @@ void elimClientes(ListaClientes *lc, char *DNI) {
 	if (!encontrado) {
 		printf("Cliente con DNI %s no encontrado.\n", DNI);
 	}
+	writeLog("CLIENTES: elimClientes Ejecutado", FICHERO_CLIENT_LOG);
 }
 
 // Modificar cliente por DNI
@@ -148,4 +154,5 @@ void modClientes(ListaClientes *lc, char *DNI) {
 	if (!encontrado) {
 		printf("Cliente con DNI %s no encontrado.\n", DNI);
 	}
+	writeLog("CLIENTES: modClientes Ejecutado", FICHERO_CLIENT_LOG);
 }

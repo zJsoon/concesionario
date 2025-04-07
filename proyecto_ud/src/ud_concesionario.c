@@ -42,7 +42,6 @@ int main() {
 	sqlite3 *db;
 
 	iniListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
-
 	result = sqlite3_open(c.nombreBD, &db);
 	if (result != SQLITE_OK) {
 		printf("Error al abrir DB.\n");

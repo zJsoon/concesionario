@@ -21,5 +21,6 @@ void iniLT(ListaTraslados *lt);
 void addTraslado(ListaTraslados *lt, Traslado t);
 void printT(Traslado t);
 void printLT(ListaTraslados lt);
+int obtenerVehiculoID(ListaVeh lv, char *matricula);
 Traslado registrarTranslado(char *matricula, ListaVeh lv, ListaTraslados *lt);
 #endif /* TRANSLADOS_TRANSLADOS_H_ */

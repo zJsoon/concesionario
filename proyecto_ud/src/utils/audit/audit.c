@@ -6,6 +6,7 @@
 void iniLAU(ListaAuditorias *lau) {
     lau->aAuditoria = NULL;
     lau->numAuditorias = 0;
+    writeLog("AUDITORIAS: iniLAU Ejecutado", FICHERO_AUDIT_LOG);
 }
 
 void addAudit(ListaAuditorias *lau, Auditoria a) {
@@ -27,6 +28,7 @@ void addAudit(ListaAuditorias *lau, Auditoria a) {
     }
     lau->aAuditoria[lau->numAuditorias] = a;
     lau->numAuditorias++;
+    writeLog("AUDITORIAS: addAudit Ejecutado", FICHERO_AUDIT_LOG);
 }
 
 void printAU(Auditoria a) {
@@ -47,8 +49,9 @@ void printLAU(ListaAuditorias lau) {
            "FECHA_MODIF",
            "CAMBIOS");
     for (i = 0; i < lau.numAuditorias; i++) {
-        printA(lau.aAuditoria[i]);
+        printAU(lau.aAuditoria[i]);
     }
+    writeLog("AUDITORIAS: printLAU Ejecutado", FICHERO_AUDIT_LOG);
 }
 
 Auditoria realizarAuditoria(ListaAuditorias la) {
@@ -68,6 +71,6 @@ Auditoria realizarAuditoria(ListaAuditorias la) {
     printf("Introduce los cambios realizados: ");
     fgets(a.cambios, TAM_CAMBIOS, stdin);
     a.cambios[strcspn(a.cambios, "\n")] = 0;
-
+    writeLog("AUDITORIAS: realizarAuditoria Ejecutado", FICHERO_AUDIT_LOG);
     return a;
 }

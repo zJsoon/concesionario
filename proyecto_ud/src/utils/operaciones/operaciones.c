@@ -6,6 +6,7 @@
 void iniLOP(ListaOperaciones *lop) {
     lop->aOperaciones = NULL;
     lop->numOperaciones = 0;
+    writeLog("OPERACIONES: iniLOP Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void addOperacion(ListaOperaciones *lop, Operacion op) {
@@ -27,6 +28,7 @@ void addOperacion(ListaOperaciones *lop, Operacion op) {
     }
     lop->aOperaciones[lop->numOperaciones] = op;
     lop->numOperaciones++;
+    writeLog("OPERACIONES: addOperacion Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void printOP(Operacion op) {
@@ -38,6 +40,7 @@ void printOP(Operacion op) {
            op.empleado_ID,
            op.fecha_operacion,
            op.concesionario_ID);
+    writeLog("OPERACIONES: printOP Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void printLOP(ListaOperaciones lop) {
@@ -53,6 +56,7 @@ void printLOP(ListaOperaciones lop) {
     for (i = 0; i < lop.numOperaciones; i++) {
         printOP(lop.aOperaciones[i]);
     }
+    writeLog("OPERACIONES: printLOP Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 Operacion registrarOperacion(ListaOperaciones lop) {
@@ -77,6 +81,6 @@ Operacion registrarOperacion(ListaOperaciones lop) {
     printf("Introduce el ID del concesionario: ");
     scanf("%d", &op.concesionario_ID);
     getchar(); // Limpiar el buffer
-
+    writeLog("OPERACIONES: registrarOperacion Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
     return op;
 }

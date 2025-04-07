@@ -18,7 +18,7 @@ void iniListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	iniLT(lt);
 	iniLV(lv);
 	iniLVent(lvent);
-
+	writeLog("INI: iniListas Ejecutado.",FICHERO_INI_LOG);
 	printf("Listas inicializadas.\n");
 	fflush(stdout);
 }
@@ -38,7 +38,7 @@ void freeListas(ListaAlquileres *la, ListaAuditorias *lau, ListaClientes *lc,
 	free(lt->aTraslado);
 	free(lv->aVeh);
 	free(lvent->aVent);
-
+	writeLog("INI: freeListas Ejecutado.",FICHERO_INI_LOG);
 	printf("Listas liberadas.\n");
 	fflush(stdout);
 }
@@ -80,7 +80,7 @@ void volcarDatosABD(sqlite3 *db, ListaAlquileres la, ListaAuditorias lau,
         sqlite3_exec(db, "ROLLBACK", NULL, NULL, NULL); // Deshacer cambios en caso de error
         return;
     }
-
+    writeLog("INI: volcarDatosABD Ejecutado.",FICHERO_INI_LOG);
     printf("Datos volcados correctamente a la base de datos.\n");
 }
 
@@ -107,6 +107,6 @@ void cargarDatosDesdeBD(sqlite3 *db, ListaAlquileres *la, ListaAuditorias *lau,
     loadTrasladosFromDB(db, lt);
     loadVehFromDB(db, lv);
     loadVentasFromDB(db, lvent);
-
+    writeLog("INI: cargarDatosDesdeBD Ejecutado.",FICHERO_INI_LOG);
     printf("Datos cargados correctamente desde la base de datos.\n");
 }

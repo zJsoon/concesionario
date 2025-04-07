@@ -6,6 +6,7 @@
 void iniLR(ListaRenting *lr) {
 	lr->aRenting = NULL;
 	lr->numRenting = 0;
+	writeLog("RENTING: iniLR Ejecutado.",FICHERO_RENTING_LOG);
 }
 
 void addRenting(ListaRenting *lr, Renting r) {
@@ -27,11 +28,13 @@ void addRenting(ListaRenting *lr, Renting r) {
 	}
 	lr->aRenting[lr->numRenting] = r;
 	lr->numRenting++;
+	writeLog("RENTING: addRenting Ejecutado.",FICHERO_RENTING_LOG);
 }
 
 void printR(Renting r) {
 	printf("%10d%10d%15d%15.2f\n", r.operacion_id, r.vehiculo_id,
 			r.duracion_meses, r.precio_mensual);
+	writeLog("RENTING: printR Ejecutado.",FICHERO_RENTING_LOG);
 }
 
 void printLR(ListaRenting lr) {
@@ -41,6 +44,7 @@ void printLR(ListaRenting lr) {
 	for (i = 0; i < lr.numRenting; i++) {
 		printR(lr.aRenting[i]);
 	}
+	writeLog("RENTING: printLR Ejecutado.",FICHERO_RENTING_LOG);
 }
 
 Renting registrarRenting(ListaRenting lr) {
@@ -53,7 +57,7 @@ Renting registrarRenting(ListaRenting lr) {
 	scanf("%d", &r.duracion_meses);
 	printf("Introduce el precio mensual: ");
 	scanf("%lf", &r.precio_mensual);
-
+	writeLog("RENTING: registrarRenting Ejecutado.",FICHERO_RENTING_LOG);
 	return r;
 
 }
@@ -73,6 +77,7 @@ Renting startRenting(ListaRenting *lr, int vehiculo_id) {
 	addRenting(lr, r);
 
 	printf("Renting iniciado correctamente.\n");
+	writeLog("RENTING: startRenting Ejecutado.",FICHERO_RENTING_LOG);
 	return r;
 }
 
@@ -91,6 +96,7 @@ void estadoRenting(ListaRenting lr, int vehiculo_id) {
 		printf("No se encontró un renting activo para el vehículo con ID %d.\n",
 				vehiculo_id);
 	}
+	writeLog("RENTING: estadoRenting Ejecutado.",FICHERO_RENTING_LOG);
 }
 
 // Finalizar un renting (eliminarlo)
@@ -118,6 +124,6 @@ Renting endRenting(ListaRenting *lr, int vehiculo_id) {
 		printf("No se encontró un renting para el vehículo con ID %d.\n",
 				vehiculo_id);
 	}
-
+	writeLog("RENTING: endRenting Ejecutado.",FICHERO_RENTING_LOG);
 	return eliminado;
 }

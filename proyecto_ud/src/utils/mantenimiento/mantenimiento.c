@@ -6,6 +6,7 @@
 void iniLM(ListaMantenimientos *lm) {
     lm->aMantenimiento = NULL;
     lm->numMantenimientos = 0;
+    writeLog("MANTENIMIENTO: iniLM Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 void addMantenimiento(ListaMantenimientos *lm, Mantenimiento m) {
     int i;
@@ -26,6 +27,8 @@ void addMantenimiento(ListaMantenimientos *lm, Mantenimiento m) {
     }
     lm->aMantenimiento[lm->numMantenimientos] = m;
     lm->numMantenimientos++;
+
+    writeLog("MANTENIMIENTO: addMantenimiento Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void printM(Mantenimiento m) {
@@ -36,6 +39,7 @@ void printM(Mantenimiento m) {
            m.tipo,
            m.coste,
            m.descripcion);
+    writeLog("MANTENIMIENTO: printM Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void printLM(ListaMantenimientos lm) {
@@ -50,6 +54,7 @@ void printLM(ListaMantenimientos lm) {
     for (i = 0; i < lm.numMantenimientos; i++) {
         printM(lm.aMantenimiento[i]);
     }
+    writeLog("MANTENIMIENTO: printLM Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 Mantenimiento registrarMantenimiento(ListaMantenimientos lm) {
@@ -71,7 +76,7 @@ Mantenimiento registrarMantenimiento(ListaMantenimientos lm) {
     printf("Introduce la descripción: ");
     fgets(m.descripcion, TAM_DESCRIPCION, stdin);
     m.descripcion[strcspn(m.descripcion, "\n")] = 0;
-
+    writeLog("MANTENIMIENTO: registrarMantenimiento Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
     return m;
 }
 
@@ -80,6 +85,7 @@ void registrarRep(ListaMantenimientos *lm, char *matricula) {
     Mantenimiento m = registrarMantenimiento(*lm);
     strcpy(m.tipo, "Reparacion");
     addMantenimiento(lm, m);
+    writeLog("MANTENIMIENTO: registrarRep Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void registrarRevi(ListaMantenimientos *lm, char *matricula) {
@@ -87,6 +93,7 @@ void registrarRevi(ListaMantenimientos *lm, char *matricula) {
     Mantenimiento m = registrarMantenimiento(*lm);
     strcpy(m.tipo, "Revision");
     addMantenimiento(lm, m);
+    writeLog("MANTENIMIENTO: registrarRevi Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void visualizarMantRep(ListaMantenimientos lm, char *matricula) {
@@ -97,6 +104,7 @@ void visualizarMantRep(ListaMantenimientos lm, char *matricula) {
             printM(lm.aMantenimiento[i]);
         }
     }
+    writeLog("MANTENIMIENTO: visualizarMantRep Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
 void visualizarMantRevi(ListaMantenimientos lm, char *matricula) {
@@ -107,5 +115,6 @@ void visualizarMantRevi(ListaMantenimientos lm, char *matricula) {
             printM(lm.aMantenimiento[i]);
         }
     }
+    writeLog("MANTENIMIENTO: visualizarMantRevi Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
