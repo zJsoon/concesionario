@@ -56,22 +56,6 @@ void printLVent(ListaVent lvent) {
     writeLog("VENT: printLVent Ejecutado.",FICHERO_VENT_LOG);
 }
 
-Vent registrarVent(ListaVent lvent) {
-    Vent v;
-
-    v.operacion_id = lvent.numVentas;
-    printf("Introduce el ID del vehículo: ");
-    scanf("%d", &v.vehiculo_id);
-    printf("Introduce el precio final: ");
-    scanf("%lf", &v.precio_final);
-    getchar(); // Limpiar el buffer
-    printf("Introduce el método de pago: ");
-    fgets(v.metodo_pago, TAM_METODO_PAGO, stdin);
-    v.metodo_pago[strcspn(v.metodo_pago, "\n")] = 0;
-    writeLog("VENT: registrarVent Ejecutado.",FICHERO_VENT_LOG);
-    return v;
-}
-
 Vent registrarVenta(ListaVent *listaVentas, ListaVeh listaVehiculos, char *matricula) {
     Vent nuevaVenta;
     int vehiculo_id = obtenerVehiculoID(listaVehiculos, matricula);

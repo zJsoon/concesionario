@@ -23,6 +23,6 @@ void iniLVent(ListaVent *lvent);
 void addVent(ListaVent *lvent, Vent v);
 void printVent(Vent v);
 void printLVent(ListaVent lvent);
-Vent registrarVent(ListaVent lvent);
+Vent registrarVenta(ListaVent *listaVentas, ListaVeh listaVehiculos, char *matricula);
 
 #endif /* VENT_H_ */

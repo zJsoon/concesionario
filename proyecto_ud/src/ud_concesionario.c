@@ -20,6 +20,8 @@
 #include "utils/translados/translados.h"
 #include "utils/veh/veh.h"
 #include "utils/vent/vent.h"
+#include "utils/informes/informes.h"
+#include "utils/gestion/gestion.h"
 
 int main() {
 	int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22,
@@ -81,20 +83,16 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Añadir Clientes
-								printf("Añadir clientes\n");
-								fflush(stdout);
+								addClient(&lc,registrarCliente(lc));
 								break;
 							case 2: // Modificar Clientes
-								printf("Modificar clientes\n");
-								fflush(stdout);
+								modClientes(&lc, pedirDNI());
 								break;
 							case 3: // Eliminar Clientes
-								printf("Eliminar clientes\n");
-								fflush(stdout);
+								elimClientes(&lc,pedirDNI());
 								break;
 							case 4: // Consultar Clientes
-								printf("Consultar clientes\n");
-								fflush(stdout);
+								consultClientes(lc,pedirDNI());
 								break;
 							default:
 								printf(
@@ -116,8 +114,7 @@ int main() {
 								fflush(stdout);
 								break;
 							case 1: // Registrar venta
-								printf("Registrar venta.\n");
-								fflush(stdout);
+								registrarVenta(&lvent, lv, pedirMatricula());
 								break;
 							case 2: // Registrar alquiler
 								do {
@@ -127,16 +124,13 @@ int main() {
 										printf("Saliendo...\n");
 										break;
 									case 1: // Inicio alquiler
-										printf("Inicio alquiler.\n");
-										fflush(stdout);
+										startAlquiler(pedirMatricula(), &lv, &la);
 										break;
 									case 2: // Estado alquiler
-										printf("Estado alquiler.\n");
-										fflush(stdout);
+										estadoAlquiler(pedirMatricula(), &lv, &la);
 										break;
 									case 3: // Fin alquiler
-										printf("Fin alquiler.\n");
-										fflush(stdout);
+										endAlquiler(pedirMatricula(), &lv, &la);
 										break;
 									default:
 										printf(
@@ -155,16 +149,13 @@ int main() {
 										fflush(stdout);
 										break;
 									case 1: // Inicio renting
-										printf("Inicio renting\n");
-										fflush(stdout);
+										startRenting(&lr,obtenerVehiculoID(lv,pedirMatricula()));
 										break;
 									case 2: // Estado renting
-										printf("Estado renting\n");
-										fflush(stdout);
+										estadoRenting(lr,obtenerVehiculoID(lv,pedirMatricula()));
 										break;
 									case 3: // Fin reinting
-										printf("Fin renting");
-										fflush(stdout);
+										endRenting(&lr,obtenerVehiculoID(lv,pedirMatricula()));
 										break;
 									default:
 										printf(
@@ -176,8 +167,7 @@ int main() {
 								} while (op123 != 0);
 								break;
 							case 4: // Registrar movimiento coche
-								printf("Registrar movimiento coche.\n");
-								fflush(stdout);
+								registrarTranslado(pedirMatricula(),lv,&lt);
 								break;
 							default:
 								printf(
@@ -242,28 +232,16 @@ int main() {
 										fflush(stdout);
 										break;
 									case 1: // Informe venta
-										printf("Informe venta.\n");
-										fflush(stdout);
+										informeVenta(lv,lvent,pedirMatricula());
 										break;
 									case 2: // Informe alquiler
-										printf("Informe alquiler.\n");
-										fflush(stdout);
+										informeAlquiler(lv,la,pedirMatricula());
 										break;
 									case 3: // Informe renting
-										printf("Informe renting.\n");
-										fflush(stdout);
+										informeRenting(lv,lr,pedirMatricula());
 										break;
 									case 4: // Informe movimiento coche
-										printf("Informe movimiento coche.\n");
-										fflush(stdout);
-										break;
-									case 5: // Informe reparaciones
-										printf("Informe reparaciones.\n");
-										fflush(stdout);
-										break;
-									case 6: // Informe revisiones
-										printf("Informe revisiones.\n");
-										fflush(stdout);
+										informeMovimientoCoche(lv,lt,pedirMatricula());
 										break;
 									default:
 										printf(
@@ -275,8 +253,7 @@ int main() {
 
 								break;
 							case 2: // Visualizar informes
-								printf("Visualizar informes.\n");
-								fflush(stdout);
+								visualizarInformes(lv,lvent,la,lr,lt,pedirMatricula());
 								break;
 							default:
 								printf(
@@ -323,20 +300,15 @@ int main() {
 								break;
 							case 1: // Añadir empleado
 								addEmp(&le, pedirEmp(le));
-								printf("Empleado añadido.\n");
-								fflush(stdout);
 								break;
 							case 2: // Modificar empleado
-								printf("Modificar empleado\n");
-								fflush(stdout);
+								modEmp(pedirDNI(),&le);
 								break;
 							case 3: // Eliminar empleado
-								printf("Eliminar empleado\n");
-								fflush(stdout);
+								elimEmp(pedirDNI(),&le);
 								break;
 							case 4: // Consultar empleado
-								printf("Consular empleado\n");
-								fflush(stdout);
+								consultEmp(pedirDNI(),le);
 								break;
 							default:
 								printf(
@@ -362,16 +334,13 @@ int main() {
 								fflush(stdout);
 								break;
 							case 2: // Modificar concesionarios
-								printf("Modificar concesionario.\n");
-								fflush(stdout);
+								modConce(&lcon);
 								break;
 							case 3: // Eliminar concesionarios
-								printf("Eliminar concesionarios");
-								fflush(stdout);
+								elimConce(&lcon);
 								break;
 							case 4: // Consultar concesionarios
-								printf("Consultar concesionarios");
-								fflush(stdout);
+								consultConce(lcon,lv,pedirIDConce());
 								break;
 							default:
 								printf(

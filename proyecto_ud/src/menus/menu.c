@@ -133,8 +133,6 @@ int mostrarMenuEmpInformesGenerar() {
 	printf("| 2. Informe alquiler         |\n");
 	printf("| 3. Informe renting          |\n");
 	printf("| 4. Informe movimiento coche |\n");
-	printf("| 5. Informe reparaciones     |\n");
-	printf("| 6. Informe revisiones       |\n");
 	printf("| 0. Salir                    |\n");
 	printf("| --------------------------- |\n");
 	printf("Selecciona una opción: ");
