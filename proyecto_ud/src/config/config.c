@@ -12,12 +12,8 @@ Config leerConfiguracion(char *nomfich){
 	if(pf != (FILE*)NULL){
 		while(fgets(linea,100,pf) != NULL){
 			sscanf(linea, "%s = %s", campo, valor);
-			if(strncmp(campo,"nombreBD",8)==0){
+			if(strcmp(campo,"nombreBD")==0){
 				strcpy(c.nombreBD, valor);
-			}else if(strncmp(campo,"admin",5)==0){
-				strcpy(c.admin,valor);
-			}else if(strncmp(campo,"con",3)==0){
-				strcpy(c.con, valor);
 			}
 		}
 		fclose(pf);

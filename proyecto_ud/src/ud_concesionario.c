@@ -39,12 +39,12 @@ int main() {
 	ListaVeh lv;
 	ListaVent lvent;
 
-	Config c = leerConfiguracion("../data/ini.config");
-
+	//Config c = leerConfiguracion("../data/ini.config");
+	//fflush(stdout);
 	sqlite3 *db;
 
 	iniListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
-	result = sqlite3_open(c.nombreBD, &db);
+	result = sqlite3_open("../data/db/concesionario.db", &db);
 	if (result != SQLITE_OK) {
 		printf("Error al abrir DB.\n");
 		fflush(stdout);
@@ -52,6 +52,7 @@ int main() {
 	}
 	cargarDatosDesdeBD(db, &la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt,
 			&lv, &lvent);
+	printLE(le);
 	do {
 		op = mostrarMenuInicio();
 		switch (op) {
