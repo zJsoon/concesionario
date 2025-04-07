@@ -211,6 +211,11 @@ void addVentToDB(sqlite3 *db, ListaVent lvent) {
 
 void loadAlquileresFromDB(sqlite3 *db, ListaAlquileres *la) {
 	int rc;
+	char sql[256]; // or an appropriate size
+	sqlite3_stmt *stmt;
+
+	sprintf(sql, "SELECT * FROM alquileres");
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
 
 	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
 		if (la->aAlquiler == NULL) {
@@ -317,7 +322,7 @@ void loadClientesFromDB(sqlite3 *db, ListaClientes *lc) {
     sqlite3_stmt *stmt;
     char sql[1000];
 
-    sprintf(sql, "SELECT * FROM cliente");
+    sprintf(sql, "SELECT * FROM clientes");
     sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
     lc->numClient = 0;
@@ -839,7 +844,7 @@ void loadVentasFromDB(sqlite3 *db, ListaVent *lvent) {
     sqlite3_stmt *stmt;
     char sql[1000];
 
-    sprintf(sql, "SELECT * FROM venta");
+    sprintf(sql, "SELECT * FROM ventas");
     sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
     lvent->numVentas = 0;

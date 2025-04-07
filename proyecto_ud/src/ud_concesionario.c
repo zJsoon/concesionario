@@ -44,7 +44,7 @@ int main() {
 	sqlite3 *db;
 
 	iniListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
-	result = sqlite3_open("../data/db/concesionario.db", &db);
+	result = sqlite3_open("concesionario.db", &db);
 	if (result != SQLITE_OK) {
 		printf("Error al abrir DB.\n");
 		fflush(stdout);
@@ -365,7 +365,7 @@ int main() {
 		}
 	} while (op != 0);
 
-	volcarDatosABD(db, la, lau, lc, lcon, le, lm, lop, lr, lt, lv, lvent);
+	//volcarDatosABD(db, la, lau, lc, lcon, le, lm, lop, lr, lt, lv, lvent);
 
 	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 }
