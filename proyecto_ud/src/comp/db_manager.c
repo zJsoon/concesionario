@@ -6,13 +6,13 @@ char sql[200];
 sqlite3_stmt *stmt;
 
 void addAlquilerToDB(sqlite3 *db, ListaAlquileres la) {
-	sprintf(sql, "DELETE FROM alquiler");
+	sprintf(sql, "DELETE FROM alquileres");
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
 
 	for (i = 0; i < la.numAlquileres; i++) {
-		sprintf(sql, "INSERT INTO alquiler VALUES(%i,%i,'%s','%s',%f)",
+		sprintf(sql, "INSERT INTO alquileres VALUES(%i,%i,'%s','%s',%f)",
 				la.aAlquiler[i].operacion_id, la.aAlquiler[i].vehiculo_id,
 				la.aAlquiler[i].fecha_inicio, la.aAlquiler[i].fecha_fin,
 				la.aAlquiler[i].precio_diario);
@@ -42,14 +42,14 @@ void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 	writeLog("DB MANAGER: addAuditoriaToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addClientToDB(sqlite3 *db, ListaClientes lc) {
-	sprintf(sql, "DELETE FROM cliente");
+	sprintf(sql, "DELETE FROM clientes");
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
 
 	for (i = 0; i < lc.numClient; i++) {
 		sprintf(sql,
-				"INSERT INTO cliente VALUES(%i,'%s','%s','%s','%s','%s','%s','%s')",
+				"INSERT INTO clientes VALUES(%i,'%s','%s','%s','%s','%s','%s','%s')",
 				lc.aClient[i].ID, lc.aClient[i].dni, lc.aClient[i].nombre,
 				lc.aClient[i].apellidos, lc.aClient[i].direccion,
 				lc.aClient[i].tlf, lc.aClient[i].email,
@@ -98,14 +98,14 @@ void addEmpToDB(sqlite3 *db, ListaEmp le) {
 	writeLog("DB MANAGER: addEmpToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
-	sprintf(sql, "DELETE FROM mantenimiento");
+	sprintf(sql, "DELETE FROM mantenimientos");
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
 
 	for (i = 0; i < lm.numMantenimientos; i++) {
 		sprintf(sql,
-				"INSERT INTO mantenimiento VALUES(%i,%i,'%s','%s',%f,'%s')",
+				"INSERT INTO mantenimientos VALUES(%i,%i,'%s','%s',%f,'%s')",
 				lm.aMantenimiento[i].id, lm.aMantenimiento[i].vehiculo_id,
 				lm.aMantenimiento[i].fecha, lm.aMantenimiento[i].tipo,
 				lm.aMantenimiento[i].coste, lm.aMantenimiento[i].descripcion);
@@ -193,12 +193,12 @@ void addVehToDB(sqlite3 *db, ListaVeh lv) {
 	writeLog("DB MANAGER: addVehToDB Ejecutado.", FICHERO_DB_LOG);
 }
 void addVentToDB(sqlite3 *db, ListaVent lvent) {
-	sprintf(sql, "DELETE FROM venta");
+	sprintf(sql, "DELETE FROM ventas");
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
 	for (i = 0; i < lvent.numVentas; i++) {
-		sprintf(sql, "INSERT INTO renting VALUES(%i,%i,%f,'%s')",
+		sprintf(sql, "INSERT INTO ventas VALUES(%i,%i,%f,'%s')",
 				lvent.aVent[i].operacion_id, lvent.aVent[i].vehiculo_id,
 				lvent.aVent[i].precio_final, lvent.aVent[i].metodo_pago);
 		printf("%s\n", sql);

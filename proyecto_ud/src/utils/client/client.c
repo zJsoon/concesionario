@@ -45,16 +45,20 @@ void printLCli(ListaClientes lc) {
 	}
 	writeLog("CLIENTES: printLCli Ejecutado", FICHERO_CLIENT_LOG);
 }
-
+void clearInputBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 Client registrarCliente(ListaClientes lc) {
 	Client c;
 
 		c.ID = lc.numClient+1; // Ojo, esto puede causar IDs duplicados
-	    printf("Introduce el DNI/NIE: ");
+
+		printf("Introduce el DNI/NIE: ");
 	    fflush(stdout); // Asegura que el mensaje se muestre antes de la entrada
 	    fgets(c.dni, TAM_DNI_NIE, stdin);
 	    c.dni[strcspn(c.dni, "\n")] = 0;
-	    fflush(stdin); // Limpia el buffer de entrada
+	    clearInputBuffer();
 
 	    printf("Introduce el nombre: ");
 	    fflush(stdout);

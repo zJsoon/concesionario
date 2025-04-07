@@ -10,5 +10,5 @@ int verificarGerente(ListaEmp le);
 char* pedirDNI();
 char* pedirMatricula();
 char* pedirIDConce();
-
+void clearInputBuffer_mM();
 #endif /* MANAGEMENU_H_ */

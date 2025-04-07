@@ -32,29 +32,34 @@ int verificarEmpleado(ListaEmp le) {
 			FICHERO_MANAGEMENU_LOG);
 	return enc;
 }
-
+void clearInputBuffer_mM() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 int verificarGerente(ListaEmp le) {
 	int enc = 0, i;
-	Emp e;
+	    Emp e;
 
-	printf("Introduce el DNI: ");
-	fflush(stdout);
-	fflush(stdin);
-	fgets(e.DNI, TAM_DNI, stdin);
+	    printf("Introduce el DNI: ");
+	    fflush(stdout);
+	    fflush(stdin);
+	    fgets(e.DNI, TAM_DNI, stdin);
+	    e.DNI[strcspn(e.DNI, "\n")] = 0;
 
-	for (i = 0; i < le.numEmp; i++) {
-		if (strcmp(le.aEmp[i].DNI, e.DNI) == 0
-				&& strcmp(le.aEmp[i].cargo, "gerente") == 0) {
-			enc = 1;
-			break;
-		}
-	}
-	writeLog("MANAGE MENU: verificarGerente Ejecutado", FICHERO_MANAGEMENU_LOG);
-	return enc;
+	    for (i = 0; i < le.numEmp; i++) {
+	        if (strcmp(le.aEmp[i].DNI, e.DNI) == 0){
+	        	if(strcmp(le.aEmp[i].cargo, "gerente") == 0) {
+	        		enc = 1;
+	        		break;
+	        	}
+	        }
+	    }
+	    writeLog("MANAGE MENU: verificarGerente Ejecutado", FICHERO_MANAGEMENU_LOG);
+	    return enc;
 }
 
 char* pedirDNI() {
-	static char dni[10];
+	char dni[10];
 
 	printf("Introduce tu DNI: ");
 	scanf("%s", dni);
