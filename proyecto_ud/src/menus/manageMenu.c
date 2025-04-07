@@ -44,7 +44,7 @@ int verificarGerente(ListaEmp le) {
 
 	for (i = 0; i < le.numEmp; i++) {
 		if (strcmp(le.aEmp[i].DNI, e.DNI) == 0
-				&& strcmp(le.aEmp[i].cargo, "gerente") == 0) {
+				&& strcmp(le.aEmp[i].cargo, "Gerente") == 0) {
 			enc = 1;
 			break;
 		}
