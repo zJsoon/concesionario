@@ -38,7 +38,7 @@ void printM(Mantenimiento m) {
            m.fecha,
            m.tipo,
            m.coste,
-           m.descripcion);
+           m.descripcion);fflush(stdout);
     writeLog("MANTENIMIENTO: printM Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
@@ -50,7 +50,7 @@ void printLM(ListaMantenimientos lm) {
            "FECHA",
            "TIPO_MANTENIMIENTO",
            "COSTE",
-           "DESCRIPCION");
+           "DESCRIPCION");fflush(stdout);
     for (i = 0; i < lm.numMantenimientos; i++) {
         printM(lm.aMantenimiento[i]);
     }
@@ -67,17 +67,17 @@ Mantenimiento registrarMantenimiento(ListaMantenimientos lm) {
     scanf("%d", &m.vehiculo_id);
     fflush(stdout);
     fflush(stdin);
-    printf("Introduce la fecha (YYYY-MM-DD): ");
+    printf("Introduce la fecha (YYYY-MM-DD): ");fflush(stdout);fflush(stdin);
     fgets(m.fecha, TAM_FECHA, stdin);
     m.fecha[strcspn(m.fecha, "\n")] = 0;
-    printf("Introduce el tipo de mantenimiento: ");
+    printf("Introduce el tipo de mantenimiento: ");fflush(stdout);fflush(stdin);
     fgets(m.tipo, TAM_TIPO_MANTENIMIENTO, stdin);
     m.tipo[strcspn(m.tipo, "\n")] = 0;
-    printf("Introduce el coste: ");
+    printf("Introduce el coste: ");fflush(stdout);fflush(stdin);
     scanf("%lf", &m.coste);
     fflush(stdout);
     fflush(stdin);
-    printf("Introduce la descripción: ");
+    printf("Introduce la descripción: ");fflush(stdout);fflush(stdin);
     fgets(m.descripcion, TAM_DESCRIPCION, stdin);
     m.descripcion[strcspn(m.descripcion, "\n")] = 0;
     writeLog("MANTENIMIENTO: registrarMantenimiento Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
@@ -85,7 +85,7 @@ Mantenimiento registrarMantenimiento(ListaMantenimientos lm) {
 }
 
 void registrarRep(ListaMantenimientos *lm, char *matricula) {
-    printf("Registrando reparación para el vehículo con matrícula: %s\n", matricula);
+    printf("Registrando reparación para el vehículo con matrícula: %s\n", matricula);fflush(stdout);
     Mantenimiento m = registrarMantenimiento(*lm);
     strcpy(m.tipo, "Reparacion");
     addMantenimiento(lm, m);
@@ -93,7 +93,7 @@ void registrarRep(ListaMantenimientos *lm, char *matricula) {
 }
 
 void registrarRevi(ListaMantenimientos *lm, char *matricula) {
-    printf("Registrando revisión para el vehículo con matrícula: %s\n", matricula);
+    printf("Registrando revisión para el vehículo con matrícula: %s\n", matricula);fflush(stdout);
     Mantenimiento m = registrarMantenimiento(*lm);
     strcpy(m.tipo, "Revision");
     addMantenimiento(lm, m);
@@ -101,8 +101,8 @@ void registrarRevi(ListaMantenimientos *lm, char *matricula) {
 }
 
 void visualizarMantRep(ListaMantenimientos lm, char *matricula) {
-    printf("Lista de Mantenimientos de reparación para el vehículo con matrícula: %s\n", matricula);
-    printf("%5s%10s%15s%30s%10s%30s\n", "ID", "VEH_ID", "FECHA", "TIPO_MANTENIMIENTO", "COSTE", "DESCRIPCION");
+    printf("Lista de Mantenimientos de reparación para el vehículo con matrícula: %s\n", matricula);fflush(stdout);
+    printf("%5s%10s%15s%30s%10s%30s\n", "ID", "VEH_ID", "FECHA", "TIPO_MANTENIMIENTO", "COSTE", "DESCRIPCION");fflush(stdout);
     for (int i = 0; i < lm.numMantenimientos; i++) {
         if (strcmp(lm.aMantenimiento[i].tipo, "Reparacion") == 0) {
             printM(lm.aMantenimiento[i]);
@@ -113,7 +113,7 @@ void visualizarMantRep(ListaMantenimientos lm, char *matricula) {
 
 void visualizarMantRevi(ListaMantenimientos lm, char *matricula) {
     printf("Mantenimientos de revisión para el vehículo con matrícula: %s\n", matricula);
-    printf("%5s%10s%15s%30s%10s%30s\n", "ID", "VEH_ID", "FECHA", "TIPO_MANTENIMIENTO", "COSTE", "DESCRIPCION");
+    printf("%5s%10s%15s%30s%10s%30s\n", "ID", "VEH_ID", "FECHA", "TIPO_MANTENIMIENTO", "COSTE", "DESCRIPCION");fflush(stdout);
     for (int i = 0; i < lm.numMantenimientos; i++) {
         if (strcmp(lm.aMantenimiento[i].tipo, "Revision") == 0) {
             printM(lm.aMantenimiento[i]);

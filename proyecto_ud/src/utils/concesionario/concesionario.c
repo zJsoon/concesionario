@@ -35,6 +35,7 @@ void addConce(ListaConce *lc, Conce c) {
 void printC(Conce c) {
 	printf("%10d%30s%40s%15s%15s%30s\n", c.ID, c.nombre, c.direccion, c.ciudad,
 			c.tlf, c.email);
+	fflush(stdout);
 	writeLog("CONCE: printC Ejecutado", FICHERO_CONCE_LOG);
 }
 
@@ -42,6 +43,7 @@ void printLC(ListaConce lc) {
 	int i;
 	printf("%10s%30s%40s%15s%15s%30s\n", "ID", "NOMBRE", "DIRECCIÓN", "CIUDAD",
 			"TELÉFONO", "EMAIL");
+	fflush(stdout);
 	for (i = 0; i < lc.numConces; i++) {
 		printC(lc.aConce[i]);
 	}
@@ -100,32 +102,46 @@ void visualizarConce(Conce c, ListaConce lc) {
 void modConce(ListaConce *lista) {
 	int idBuscado;
 	printf("Introduce el ID del concesionario que deseas modificar: ");
+	fflush(stdout);
+	fflush(stdin);
 	scanf("%d", &idBuscado);
 
 	for (int i = 0; i < lista->numConces; i++) {
 		if (lista->aConce[i].ID == idBuscado) {
 			printf("Modificando concesionario con ID %d\n", idBuscado);
 			printf("Introduce el nuevo nombre: ");
+			fflush(stdout);
+			fflush(stdin);
 			scanf("%s", lista->aConce[i].nombre);
 			printf("Introduce la nueva dirección: ");
+						fflush(stdout);
+			fflush(stdin);
 			scanf("%s", lista->aConce[i].direccion);
 			printf("Introduce la nueva ciudad: ");
+						fflush(stdout);
+			fflush(stdin);
 			scanf("%s", lista->aConce[i].ciudad);
 			printf("Introduce el nuevo teléfono: ");
+						fflush(stdout);
+			fflush(stdin);
 			scanf("%s", lista->aConce[i].tlf);
 			printf("Introduce el nuevo email: ");
+						fflush(stdout);
+			fflush(stdin);
 			scanf("%s", lista->aConce[i].email);
 			printf("Concesionario modificado con éxito.\n");
+						fflush(stdout);
+			
 			return;
 		}
 	}
 	writeLog("CONCE: modConce Ejecutado", FICHERO_CONCE_LOG);
-	printf("Concesionario con ID %d no encontrado.\n", idBuscado);
+	printf("Concesionario con ID %d no encontrado.\n", idBuscado);fflush(stdout);
 }
 
 void elimConce(ListaConce *lista) {
 	int idBuscado;
-	printf("Introduce el ID del concesionario que deseas eliminar: ");
+	printf("Introduce el ID del concesionario que deseas eliminar: ");fflush(stdout);fflush(stdin);
 	scanf("%d", &idBuscado);
 
 	for (int i = 0; i < lista->numConces; i++) {
@@ -134,17 +150,17 @@ void elimConce(ListaConce *lista) {
 				lista->aConce[j] = lista->aConce[j + 1];
 			}
 			lista->numConces--;
-			printf("Concesionario con ID %d eliminado con éxito.\n", idBuscado);
+			printf("Concesionario con ID %d eliminado con éxito.\n", idBuscado);fflush(stdout);
 			return;
 		}
 	}
 	writeLog("CONCE: elimConce Ejecutado", FICHERO_CONCE_LOG);
-	printf("Concesionario con ID %d no encontrado.\n", idBuscado);
+	printf("Concesionario con ID %d no encontrado.\n", idBuscado);fflush(stdout);
 }
 
 void visualizarConceCiudad(ListaConce lc) {
 	char ciudadBuscada[TAM_CID_TLF];
-	printf("Introduce la ciudad de los concesionarios que deseas visualizar: ");
+	printf("Introduce la ciudad de los concesionarios que deseas visualizar: ");fflush(stdout);fflush(stdin);
 	scanf("%s", ciudadBuscada);
 
 	int encontrados = 0;
@@ -157,12 +173,13 @@ void visualizarConceCiudad(ListaConce lc) {
 			printf("Teléfono: %s\n", lc.aConce[i].tlf);
 			printf("Email: %s\n", lc.aConce[i].email);
 			printf("\n");
+			fflush(stdout);
 			encontrados++;
 		}
 	}
 	if (encontrados == 0) {
 		printf("No se encontraron concesionarios en la ciudad %s.\n",
-				ciudadBuscada);
+				ciudadBuscada);fflush(stdout);
 	}
 	writeLog("CONCE: visualizarConceCiudad Ejecutado", FICHERO_CONCE_LOG);
 }
@@ -174,14 +191,14 @@ void consultConce(ListaConce lc, ListaVeh lv, char *ID) {
 
 	for (int i = 0; i < lc.numConces; i++) {
 		if (lc.aConce[i].ID == idBuscado) {
-			printC(lc.aConce[i]);
+			printC(lc.aConce[i]);fflush(stdout);
 			encontrado = 1;
 			break;
 		}
 	}
 
 	if (!encontrado) {
-		printf("Concesionario con ID %d no encontrado.\n", idBuscado);
+		printf("Concesionario con ID %d no encontrado.\n", idBuscado);fflush(stdout);
 		return;
 	}
 
@@ -192,6 +209,7 @@ void consultConce(ListaConce lc, ListaVeh lv, char *ID) {
 			printf("Matrícula: %s\n", lv.aVeh[i].matricula);
 			printf("Modelo: %s\n", lv.aVeh[i].modelo);
 			printf("\n");
+			fflush(stdout);
 		}
 	}
 	writeLog("CONCE: consultConce Ejecutado", FICHERO_CONCE_LOG);

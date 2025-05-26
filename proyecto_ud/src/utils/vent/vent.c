@@ -39,7 +39,7 @@ void printVent(Vent v) {
            v.operacion_id,
            v.vehiculo_id,
            v.precio_final,
-           v.metodo_pago);
+           v.metodo_pago);fflush(stdout);
     writeLog("VENT: printVent Ejecutado.",FICHERO_VENT_LOG);
 }
 
@@ -49,7 +49,7 @@ void printLVent(ListaVent lvent) {
            "OPER_ID",
            "VEH_ID",
            "PRECIO_FINAL",
-           "METODO_PAGO");
+           "METODO_PAGO");fflush(stdout);
     for (i = 0; i < lvent.numVentas; i++) {
         printVent(lvent.aVent[i]);
     }
@@ -61,21 +61,20 @@ Vent registrarVenta(ListaVent *listaVentas, ListaVeh listaVehiculos, char *matri
     int vehiculo_id = obtenerVehiculoID(listaVehiculos, matricula);
 
     if (vehiculo_id == -1) {
-        printf("Vehículo con matrícula %s no encontrado.\n", matricula);
+        printf("Vehículo con matrícula %s no encontrado.\n", matricula);fflush(stdout);
         return nuevaVenta;
     }
 
     nuevaVenta.vehiculo_id = vehiculo_id;
     nuevaVenta.operacion_id = listaVentas->numVentas;
-    printf("Introduce el precio final: ");
+    printf("Introduce el precio final: ");fflush(stdout);fflush(stdin);
     scanf("%lf", &nuevaVenta.precio_final);
-    getchar();
-    printf("Introduce el método de pago: ");
+    printf("Introduce el método de pago: ");fflush(stdout);fflush(stdin);
     fgets(nuevaVenta.metodo_pago, TAM_METODO_PAGO, stdin);
     nuevaVenta.metodo_pago[strcspn(nuevaVenta.metodo_pago, "\n")] = 0;
 
     addVent(listaVentas, nuevaVenta);
-    printf("Venta registrada con éxito.\n");
+    printf("Venta registrada con éxito.\n");fflush(stdout);
     writeLog("VENT: registrarVenta Ejecutado.",FICHERO_VENT_LOG);
     return nuevaVenta;
 }

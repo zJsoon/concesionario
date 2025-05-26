@@ -35,7 +35,7 @@ void printV(Veh v) {
 	printf("%10d%15s%20s%20s%10d%15s%15s%12.2f%12.2f%15s%15s%10d%10.2f%15s\n",
 			v.ID, v.matricula, v.marca, v.modelo, v.year, v.tipo, v.color,
 			v.precio_compra, v.precio_venta, v.estado, v.fecha_adquisicion,
-			v.concesionario_ID, v.kilometraje, v.tipo_combustible);
+			v.concesionario_ID, v.kilometraje, v.tipo_combustible);fflush(stdout);
 	writeLog("VEH: printV Ejecutado.",FICHERO_VEH_LOG);
 }
 
@@ -44,7 +44,7 @@ void printLV(ListaVeh lv) {
 	printf("%10s%15s%20s%20s%10s%15s%15s%12s%12s%15s%15s%10s%10s%15s\n", "ID",
 			"MATRÍCULA", "MARCA", "MODELO", "AÑO", "TIPO", "COLOR",
 			"PRECIO_COMP", "PRECIO_VENT", "ESTADO", "FECHA_ADQ", "CONCE_ID",
-			"KM", "COMBUSTIBLE");
+			"KM", "COMBUSTIBLE");fflush(stdout);
 	for (i = 0; i < lv.numVeh; i++) {
 		printV(lv.aVeh[i]);
 	}
@@ -110,7 +110,7 @@ Veh pedirVeh(ListaVeh lv) {
 
 void visualizarVehConce(ListaVeh lv, int id) {
 	int i, encontrados = 0;
-	printf("\nVehículos del concesionario ID %d:\n", id);
+	printf("\nVehículos del concesionario ID %d:\n", id);fflush(stdout);
 
 	for (i = 0; i < lv.numVeh; i++) {
 		if (lv.aVeh[i].concesionario_ID == id) {
@@ -120,14 +120,14 @@ void visualizarVehConce(ListaVeh lv, int id) {
 	}
 
 	if (encontrados == 0) {
-		printf("No hay vehículos en este concesionario.\n");
+		printf("No hay vehículos en este concesionario.\n");fflush(stdout);
 	}
 	writeLog("VEH: visualizarVehConce Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehCiudad(ListaVeh lv, char *ciudad) {
 	int i, encontrados = 0;
-	printf("\nVehículos en la ciudad: %s\n", ciudad);
+	printf("\nVehículos en la ciudad: %s\n", ciudad);fflush(stdout);
 
 	for (i = 0; i < lv.numVeh; i++) {
 		if (strstr(lv.aVeh[i].estado, ciudad)) {
@@ -137,14 +137,14 @@ void visualizarVehCiudad(ListaVeh lv, char *ciudad) {
 	}
 
 	if (encontrados == 0) {
-		printf("No se encontraron vehículos en esta ciudad.\n");
+		printf("No se encontraron vehículos en esta ciudad.\n");fflush(stdout);
 	}
 	writeLog("VEH: visualizarVehCiudad Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehMarca(ListaVeh lv, char *marca) {
 	int i, encontrados = 0;
-	printf("\nVehículos de la marca: %s\n", marca);
+	printf("\nVehículos de la marca: %s\n", marca);fflush(stdout);
 
 	for (i = 0; i < lv.numVeh; i++) {
 		if (strcmp(lv.aVeh[i].marca, marca) == 0) {
@@ -154,14 +154,14 @@ void visualizarVehMarca(ListaVeh lv, char *marca) {
 	}
 
 	if (encontrados == 0) {
-		printf("No se encontraron vehículos de esta marca.\n");
+		printf("No se encontraron vehículos de esta marca.\n");fflush(stdout);
 	}
 	writeLog("VEH: visualizarVehMarca Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehTipo(ListaVeh lv, char *tipo) {
 	int i, encontrados = 0;
-	printf("\nVehículos tipo: %s\n", tipo);
+	printf("\nVehículos tipo: %s\n", tipo);fflush(stdout);
 
 	for (i = 0; i < lv.numVeh; i++) {
 		if (strcmp(lv.aVeh[i].tipo, tipo) == 0) {
@@ -171,14 +171,14 @@ void visualizarVehTipo(ListaVeh lv, char *tipo) {
 	}
 
 	if (encontrados == 0) {
-		printf("No se encontraron vehículos de este tipo.\n");
+		printf("No se encontraron vehículos de este tipo.\n");fflush(stdout);
 	}
 	writeLog("VEH: visualizarVehTipo Ejecutado.",FICHERO_VEH_LOG);
 }
 
 void visualizarVehEstado(ListaVeh lv, char *estado) {
 	int i, encontrados = 0;
-	printf("\nVehículos en estado: %s\n", estado);
+	printf("\nVehículos en estado: %s\n", estado);fflush(stdout);
 
 	for (i = 0; i < lv.numVeh; i++) {
 		if (strcmp(lv.aVeh[i].estado, estado) == 0) {
@@ -188,7 +188,7 @@ void visualizarVehEstado(ListaVeh lv, char *estado) {
 	}
 
 	if (encontrados == 0) {
-		printf("No hay vehículos con este estado.\n");
+		printf("No hay vehículos con este estado.\n");fflush(stdout);
 	}
 	writeLog("VEH: visualizarVehEstado Ejecutado.",FICHERO_VEH_LOG);
 }

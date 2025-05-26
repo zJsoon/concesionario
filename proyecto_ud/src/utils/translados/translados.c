@@ -38,7 +38,7 @@ void printT(Traslado t) {
            t.concesionario_origen_id,
            t.concesionario_destino_id,
            t.fecha_traslado,
-           t.responsable_id);
+           t.responsable_id);fflush(stdout);
     writeLog("TRANSLADOS: printT Ejecutado.",FICHERO_TRANSLADOS_LOG);
 }
 
@@ -50,7 +50,7 @@ void printLT(ListaTraslados lt) {
            "CONC_ORIGEN",
            "CONC_DESTINO",
            "FECHA_TRASLADO",
-           "RESP_ID");
+           "RESP_ID");fflush(stdout);
     for (i = 0; i < lt.numTraslados; i++) {
         printT(lt.aTraslado[i]);
     }
@@ -60,7 +60,7 @@ void printLT(ListaTraslados lt) {
 Traslado registrarTranslado(char *matricula, ListaVeh lv, ListaTraslados *lt) {
     int id = obtenerVehiculoID(lv, matricula);
     if (id == -1) {
-        printf("Vehículo con matrícula %s no encontrado.\n", matricula);
+        printf("Vehículo con matrícula %s no encontrado.\n", matricula);fflush(stdout);
         Traslado vacio = {.id = -1};
         return vacio;
     }
@@ -69,20 +69,18 @@ Traslado registrarTranslado(char *matricula, ListaVeh lv, ListaTraslados *lt) {
     t.id = lt->numTraslados;
     t.vehiculo_id = id;
 
-    printf("Introduce el ID del concesionario de origen: ");
+    printf("Introduce el ID del concesionario de origen: ");fflush(stdout);fflush(stdin);
     scanf("%d", &t.concesionario_origen_id);
-    printf("Introduce el ID del concesionario de destino: ");
+    printf("Introduce el ID del concesionario de destino: ");fflush(stdout);fflush(stdin);
     scanf("%d", &t.concesionario_destino_id);
-    fflush(stdout);
-    fflush(stdin);
-    printf("Introduce la fecha del traslado (YYYY-MM-DD): ");
+    printf("Introduce la fecha del traslado (YYYY-MM-DD): ");fflush(stdout);fflush(stdin);
     fgets(t.fecha_traslado, TAM_FECHA, stdin);
     t.fecha_traslado[strcspn(t.fecha_traslado, "\n")] = 0;
-    printf("Introduce el ID del responsable: ");
+    printf("Introduce el ID del responsable: ");fflush(stdout);fflush(stdin);
     scanf("%d", &t.responsable_id);
     lv.aVeh[id].concesionario_ID = t.concesionario_destino_id;
     addTraslado(lt, t);
-    printf("Traslado registrado correctamente.\n");
+    printf("Traslado registrado correctamente.\n");fflush(stdout);
     return t;
     writeLog("TRANSLADOS: registrarTranslado Ejecutado.",FICHERO_TRANSLADOS_LOG);
 

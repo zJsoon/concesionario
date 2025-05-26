@@ -39,7 +39,7 @@ void printOP(Operacion op) {
            op.cliente_ID,
            op.empleado_ID,
            op.fecha_operacion,
-           op.concesionario_ID);
+           op.concesionario_ID);fflush(stdout);
     writeLog("OPERACIONES: printOP Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
 }
 
@@ -52,7 +52,7 @@ void printLOP(ListaOperaciones lop) {
            "CLI_ID",
            "EMP_ID",
            "FECHA_OPER",
-           "CONS_ID");
+           "CONS_ID");fflush(stdout);
     for (i = 0; i < lop.numOperaciones; i++) {
         printOP(lop.aOperaciones[i]);
     }
@@ -68,25 +68,17 @@ Operacion registrarOperacion(ListaOperaciones lop) {
     fflush(stdin);
     fgets(op.tipo, TAM_TIPO_OPERACIONES, stdin);
     op.tipo[strcspn(op.tipo, "\n")] = 0;
-    printf("Introduce el ID del vehículo: ");
+    printf("Introduce el ID del vehículo: ");fflush(stdout);fflush(stdin);
     scanf("%d", &op.vehiculo_ID);
-    fflush(stdout);
-    fflush(stdin);
-    printf("Introduce el ID del cliente: ");
+    printf("Introduce el ID del cliente: ");fflush(stdout);fflush(stdin);
     scanf("%d", &op.cliente_ID);
-    fflush(stdout);
-    fflush(stdin);
-    printf("Introduce el ID del empleado: ");
+    printf("Introduce el ID del empleado: ");fflush(stdout);fflush(stdin);
     scanf("%d", &op.empleado_ID);
-    fflush(stdout);
-    fflush(stdin);
-    printf("Introduce la fecha de la operación (YYYY-MM-DD): ");
+    printf("Introduce la fecha de la operación (YYYY-MM-DD): ");fflush(stdout);fflush(stdin);
     fgets(op.fecha_operacion, TAM_FECHA, stdin);
     op.fecha_operacion[strcspn(op.fecha_operacion, "\n")] = 0;
-    printf("Introduce el ID del concesionario: ");
+    printf("Introduce el ID del concesionario: ");fflush(stdout);fflush(stdin);
     scanf("%d", &op.concesionario_ID);
-    fflush(stdout);
-    fflush(stdin);
     writeLog("OPERACIONES: registrarOperacion Ejecutado.",FICHERO_MANTENIMIENTO_LOG);
     return op;
 }

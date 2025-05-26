@@ -17,6 +17,7 @@ void addAlquilerToDB(sqlite3 *db, ListaAlquileres la) {
 				la.aAlquiler[i].fecha_inicio, la.aAlquiler[i].fecha_fin,
 				la.aAlquiler[i].precio_diario);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -35,6 +36,7 @@ void addAuditoriaToDB(sqlite3 *db, ListaAuditorias lau) {
 				lau.aAuditoria[i].usuario, lau.aAuditoria[i].fecha_modificacion,
 				lau.aAuditoria[i].cambios);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -55,6 +57,7 @@ void addClientToDB(sqlite3 *db, ListaClientes lc) {
 				lc.aClient[i].tlf, lc.aClient[i].email,
 				lc.aClient[i].fecha_registro);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -74,6 +77,7 @@ void addConceToDB(sqlite3 *db, ListaConce lcon) {
 				lcon.aConce[i].direccion, lcon.aConce[i].ciudad,
 				lcon.aConce[i].tlf, lcon.aConce[i].email);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -91,6 +95,7 @@ void addEmpToDB(sqlite3 *db, ListaEmp le) {
 				le.aEmp[i].ID, le.aEmp[i].DNI, le.aEmp[i].nombre,
 				le.aEmp[i].cargo, le.aEmp[i].conce_id);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -110,6 +115,7 @@ void addMantenimientoToDB(sqlite3 *db, ListaMantenimientos lm) {
 				lm.aMantenimiento[i].fecha, lm.aMantenimiento[i].tipo,
 				lm.aMantenimiento[i].coste, lm.aMantenimiento[i].descripcion);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -131,6 +137,7 @@ void addOperacionesToDB(sqlite3 *db, ListaOperaciones lop) {
 				lop.aOperaciones[i].fecha_operacion,
 				lop.aOperaciones[i].concesionario_ID);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -147,6 +154,7 @@ void addRentingToDB(sqlite3 *db, ListaRenting lr) {
 				lr.aRenting[i].operacion_id, lr.aRenting[i].vehiculo_id,
 				lr.aRenting[i].duracion_meses, lr.aRenting[i].precio_mensual);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -165,6 +173,7 @@ void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 				lt.aTraslado[i].concesionario_destino_id,
 				lt.aTraslado[i].fecha_traslado, lt.aTraslado[i].responsable_id);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -186,6 +195,7 @@ void addVehToDB(sqlite3 *db, ListaVeh lv) {
 				lv.aVeh[i].fecha_adquisicion, lv.aVeh[i].concesionario_ID,
 				lv.aVeh[i].kilometraje, lv.aVeh[i].tipo_combustible);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);
@@ -202,6 +212,7 @@ void addVentToDB(sqlite3 *db, ListaVent lvent) {
 				lvent.aVent[i].operacion_id, lvent.aVent[i].vehiculo_id,
 				lvent.aVent[i].precio_final, lvent.aVent[i].metodo_pago);
 		printf("%s\n", sql);
+		fflush(stdout);
 		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		sqlite3_step(stmt);
 		sqlite3_finalize(stmt);

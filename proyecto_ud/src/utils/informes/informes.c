@@ -5,6 +5,7 @@ void informeVenta(ListaVeh lv, ListaVent lvent, char *mat){
 	int id,i;
 	printf("INFORMES VENTA\n");
 	printf("--------------\n");
+	fflush(stdout);
 	id = obtenerVehiculoID(lv,mat);
 	for(i=0;i<lvent.numVentas;i++){
 		if(lvent.aVent[i].vehiculo_id == id){
@@ -15,7 +16,7 @@ void informeVenta(ListaVeh lv, ListaVent lvent, char *mat){
 void informeAlquiler(ListaVeh lv, ListaAlquileres la, char *mat){
 	int id,i;
 	printf("INFORMES ALQUILER\n");
-	printf("------------------\n");
+	printf("------------------\n");fflush(stdout);
 	id = obtenerVehiculoID(lv,mat);
 	for(i=0;i<la.numAlquileres;i++){
 			if(la.aAlquiler[i].vehiculo_id == id){
@@ -26,7 +27,7 @@ void informeAlquiler(ListaVeh lv, ListaAlquileres la, char *mat){
 void informeRenting(ListaVeh lv, ListaRenting lr, char *mat){
 	int id,i;
 	printf("INFORMES RENTING\n");
-	printf("----------------\n");
+	printf("----------------\n");fflush(stdout);
 	id = obtenerVehiculoID(lv,mat);
 	for(i=0;i<lr.numRenting;i++){
 		if(lr.aRenting[i].vehiculo_id == id){
@@ -37,7 +38,7 @@ void informeRenting(ListaVeh lv, ListaRenting lr, char *mat){
 void informeMovimientoCoche(ListaVeh lv, ListaTraslados lt, char *mat){
 	int id,i;
 	printf("INFORMES MOVIMIENTO COCHE\n");
-	printf("-------------------------\n");
+	printf("-------------------------\n");fflush(stdout);
 	id = obtenerVehiculoID(lv,mat);
 	for (i=0;i<lt.numTraslados;i++){
 		if(lt.aTraslado[i].vehiculo_id == id){
@@ -46,7 +47,7 @@ void informeMovimientoCoche(ListaVeh lv, ListaTraslados lt, char *mat){
 	}
 }
 void visualizarInformes(ListaVeh lv, ListaVent lvent, ListaAlquileres la, ListaRenting lr, ListaTraslados lt, char *mat){
-	printf("TODOS LOS INFORMES\n------------------\n");
+	printf("TODOS LOS INFORMES\n------------------\n");fflush(stdout);
 	informeVenta( lv,  lvent, mat);
 	informeAlquiler( lv,  la, mat);
 	informeRenting( lv,  lr, mat);

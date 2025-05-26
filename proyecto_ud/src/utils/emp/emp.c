@@ -35,13 +35,13 @@ void addEmp(ListaEmp *le, Emp e) {
 }
 
 void printE(Emp e) {
-    printf("%10s%30s%30s%10i\n", e.DNI, e.nombre, e.cargo, e.conce_id);
+    printf("%10s%30s%30s%10i\n", e.DNI, e.nombre, e.cargo, e.conce_id);fflush(stdout);
     writeLog("EMP: printE Ejecutado", FICHERO_EMP_LOG);
 }
 
 void printLE(ListaEmp le) {
     int i;
-    printf("%10s%30s%30s%10s\n", "DNI", "NOMBRE", "CARGO", "CONCE_ID");
+    printf("%10s%30s%30s%10s\n", "DNI", "NOMBRE", "CARGO", "CONCE_ID");fflush(stdout);
     for (i = 0; i < le.numEmp; i++) {
         printE(le.aEmp[i]);
     }
@@ -83,7 +83,7 @@ void consultEmp(char *DNI, ListaEmp le) {
             return;
         }
     }
-    printf("No se encontró ningún empleado con el DNI %s.\n", DNI);
+    printf("No se encontró ningún empleado con el DNI %s.\n", DNI);fflush(stdout);
     writeLog("EMP: consultEmp Ejecutado", FICHERO_EMP_LOG);
 }
 
@@ -110,7 +110,7 @@ void modEmp(char *DNI, ListaEmp *le) {
         }
     }
     writeLog("EMP: modEmp Ejecutado", FICHERO_EMP_LOG);
-    printf("No se encontró ningún empleado con el DNI %s.\n", DNI);
+    printf("No se encontró ningún empleado con el DNI %s.\n", DNI);fflush(stdout);
 }
 
 void elimEmp(char *DNI, ListaEmp *le)	{
@@ -123,12 +123,12 @@ void elimEmp(char *DNI, ListaEmp *le)	{
 				}
 				le->numEmp--;
 				le->aEmp = realloc(le->aEmp, le->numEmp * sizeof(Emp));
-				printf("Cliente con DNI %s eliminado correctamente.\n", DNI);
+				printf("Cliente con DNI %s eliminado correctamente.\n", DNI);fflush(stdout);
 				break;
 			}
 		}
 		if (!encontrado) {
-			printf("Cliente con DNI %s no encontrado.\n", DNI);
+			printf("Cliente con DNI %s no encontrado.\n", DNI);fflush(stdout);
 		}
 		writeLog("EMP: elimEmp Ejecutado", FICHERO_EMP_LOG);
 }

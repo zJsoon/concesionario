@@ -33,14 +33,14 @@ void addRenting(ListaRenting *lr, Renting r) {
 
 void printR(Renting r) {
 	printf("%10d%10d%15d%15.2f\n", r.operacion_id, r.vehiculo_id,
-			r.duracion_meses, r.precio_mensual);
+			r.duracion_meses, r.precio_mensual);fflush(stdout);
 	writeLog("RENTING: printR Ejecutado.",FICHERO_RENTING_LOG);
 }
 
 void printLR(ListaRenting lr) {
 	int i;
 	printf("%10s%10s%15s%15s\n", "OPER_ID", "VEH_ID", "DURACION",
-			"PRECIO_MENSUAL");
+			"PRECIO_MENSUAL");fflush(stdout);
 	for (i = 0; i < lr.numRenting; i++) {
 		printR(lr.aRenting[i]);
 	}
@@ -51,11 +51,11 @@ Renting registrarRenting(ListaRenting lr) {
 	Renting r;
 
 	r.operacion_id = lr.numRenting;
-	printf("Introduce el ID del vehículo: ");
+	printf("Introduce el ID del vehículo: ");fflush(stdout);fflush(stdin);
 	scanf("%d", &r.vehiculo_id);
-	printf("Introduce la duración en meses: ");
+	printf("Introduce la duración en meses: ");fflush(stdout);fflush(stdin);
 	scanf("%d", &r.duracion_meses);
-	printf("Introduce el precio mensual: ");
+	printf("Introduce el precio mensual: ");fflush(stdout);fflush(stdin);
 	scanf("%lf", &r.precio_mensual);
 	writeLog("RENTING: registrarRenting Ejecutado.",FICHERO_RENTING_LOG);
 	return r;
@@ -69,14 +69,14 @@ Renting startRenting(ListaRenting *lr, int vehiculo_id) {
 	r.operacion_id = lr->numRenting;
 	r.vehiculo_id = vehiculo_id;
 
-	printf("Introduce la duración del renting en meses: ");
+	printf("Introduce la duración del renting en meses: ");fflush(stdout);fflush(stdin);
 	scanf("%d", &r.duracion_meses);
-	printf("Introduce el precio mensual del renting: ");
+	printf("Introduce el precio mensual del renting: ");fflush(stdout);fflush(stdin);
 	scanf("%lf", &r.precio_mensual);
 
 	addRenting(lr, r);
 
-	printf("Renting iniciado correctamente.\n");
+	printf("Renting iniciado correctamente.\n");fflush(stdout);
 	writeLog("RENTING: startRenting Ejecutado.",FICHERO_RENTING_LOG);
 	return r;
 }
@@ -86,7 +86,7 @@ void estadoRenting(ListaRenting lr, int vehiculo_id) {
 	int i, encontrado = 0;
 	for (i = 0; i < lr.numRenting; i++) {
 		if (lr.aRenting[i].vehiculo_id == vehiculo_id) {
-			printf("Estado del renting:\n");
+			printf("Estado del renting:\n");fflush(stdout);
 			printR(lr.aRenting[i]);
 			encontrado = 1;
 			break;
@@ -94,7 +94,7 @@ void estadoRenting(ListaRenting lr, int vehiculo_id) {
 	}
 	if (!encontrado) {
 		printf("No se encontró un renting activo para el vehículo con ID %d.\n",
-				vehiculo_id);
+				vehiculo_id);fflush(stdout);
 	}
 	writeLog("RENTING: estadoRenting Ejecutado.",FICHERO_RENTING_LOG);
 }
@@ -115,14 +115,14 @@ Renting endRenting(ListaRenting *lr, int vehiculo_id) {
 			lr->numRenting--;
 			lr->aRenting = realloc(lr->aRenting,
 					lr->numRenting * sizeof(Renting));
-			printf("Renting finalizado y eliminado correctamente.\n");
+			printf("Renting finalizado y eliminado correctamente.\n");fflush(stdout);
 			break;
 		}
 	}
 
 	if (eliminado.operacion_id == -1) {
 		printf("No se encontró un renting para el vehículo con ID %d.\n",
-				vehiculo_id);
+				vehiculo_id);fflush(stdout);
 	}
 	writeLog("RENTING: endRenting Ejecutado.",FICHERO_RENTING_LOG);
 	return eliminado;

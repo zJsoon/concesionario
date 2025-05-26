@@ -7,7 +7,7 @@
 int pedirOp();
 int verificarEmpleado(ListaEmp le);
 int verificarGerente(ListaEmp le);
-char* pedirDNI();
+void pedirDNI(char *dni);
 char* pedirMatricula();
 char* pedirIDConce();
 void clearInputBuffer_mM();

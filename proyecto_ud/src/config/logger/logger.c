@@ -24,5 +24,6 @@ void printLog(char *mensaje){
 	fechaActual = time(NULL);
 	sfecha = ctime(&fechaActual);
 	printf("%s - %s\n",sfecha,mensaje);
+	fflush(stdout);
 
 }

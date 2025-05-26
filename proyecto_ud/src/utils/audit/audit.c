@@ -38,6 +38,7 @@ void printAU(Auditoria a) {
            a.usuario,
            a.fecha_modificacion,
            a.cambios);
+    fflush(stdout);
 }
 
 void printLAU(ListaAuditorias lau) {
@@ -48,6 +49,7 @@ void printLAU(ListaAuditorias lau) {
            "USUARIO",
            "FECHA_MODIF",
            "CAMBIOS");
+    fflush(stdout);
     for (i = 0; i < lau.numAuditorias; i++) {
         printAU(lau.aAuditoria[i]);
     }
@@ -63,12 +65,18 @@ Auditoria realizarAuditoria(ListaAuditorias la) {
     fflush(stdin);
     scanf("%d", &a.operacion_id);
     printf("Introduce el nombre de usuario: ");
+    fflush(stdout);
+    fflush(stdin);
     fgets(a.usuario, TAM_USUARIO, stdin);
     a.usuario[strcspn(a.usuario, "\n")] = 0;
     printf("Introduce la fecha de modificación (YYYY-MM-DD): ");
+    fflush(stdout);
+    fflush(stdin);
     fgets(a.fecha_modificacion, TAM_FECHA, stdin);
     a.fecha_modificacion[strcspn(a.fecha_modificacion, "\n")] = 0;
     printf("Introduce los cambios realizados: ");
+    fflush(stdout);
+    fflush(stdin);
     fgets(a.cambios, TAM_CAMBIOS, stdin);
     a.cambios[strcspn(a.cambios, "\n")] = 0;
     writeLog("AUDITORIAS: realizarAuditoria Ejecutado", FICHERO_AUDIT_LOG);

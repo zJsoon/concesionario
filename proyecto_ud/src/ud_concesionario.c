@@ -23,9 +23,12 @@
 #include "utils/informes/informes.h"
 #include "utils/gestion/gestion.h"
 
+#define TAM_DNI_MENU 10
+
 int main() {
 	int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22,
 			result;
+	char dni[TAM_DNI_MENU];
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
@@ -68,6 +71,7 @@ int main() {
 		switch (op) {
 		case 0:
 			printf("Saliendo...\n");
+			fflush(stdout);
 			break;
 
 			/*
@@ -98,13 +102,15 @@ int main() {
 								addClient(&lc, c);
 								break;
 							case 2: // Modificar Clientes
-								modClientes(&lc);
+								modClientes(&lc); // TODO
 								break;
 							case 3: // Eliminar Clientes
-								elimClientes(&lc, pedirDNI());
+								pedirDNI(dni);
+								elimClientes(&lc, dni); // TODO
 								break;
 							case 4: // Consultar Clientes
-								consultClientes(lc, pedirDNI());
+								pedirDNI(dni);
+								consultClientes(lc, dni); // TODO
 								break;
 							default:
 								printf(
@@ -134,6 +140,7 @@ int main() {
 									switch (op122) {
 									case 0:
 										printf("Saliendo...\n");
+										fflush(stdout);
 										break;
 									case 1: // Inicio alquiler
 										startAlquiler(pedirMatricula(), &lv,
@@ -323,13 +330,16 @@ int main() {
 								addEmp(&le, pedirEmp(le));
 								break;
 							case 2: // Modificar empleado
-								modEmp(pedirDNI(), &le);
+								pedirDNI(dni);
+								modEmp(dni, &le);
 								break;
 							case 3: // Eliminar empleado
-								elimEmp(pedirDNI(), &le);
+								pedirDNI(dni);
+								elimEmp(dni, &le);
 								break;
 							case 4: // Consultar empleado
-								consultEmp(pedirDNI(), le);
+								pedirDNI(dni);
+								consultEmp(dni, le);
 								break;
 							default:
 								printf(

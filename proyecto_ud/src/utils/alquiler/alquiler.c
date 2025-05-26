@@ -38,6 +38,7 @@ void printA(Alquiler a) {
            a.fecha_inicio,
            a.fecha_fin,
            a.precio_diario);
+    fflush(stdout);
     writeLog("Print alquiler.",FICHERO_ALQUILER_LOG);
 }
 
@@ -49,6 +50,7 @@ void printLA(ListaAlquileres la) {
            "FECHA_INICIO",
            "FECHA_FIN",
            "PRECIO_DIARIO");
+    fflush(stdout);
     for (i = 0; i < la.numAlquileres; i++) {
         printA(la.aAlquiler[i]);
     }

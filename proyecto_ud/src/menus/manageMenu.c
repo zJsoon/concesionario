@@ -12,6 +12,7 @@ int pedirOp() {
 	writeLog("MANAGE MENU: pedirOp Ejecutado", FICHERO_MANAGEMENU_LOG);
 	return op;
 }
+
 int verificarEmpleado(ListaEmp le) {
 	int enc = 0, i;
 	Emp e;
@@ -58,30 +59,26 @@ int verificarGerente(ListaEmp le) {
 	    return enc;
 }
 
-char* pedirDNI() {
-	char* dni = malloc(TAM_DNI * sizeof(char)); // Asignar memoria dinámicamente
+void pedirDNI(char *dni) {
+    printf("Introduce el DNI: ");
+    fflush(stdout);
+    fflush(stdin);
 
-	    if (dni == NULL) {
-	        perror("Error al asignar memoria");
-	        return NULL; // Manejar el error de asignación de memoria
-	    }
-
-	    printf("Introduce el DNI: ");
-	    fflush(stdout);
-	    fgets(dni, TAM_DNI, stdin);
-	    dni[strcspn(dni, "\n")] = 0; // Remueve el salto de línea y termina la cadena
-
-	    // Limpiar el buffer de entrada para evitar problemas futuros
-	    int c;
-	    while ((c = getchar()) != '\n' && c != EOF);
-
-	    return dni;
+    // Leer con fgets (más seguro que scanf)
+    if (fgets(dni, TAM_DNI, stdin) != NULL) {
+        // Eliminar el salto de línea si existe
+        dni[strcspn(dni, "\n")] = '\0';
+    } else {
+        dni[0] = '\0';  // En caso de error
+    }
 }
 
 char* pedirMatricula() {
 	static char mat[10];
 
 	printf("Introduce la Matricula del coche: ");
+	fflush(stdout);
+	fflush(stdin);
 	scanf("%s", mat);
 
 	return mat;
@@ -91,6 +88,8 @@ char* pedirIDConce() {
 	static char conce[5];
 
 	printf("Introduce el ID del concesionario: ");
+	fflush(stdout);
+	fflush(stdin);
 	scanf("%s", conce);
 
 	return conce;
