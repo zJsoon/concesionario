@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 	loadVehFromDB(db, &lv);
 	loadVentasFromDB(db, &lvent);
 
-	printf("\nInitialising Winsock...\n"); // inicializa la libreria
+	printf("\nInitialising Winsock...\n");
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
 		printf("Failed. Error Code : %d", WSAGetLastError());
 		return -1;
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
 
 	printf("Socket created.\n");
 
-	server.sin_addr.s_addr = inet_addr(SERVER_IP); //INADDR_ANY;
+	server.sin_addr.s_addr = inet_addr(SERVER_IP);
 	server.sin_family = AF_INET;
 	server.sin_port = htons(SERVER_PORT);
 
