@@ -1,3 +1,7 @@
+/*
+ ARCHIVO ANTIGUO DONDE SOLO SE USA EL SERVIDOR.
+ */
+
 //#include <unistd.h>
 //#include <stdlib.h>
 //#include <string.h>

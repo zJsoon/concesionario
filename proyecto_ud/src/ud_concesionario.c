@@ -35,14 +35,12 @@
 
 int main(int argc, char *argv[]) {
 	WSADATA wsaData;
-	SOCKET conn_socket; //el que lleva la conexion
-	SOCKET comm_socket; //el que lo comunica
+	SOCKET conn_socket;
+	SOCKET comm_socket;
 	struct sockaddr_in server;
 	struct sockaddr_in client;
-	char sendBuff[4096], recvBuff[512]; // lo que yo envio, lo que yo recibo
-	//int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22,
+	char sendBuff[4096], recvBuff[512];
 	int result;
-	//char dni[TAM_DNI_MENU];
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
@@ -55,9 +53,6 @@ int main(int argc, char *argv[]) {
 	ListaTraslados lt;
 	ListaVeh lv;
 	ListaVent lvent;
-	//Client c;
-	//Config c = leerConfiguracion("../data/ini.config");
-	//fflush(stdout);
 	sqlite3 *db;
 
 	iniListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
@@ -79,7 +74,6 @@ int main(int argc, char *argv[]) {
 	loadTrasladosFromDB(db, &lt);
 	loadVehFromDB(db, &lv);
 	loadVentasFromDB(db, &lvent);
-	//printLCli(lc);
 
 	printf("\nInitialising Winsock...\n"); // inicializa la libreria
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
@@ -135,21 +129,18 @@ int main(int argc, char *argv[]) {
 
 	int opcion, opcion1, opcion2;
 	do {
-		// Limpiar buffers ANTES de usarlos
 		memset(recvBuff, 0, sizeof(recvBuff));
 		memset(sendBuff, 0, sizeof(sendBuff));
 
-		recv(comm_socket, recvBuff, sizeof(recvBuff), 0); // Recibir opción del cliente
+		recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 		sscanf(recvBuff, "%d", &opcion);
 
-		// Limpiar de nuevo antes de enviar respuesta
 		memset(sendBuff, 0, sizeof(sendBuff));
 		sprintf(sendBuff, "Servidor: Opción recibida %d", opcion);
 		send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 
 		switch (opcion) {
 		case 1:
-			// Limpiar ANTES de recibir subopción
 			memset(recvBuff, 0, sizeof(recvBuff));
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%d", &opcion1);
@@ -157,24 +148,15 @@ int main(int argc, char *argv[]) {
 			switch (opcion1) {
 			case 1:
 
-				// SOLUCIÓN: Enviar todo en un solo mensaje grande
 				memset(sendBuff, 0, sizeof(sendBuff));
-
-				// Construir mensaje completo con todos los concesionarios
-				//char temp[1000];
 				int offset = 0;
 
-				// Añadir cabecera
 				offset += sprintf(sendBuff + offset,
 						"LISTA DE CONCESIONARIOS:\n");
 				offset += sprintf(sendBuff + offset,
 						"%-10s%-30s%-40s%-15s%-15s%-30s\n", "ID", "NOMBRE",
 						"DIRECCIÓN", "CIUDAD", "TELÉFONO", "EMAIL");
-				offset +=
-						sprintf(sendBuff + offset,
-								"------------------------------------------------------------------------------------------------------------------------------------\n");
 
-				// Añadir cada concesionario
 				for (int i = 0; i < lcon.numConces; i++) {
 					offset += sprintf(sendBuff + offset,
 							"%-10d%-30s%-40s%-15s%-15s%-30s\n",
@@ -187,32 +169,27 @@ int main(int argc, char *argv[]) {
 				break;
 
 			case 2:
-				// NUEVA OPCIÓN: Consultar concesionario específico
+
 				memset(sendBuff, 0, sizeof(sendBuff));
 				sprintf(sendBuff,
 						"Ingrese el ID del concesionario a consultar:");
 				send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
-				// Recibir el ID del concesionario
 				memset(recvBuff, 0, sizeof(recvBuff));
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 
-				// Ejecutar la consulta
 				consultConceSocket(comm_socket, lcon, lv, recvBuff);
 				break;
 
 			case 3:
-				// NUEVA OPCIÓN: Consultar concesionario específico
 				memset(sendBuff, 0, sizeof(sendBuff));
 				sprintf(sendBuff,
 						"Ingrese la ciudad del concesionario a consultar:");
 				send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
-				// Recibir el ID del concesionario
 				memset(recvBuff, 0, sizeof(recvBuff));
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 
-				// Ejecutar la consulta
 				consultConceCiudadSocket(comm_socket, lcon, recvBuff);
 				break;
 
@@ -231,7 +208,6 @@ int main(int argc, char *argv[]) {
 			break;
 
 		case 2:
-			// Limpiar ANTES de recibir subopción
 			memset(recvBuff, 0, sizeof(recvBuff));
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%d", &opcion2);
@@ -240,11 +216,8 @@ int main(int argc, char *argv[]) {
 			case 1:
 				memset(sendBuff, 0, sizeof(sendBuff));
 
-				// Construir mensaje completo con todos los concesionarios
-				//char temp[1000];
 				int offset = 0;
 
-				// Añadir cabecera
 				offset += sprintf(sendBuff + offset, "LISTA DE VEHÍCULOS:\n");
 				offset +=
 						sprintf(sendBuff + offset,
@@ -254,7 +227,6 @@ int main(int argc, char *argv[]) {
 								"ESTADO", "FECHA_ADQ", "CONCE_ID", "KM",
 								"COMBUSTIBLE");
 
-				// Añadir cada vehículo
 				for (int i = 0; i < lv.numVeh; i++) {
 					offset +=
 							sprintf(sendBuff + offset,
@@ -273,32 +245,26 @@ int main(int argc, char *argv[]) {
 				break;
 
 			case 2:
-				// NUEVA OPCIÓN: Consultar concesionario específico
 				memset(sendBuff, 0, sizeof(sendBuff));
 				sprintf(sendBuff,
 						"Ingrese el ID del vehículo a consultar:");
 				send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
-				// Recibir el ID del concesionario
 				memset(recvBuff, 0, sizeof(recvBuff));
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 
-				// Ejecutar la consulta
 				consultVehSocket(comm_socket, lv, recvBuff);
 				break;
 
 			case 3:
-				// NUEVA OPCIÓN: Consultar concesionario específico
 				memset(sendBuff, 0, sizeof(sendBuff));
 				sprintf(sendBuff,
 						"Ingrese el marca del vehículo a consultar:");
 				send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
-				// Recibir el ID del concesionario
 				memset(recvBuff, 0, sizeof(recvBuff));
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 
-				// Ejecutar la consulta
 				consultVehMarcaSocket(comm_socket, lv, recvBuff);
 				break;
 
@@ -347,7 +313,6 @@ int main(int argc, char *argv[]) {
 	sqlite3_close(db);
 	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
 
-	// CLOSING the sockets and cleaning Winsock...
 	closesocket(comm_socket);
 	WSACleanup();
 
