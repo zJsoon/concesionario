@@ -223,10 +223,8 @@ void consultConceSocket(SOCKET socket, ListaConce lc, ListaVeh lv, char *ID) {
 
     memset(sendBuff, 0, sizeof(sendBuff));
 
-    // Buscar el concesionario
     for (int i = 0; i < lc.numConces; i++) {
         if (lc.aConce[i].ID == idBuscado) {
-            // Construir información del concesionario
             offset += sprintf(sendBuff + offset, "=== INFORMACIÓN DEL CONCESIONARIO ===\n");
             offset += sprintf(sendBuff + offset, "ID: %d\n", lc.aConce[i].ID);
             offset += sprintf(sendBuff + offset, "Nombre: %s\n", lc.aConce[i].nombre);
@@ -246,7 +244,6 @@ void consultConceSocket(SOCKET socket, ListaConce lc, ListaVeh lv, char *ID) {
         return;
     }
 
-    // Buscar vehículos del concesionario
     offset += sprintf(sendBuff + offset, "=== VEHÍCULOS DEL CONCESIONARIO ===\n");
     int vehiculosEncontrados = 0;
 
@@ -275,10 +272,8 @@ void consultConceCiudadSocket(SOCKET socket, ListaConce lc, char *nombre){
 
 	    memset(sendBuff, 0, sizeof(sendBuff));
 
-	    // Buscar el concesionario
 	    for (int i = 0; i < lc.numConces; i++) {
 	        if (strcmp(lc.aConce[i].ciudad,nombre)==0) {
-	            // Construir información del concesionario
 	            offset += sprintf(sendBuff + offset, "=== INFORMACIÓN DEL CONCESIONARIO ===\n");
 	            offset += sprintf(sendBuff + offset, "ID: %d\n", lc.aConce[i].ID);
 	            offset += sprintf(sendBuff + offset, "Nombre: %s\n", lc.aConce[i].nombre);

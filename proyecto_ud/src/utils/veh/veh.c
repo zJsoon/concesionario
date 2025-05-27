@@ -198,7 +198,7 @@ int obtenerVehiculoID(ListaVeh listaVehiculos, char *matricula) {
             return listaVehiculos.aVeh[i].ID;
         }
     }
-    return -1; //Vehiculo no encontrado
+    return -1;
     writeLog("VENT: obtenerVehiculoID Ejecutado.",FICHERO_VENT_LOG);
 }
 
