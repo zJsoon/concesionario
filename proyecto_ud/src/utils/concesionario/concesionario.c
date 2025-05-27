@@ -215,3 +215,90 @@ void consultConce(ListaConce lc, ListaVeh lv, char *ID) {
 	writeLog("CONCE: consultConce Ejecutado", FICHERO_CONCE_LOG);
 }
 
+void consultConceSocket(SOCKET socket, ListaConce lc, ListaVeh lv, char *ID) {
+    char sendBuff[4096];
+    int offset = 0;
+    int idBuscado = atoi(ID);
+    int encontrado = 0;
+
+    memset(sendBuff, 0, sizeof(sendBuff));
+
+    // Buscar el concesionario
+    for (int i = 0; i < lc.numConces; i++) {
+        if (lc.aConce[i].ID == idBuscado) {
+            // Construir información del concesionario
+            offset += sprintf(sendBuff + offset, "=== INFORMACIÓN DEL CONCESIONARIO ===\n");
+            offset += sprintf(sendBuff + offset, "ID: %d\n", lc.aConce[i].ID);
+            offset += sprintf(sendBuff + offset, "Nombre: %s\n", lc.aConce[i].nombre);
+            offset += sprintf(sendBuff + offset, "Dirección: %s\n", lc.aConce[i].direccion);
+            offset += sprintf(sendBuff + offset, "Ciudad: %s\n", lc.aConce[i].ciudad);
+            offset += sprintf(sendBuff + offset, "Teléfono: %s\n", lc.aConce[i].tlf);
+            offset += sprintf(sendBuff + offset, "Email: %s\n", lc.aConce[i].email);
+            offset += sprintf(sendBuff + offset, "\n");
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        sprintf(sendBuff, "Concesionario con ID %d no encontrado.\n", idBuscado);
+        send(socket, sendBuff, strlen(sendBuff), 0);
+        return;
+    }
+
+    // Buscar vehículos del concesionario
+    offset += sprintf(sendBuff + offset, "=== VEHÍCULOS DEL CONCESIONARIO ===\n");
+    int vehiculosEncontrados = 0;
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (lv.aVeh[i].ID == idBuscado) {
+            offset += sprintf(sendBuff + offset, "ID del vehículo: %d\n", lv.aVeh[i].ID);
+            offset += sprintf(sendBuff + offset, "Matrícula: %s\n", lv.aVeh[i].matricula);
+            offset += sprintf(sendBuff + offset, "Modelo: %s\n", lv.aVeh[i].modelo);
+            offset += sprintf(sendBuff + offset, "------------------------\n");
+            vehiculosEncontrados++;
+        }
+    }
+
+    if (vehiculosEncontrados == 0) {
+        offset += sprintf(sendBuff + offset, "No hay vehículos registrados para este concesionario.\n");
+    }
+
+    send(socket, sendBuff, strlen(sendBuff), 0);
+    writeLog("CONCE: consultConce Ejecutado", FICHERO_CONCE_LOG);
+}
+
+void consultConceCiudadSocket(SOCKET socket, ListaConce lc, char *nombre){
+	char sendBuff[4096];
+	    int offset = 0;
+	    int encontrado = 0;
+
+	    memset(sendBuff, 0, sizeof(sendBuff));
+
+	    // Buscar el concesionario
+	    for (int i = 0; i < lc.numConces; i++) {
+	        if (strcmp(lc.aConce[i].ciudad,nombre)==0) {
+	            // Construir información del concesionario
+	            offset += sprintf(sendBuff + offset, "=== INFORMACIÓN DEL CONCESIONARIO ===\n");
+	            offset += sprintf(sendBuff + offset, "ID: %d\n", lc.aConce[i].ID);
+	            offset += sprintf(sendBuff + offset, "Nombre: %s\n", lc.aConce[i].nombre);
+	            offset += sprintf(sendBuff + offset, "Dirección: %s\n", lc.aConce[i].direccion);
+	            offset += sprintf(sendBuff + offset, "Ciudad: %s\n", lc.aConce[i].ciudad);
+	            offset += sprintf(sendBuff + offset, "Teléfono: %s\n", lc.aConce[i].tlf);
+	            offset += sprintf(sendBuff + offset, "Email: %s\n", lc.aConce[i].email);
+	            offset += sprintf(sendBuff + offset, "\n");
+	            encontrado = 1;
+	            break;
+	        }
+	    }
+
+	    if (!encontrado) {
+	        sprintf(sendBuff, "Concesionarios en ciudad %s no encontrado.\n", nombre);
+	        send(socket, sendBuff, strlen(sendBuff), 0);
+	        return;
+	    }
+
+	    send(socket, sendBuff, strlen(sendBuff), 0);
+	    writeLog("CONCE: consultConce Ejecutado", FICHERO_CONCE_LOG);
+}
+

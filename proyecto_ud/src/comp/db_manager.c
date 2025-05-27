@@ -167,7 +167,7 @@ void addTransladosToDB(sqlite3 *db, ListaTraslados lt) {
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
 	for (i = 0; i < lt.numTraslados; i++) {
-		sprintf(sql, "INSERT INTO renting VALUES(%i,%i,%i,%i,'%s', %i)",
+		sprintf(sql, "INSERT INTO translados VALUES(%i,%i,%i,%i,'%s', %i)",
 				lt.aTraslado[i].id, lt.aTraslado[i].vehiculo_id,
 				lt.aTraslado[i].concesionario_origen_id,
 				lt.aTraslado[i].concesionario_destino_id,
@@ -187,7 +187,7 @@ void addVehToDB(sqlite3 *db, ListaVeh lv) {
 	sqlite3_finalize(stmt);
 	for (i = 0; i < lv.numVeh; i++) {
 		sprintf(sql,
-				"INSERT INTO renting VALUES(%i,'%s','%s','%s',%i,'%s','%s',%f,%f,'%s','%s',%i,%f,'%s')",
+				"INSERT INTO vehiculo VALUES(%i,'%s','%s','%s',%i,'%s','%s',%f,%f,'%s','%s',%i,%f,'%s')",
 				lv.aVeh[i].ID, lv.aVeh[i].matricula, lv.aVeh[i].marca,
 				lv.aVeh[i].modelo, lv.aVeh[i].year, lv.aVeh[i].tipo,
 				lv.aVeh[i].color, lv.aVeh[i].precio_compra,

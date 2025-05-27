@@ -1,6 +1,6 @@
 #ifndef VEH_H_
 #define VEH_H_
-
+#include <winsock2.h>
 #include "../../config/logger/logger.h"
 
 #define TAM_FECHA 11
@@ -47,5 +47,7 @@ void visualizarVehMarca(ListaVeh lv, char *marca);
 void visualizarVehTipo(ListaVeh lv, char *tipo);
 void visualizarVehEstado(ListaVeh lv, char *estado);
 int obtenerVehiculoID(ListaVeh listaVehiculos, char *matricula) ;
+void consultVehSocket(SOCKET socket, ListaVeh lv, char *ID);
+void consultVehMarcaSocket(SOCKET socket, ListaVeh lv, char *marca);
 
 #endif /* VEH_H_ */

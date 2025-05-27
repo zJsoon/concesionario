@@ -1,4 +1,12 @@
 #include <stdio.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <winsock2.h>
+#define SERVER_IP "127.0.0.1"
+#define SERVER_PORT 6000
 
 #include "menus/menu.h"
 #include "menus/manageMenu.h"
@@ -25,10 +33,16 @@
 
 #define TAM_DNI_MENU 10
 
-int main() {
-	int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22,
-			result;
-	char dni[TAM_DNI_MENU];
+int main(int argc, char *argv[]) {
+	WSADATA wsaData;
+	SOCKET conn_socket; //el que lleva la conexion
+	SOCKET comm_socket; //el que lo comunica
+	struct sockaddr_in server;
+	struct sockaddr_in client;
+	char sendBuff[4096], recvBuff[512]; // lo que yo envio, lo que yo recibo
+	//int op, op1, op11, op12, op122, op123, op13, op14, op141, op2, op21, op22,
+	int result;
+	//char dni[TAM_DNI_MENU];
 
 	ListaAlquileres la;
 	ListaAuditorias lau;
@@ -41,7 +55,7 @@ int main() {
 	ListaTraslados lt;
 	ListaVeh lv;
 	ListaVent lvent;
-	Client c;
+	//Client c;
 	//Config c = leerConfiguracion("../data/ini.config");
 	//fflush(stdout);
 	sqlite3 *db;
@@ -65,339 +79,258 @@ int main() {
 	loadTrasladosFromDB(db, &lt);
 	loadVehFromDB(db, &lv);
 	loadVentasFromDB(db, &lvent);
-	printLCli(lc);
+	//printLCli(lc);
+
+	printf("\nInitialising Winsock...\n"); // inicializa la libreria
+	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+		printf("Failed. Error Code : %d", WSAGetLastError());
+		return -1;
+	}
+
+	printf("Initialised.\n");
+
+	if ((conn_socket = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) {
+		printf("Could not create socket : %d", WSAGetLastError());
+		WSACleanup();
+		return -1;
+	}
+
+	printf("Socket created.\n");
+
+	server.sin_addr.s_addr = inet_addr(SERVER_IP); //INADDR_ANY;
+	server.sin_family = AF_INET;
+	server.sin_port = htons(SERVER_PORT);
+
+	if (bind(conn_socket, (struct sockaddr*) &server,
+			sizeof(server)) == SOCKET_ERROR) {
+		printf("Bind failed with error code: %d", WSAGetLastError());
+		closesocket(conn_socket);
+		WSACleanup();
+		return -1;
+	}
+
+	printf("Bind done.\n");
+
+	if (listen(conn_socket, 1) == SOCKET_ERROR) {
+		printf("Listen failed with error code: %d", WSAGetLastError());
+		closesocket(conn_socket);
+		WSACleanup();
+		return -1;
+	}
+
+	printf("Waiting for incoming connections...\n");
+	int stsize = sizeof(struct sockaddr);
+	comm_socket = accept(conn_socket, (struct sockaddr*) &client, &stsize);
+
+	if (comm_socket == INVALID_SOCKET) {
+		printf("accept failed with error code : %d", WSAGetLastError());
+		closesocket(conn_socket);
+		WSACleanup();
+		return -1;
+	}
+	printf("Incomming connection from: %s (%d)\n", inet_ntoa(client.sin_addr),
+			ntohs(client.sin_port));
+
+	closesocket(conn_socket);
+
+	int opcion, opcion1, opcion2;
 	do {
-		op = mostrarMenuInicio();
-		switch (op) {
-		case 0:
-			printf("Saliendo...\n");
-			fflush(stdout);
-			break;
+		// Limpiar buffers ANTES de usarlos
+		memset(recvBuff, 0, sizeof(recvBuff));
+		memset(sendBuff, 0, sizeof(sendBuff));
 
-			/*
-			 * MENU EMPLEADO
-			 */
+		recv(comm_socket, recvBuff, sizeof(recvBuff), 0); // Recibir opción del cliente
+		sscanf(recvBuff, "%d", &opcion);
+
+		// Limpiar de nuevo antes de enviar respuesta
+		memset(sendBuff, 0, sizeof(sendBuff));
+		sprintf(sendBuff, "Servidor: Opción recibida %d", opcion);
+		send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+
+		switch (opcion) {
 		case 1:
-			if (verificarEmpleado(le)) {
-				do {
-					op1 = mostrarMenuEmp();
-					switch (op1) {
-					case 0:
-						printf("Saliendo...\n");
-						fflush(stdout);
-						break;
-						/*
-						 * GESTION CLIENTES
-						 */
-					case 1:
-						do {
-							op11 = mostrarMenuEmpGest();
-							switch (op11) {
-							case 0:
-								printf("Saliendo...\n");
-								fflush(stdout);
-								break;
-							case 1: // Añadir Clientes
-								c = registrarCliente(lc);
-								addClient(&lc, c);
-								break;
-							case 2: // Modificar Clientes
-								modClientes(&lc); // TODO
-								break;
-							case 3: // Eliminar Clientes
-								pedirDNI(dni);
-								elimClientes(&lc, dni); // TODO
-								break;
-							case 4: // Consultar Clientes
-								pedirDNI(dni);
-								consultClientes(lc, dni); // TODO
-								break;
-							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
-								fflush(stdout);
-								break;
-							}
-						} while (op11 != 0);
-						break;
-						/*
-						 * OPERACIONES
-						 */
-					case 2:
-						do {
-							op12 = mostrarMenuEmpOperaciones();
-							switch (op12) {
-							case 0:
-								printf("Saliendo...\n");
-								fflush(stdout);
-								break;
-							case 1: // Registrar venta
-								registrarVenta(&lvent, lv, pedirMatricula());
-								break;
-							case 2: // Registrar alquiler
-								do {
-									op122 = mostrarMenuEmpOperacionesAlquiler();
-									switch (op122) {
-									case 0:
-										printf("Saliendo...\n");
-										fflush(stdout);
-										break;
-									case 1: // Inicio alquiler
-										startAlquiler(pedirMatricula(), &lv,
-												&la);
-										break;
-									case 2: // Estado alquiler
-										estadoAlquiler(pedirMatricula(), &lv,
-												&la);
-										break;
-									case 3: // Fin alquiler
-										endAlquiler(pedirMatricula(), &lv, &la);
-										break;
-									default:
-										printf(
-												"Error! La opción seleccionada no es correcta\n");
-										fflush(stdout);
-										break;
-									}
-								} while (op122 != 0);
-								break;
-							case 3:
-								do {
-									op123 = mostrarMenuEmpOperacionesRenting();
-									switch (op123) {
-									case 0:
-										printf("Saliendo...\n");
-										fflush(stdout);
-										break;
-									case 1: // Inicio renting
-										startRenting(&lr,
-												obtenerVehiculoID(lv,
-														pedirMatricula()));
-										break;
-									case 2: // Estado renting
-										estadoRenting(lr,
-												obtenerVehiculoID(lv,
-														pedirMatricula()));
-										break;
-									case 3: // Fin reinting
-										endRenting(&lr,
-												obtenerVehiculoID(lv,
-														pedirMatricula()));
-										break;
-									default:
-										printf(
-												"Error! La opción seleccionada no es correcta\n");
-										fflush(stdout);
-										break;
-									}
-									break;
-								} while (op123 != 0);
-								break;
-							case 4: // Registrar movimiento coche
-								registrarTranslado(pedirMatricula(), lv, &lt);
-								break;
-							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
-								fflush(stdout);
-								break;
-							}
-						} while (op12 != 0);
-						break;
-						/*
-						 * MANTENIMIENTO
-						 */
-					case 3:
-						do {
-							op13 = mostrarMenuEmpMantenimiento();
-							switch (op13) {
-							case 0:
-								printf("Saliendo...\n");
-								fflush(stdout);
-								break;
-							case 1: // Registrar reparaciones
-								registrarRep(&lm, pedirMatricula());
-								break;
-							case 2: // Registrar revisiones
-								registrarRevi(&lm, pedirMatricula());
-								break;
-							case 3: // Visualizar reparaciones
-								visualizarMantRep(lm, pedirMatricula());
-								break;
-							case 4: // Visualizar revisiones
-								visualizarMantRevi(lm, pedirMatricula());
-								break;
-							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
-								fflush(stdout);
-								break;
-							}
-						} while (op13 != 0);
-						break;
-						/*
-						 * INFORMES
-						 */
-					case 4:
-						do {
-							op14 = mostrarMenuEmpInformes();
-							switch (op14) {
-							case 0:
-								printf("Saliendo...\n");
-								fflush(stdout);
-								break;
-							case 1: // Generar informes
-								do {
-									op141 = mostrarMenuEmpInformesGenerar();
-									switch (op141) {
-									case 0:
-										printf("Saliendo...\n");
-										fflush(stdout);
-										break;
-									case 1: // Informe venta
-										informeVenta(lv, lvent,
-												pedirMatricula());
-										break;
-									case 2: // Informe alquiler
-										informeAlquiler(lv, la,
-												pedirMatricula());
-										break;
-									case 3: // Informe renting
-										informeRenting(lv, lr,
-												pedirMatricula());
-										break;
-									case 4: // Informe movimiento coche
-										informeMovimientoCoche(lv, lt,
-												pedirMatricula());
-										break;
-									default:
-										printf(
-												"Error! La opción seleccionada no es correcta\n");
-										fflush(stdout);
-										break;
-									}
-								} while (op141 != 0);
+			// Limpiar ANTES de recibir subopción
+			memset(recvBuff, 0, sizeof(recvBuff));
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			sscanf(recvBuff, "%d", &opcion1);
 
-								break;
-							case 2: // Visualizar informes
-								visualizarInformes(lv, lvent, la, lr, lt,
-										pedirMatricula());
-								break;
-							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
-								fflush(stdout);
-								break;
-							}
-						} while (op14 != 0);
-						break;
-					default:
-						printf(
-								"Error! La opción seleccionada no es correcta\n");
-						fflush(stdout);
-						break;
-					}
-				} while (op1 != 0);
-			} else {
-				printf("No estas autorizado para acceder a este menú.\n");
-				fflush(stdout);
+			switch (opcion1) {
+			case 1:
+
+				// SOLUCIÓN: Enviar todo en un solo mensaje grande
+				memset(sendBuff, 0, sizeof(sendBuff));
+
+				// Construir mensaje completo con todos los concesionarios
+				//char temp[1000];
+				int offset = 0;
+
+				// Añadir cabecera
+				offset += sprintf(sendBuff + offset,
+						"LISTA DE CONCESIONARIOS:\n");
+				offset += sprintf(sendBuff + offset,
+						"%-10s%-30s%-40s%-15s%-15s%-30s\n", "ID", "NOMBRE",
+						"DIRECCIÓN", "CIUDAD", "TELÉFONO", "EMAIL");
+				offset +=
+						sprintf(sendBuff + offset,
+								"------------------------------------------------------------------------------------------------------------------------------------\n");
+
+				// Añadir cada concesionario
+				for (int i = 0; i < lcon.numConces; i++) {
+					offset += sprintf(sendBuff + offset,
+							"%-10d%-30s%-40s%-15s%-15s%-30s\n",
+							lcon.aConce[i].ID, lcon.aConce[i].nombre,
+							lcon.aConce[i].direccion, lcon.aConce[i].ciudad,
+							lcon.aConce[i].tlf, lcon.aConce[i].email);
+				}
+
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
+				break;
+
+			case 2:
+				// NUEVA OPCIÓN: Consultar concesionario específico
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff,
+						"Ingrese el ID del concesionario a consultar:");
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				// Recibir el ID del concesionario
+				memset(recvBuff, 0, sizeof(recvBuff));
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+
+				// Ejecutar la consulta
+				consultConceSocket(comm_socket, lcon, lv, recvBuff);
+				break;
+
+			case 3:
+				// NUEVA OPCIÓN: Consultar concesionario específico
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff,
+						"Ingrese la ciudad del concesionario a consultar:");
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				// Recibir el ID del concesionario
+				memset(recvBuff, 0, sizeof(recvBuff));
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+
+				// Ejecutar la consulta
+				consultConceCiudadSocket(comm_socket, lcon, recvBuff);
+				break;
+
+			case 0:
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff, "Saliendo del menú concesionarios.");
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				break;
+
+			default:
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff, "Opción no válida: %d", opcion1);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				break;
 			}
 			break;
-			/*
-			 * MENU GERENTE
-			 */
+
 		case 2:
-			if (verificarGerente(le)) {
-				do {
-					op2 = mostrarMenuGerente();
-					switch (op2) {
-					case 0:
-						printf("Saliendo...\n");
-						fflush(stdout);
-						break;
-						/*
-						 * GESTION EMPLEADO
-						 */
-					case 1:
-						do {
-							op21 = mostrarMenuGerenteEmp();
-							switch (op21) {
-							case 0:
-								printf("Saliendo...\n");
-								fflush(stdout);
-								break;
-							case 1: // Añadir empleado
-								addEmp(&le, pedirEmp(le));
-								break;
-							case 2: // Modificar empleado
-								pedirDNI(dni);
-								modEmp(dni, &le);
-								break;
-							case 3: // Eliminar empleado
-								pedirDNI(dni);
-								elimEmp(dni, &le);
-								break;
-							case 4: // Consultar empleado
-								pedirDNI(dni);
-								consultEmp(dni, le);
-								break;
-							default:
-								printf(
-										"Error! La opción seleccionada no es correcta\n");
-								fflush(stdout);
-								break;
-							}
-						} while (op21 != 0);
-						break;
-						/*
-						 * GESTION CONCESIONARIOS
-						 */
-					case 2: // Gestión concesionarios
-						do {
-							op22 = mostrarMenuGerenteConce();
-							switch (op22) {
-							case 0:
-								printf("Saliendo...");
-								fflush(stdout);
-								break;
-							case 1: // Añadir concesionarios
-								addConce(&lcon, pedirConce(lcon));
-								break;
-							case 2: // Modificar concesionarios
-								modConce(&lcon);
-								break;
-							case 3: // Eliminar concesionarios
-								elimConce(&lcon);
-								break;
-							case 4: // Consultar concesionarios
-								consultConce(lcon, lv, pedirIDConce());
-								break;
-							default:
-								printf(
-										"Error! La opción seleccionada no es correcta.\n");
-								fflush(stdout);
-								break;
-							}
-						} while (op22 != 0);
-						break;
-					default:
-						printf(
-								"Error! La opción seleccionada no es correcta.\n");
-						fflush(stdout);
-						break;
-					}
-				} while (op2 != 0);
-			} else {
-				printf("No estas autorizado para acceder a este menú.\n");
-				fflush(stdout);
+			// Limpiar ANTES de recibir subopción
+			memset(recvBuff, 0, sizeof(recvBuff));
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			sscanf(recvBuff, "%d", &opcion2);
+
+			switch (opcion2) {
+			case 1:
+				memset(sendBuff, 0, sizeof(sendBuff));
+
+				// Construir mensaje completo con todos los concesionarios
+				//char temp[1000];
+				int offset = 0;
+
+				// Añadir cabecera
+				offset += sprintf(sendBuff + offset, "LISTA DE VEHÍCULOS:\n");
+				offset +=
+						sprintf(sendBuff + offset,
+								"%-10s%-15s%-20s%-20s%-10s%-15s%-15s%-12s%-12s%-15s%-15s%-10s%-10s%-15s\n",
+								"ID", "MATRÍCULA", "MARCA", "MODELO", "AÑO",
+								"TIPO", "COLOR", "PRECIO_COMP", "PRECIO_VENT",
+								"ESTADO", "FECHA_ADQ", "CONCE_ID", "KM",
+								"COMBUSTIBLE");
+
+				// Añadir cada vehículo
+				for (int i = 0; i < lv.numVeh; i++) {
+					offset +=
+							sprintf(sendBuff + offset,
+									"%10d%15s%20s%20s%10d%15s%15s%12.2f%12.2f%15s%15s%10d%10.2f%15s\n",
+									lv.aVeh[i].ID, lv.aVeh[i].matricula,
+									lv.aVeh[i].marca, lv.aVeh[i].modelo,
+									lv.aVeh[i].year, lv.aVeh[i].tipo,
+									lv.aVeh[i].color, lv.aVeh[i].precio_compra,
+									lv.aVeh[i].precio_venta, lv.aVeh[i].estado,
+									lv.aVeh[i].fecha_adquisicion,
+									lv.aVeh[i].concesionario_ID, lv.aVeh[i].kilometraje,
+									lv.aVeh[i].tipo_combustible);
+				}
+
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
+				break;
+
+			case 2:
+				// NUEVA OPCIÓN: Consultar concesionario específico
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff,
+						"Ingrese el ID del vehículo a consultar:");
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				// Recibir el ID del concesionario
+				memset(recvBuff, 0, sizeof(recvBuff));
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+
+				// Ejecutar la consulta
+				consultVehSocket(comm_socket, lv, recvBuff);
+				break;
+
+			case 3:
+				// NUEVA OPCIÓN: Consultar concesionario específico
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff,
+						"Ingrese el marca del vehículo a consultar:");
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				// Recibir el ID del concesionario
+				memset(recvBuff, 0, sizeof(recvBuff));
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+
+				// Ejecutar la consulta
+				consultVehMarcaSocket(comm_socket, lv, recvBuff);
+				break;
+
+			case 0:
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff, "Saliendo del menú vehículos.");
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				break;
+
+			default:
+				memset(sendBuff, 0, sizeof(sendBuff));
+				sprintf(sendBuff, "Opción no válida: %d", opcion1);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				break;
 			}
 			break;
+		case 0:
+			memset(sendBuff, 0, sizeof(sendBuff));
+			sprintf(sendBuff, "Desconectando...");
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			break;
+
 		default:
-			printf("Error! La opción seleccionada no es correcta\n");
-			fflush(stdout);
+			memset(sendBuff, 0, sizeof(sendBuff));
+			sprintf(sendBuff, "Opción no válida: %d", opcion);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			break;
 		}
-	} while (op != 0);
+
+	} while (opcion != 0);
+
+	printf("Servidor: Cerrando conexión...\n");
 
 	addAlquilerToDB(db, la);
 	addAuditoriaToDB(db, lau);
@@ -413,4 +346,10 @@ int main() {
 
 	sqlite3_close(db);
 	freeListas(&la, &lau, &lc, &lcon, &le, &lm, &lop, &lr, &lt, &lv, &lvent);
+
+	// CLOSING the sockets and cleaning Winsock...
+	closesocket(comm_socket);
+	WSACleanup();
+
+	return 0;
 }

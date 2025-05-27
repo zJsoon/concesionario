@@ -202,3 +202,65 @@ int obtenerVehiculoID(ListaVeh listaVehiculos, char *matricula) {
     writeLog("VENT: obtenerVehiculoID Ejecutado.",FICHERO_VENT_LOG);
 }
 
+void consultVehSocket(SOCKET socket, ListaVeh lv, char *ID) {
+    char sendBuff[4096];
+    int offset = 0;
+    int idBuscado = atoi(ID);
+    int encontrado = 0;
+
+    memset(sendBuff, 0, sizeof(sendBuff));
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (lv.aVeh[i].ID == idBuscado) {
+            offset += sprintf(sendBuff + offset, "=== INFORMACIÓN DEL VEHÍCULO ===\n");
+            offset += sprintf(sendBuff + offset, "ID: %d\n", lv.aVeh[i].ID);
+            offset += sprintf(sendBuff + offset, "Matrícula: %s\n", lv.aVeh[i].matricula);
+            offset += sprintf(sendBuff + offset, "Marca: %s\n", lv.aVeh[i].marca);
+            offset += sprintf(sendBuff + offset, "Modelo: %s\n", lv.aVeh[i].modelo);
+            offset += sprintf(sendBuff + offset, "Año: %d\n", lv.aVeh[i].year);
+            offset += sprintf(sendBuff + offset, "Tipo: %s\n", lv.aVeh[i].tipo);
+            offset += sprintf(sendBuff + offset, "Color: %s\n", lv.aVeh[i].color);
+            offset += sprintf(sendBuff + offset, "Precio Compra: %.2f\n", lv.aVeh[i].precio_compra);
+            offset += sprintf(sendBuff + offset, "Precio Venta: %.2f\n", lv.aVeh[i].precio_venta);
+            offset += sprintf(sendBuff + offset, "Estado: %s\n", lv.aVeh[i].estado);
+            offset += sprintf(sendBuff + offset, "Fecha Adquisición: %s\n", lv.aVeh[i].fecha_adquisicion);
+            offset += sprintf(sendBuff + offset, "ID Concesionario: %d\n", lv.aVeh[i].concesionario_ID);
+            offset += sprintf(sendBuff + offset, "Kilometraje: %.2f\n", lv.aVeh[i].kilometraje);
+            offset += sprintf(sendBuff + offset, "Combustible: %s\n", lv.aVeh[i].tipo_combustible);
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        sprintf(sendBuff, "Vehículo con ID %d no encontrado.\n", idBuscado);
+    }
+
+    send(socket, sendBuff, strlen(sendBuff), 0);
+    writeLog("VEH: consultVehSocket Ejecutado.", FICHERO_VEH_LOG);
+}
+
+void consultVehMarcaSocket(SOCKET socket, ListaVeh lv, char *marca) {
+    char sendBuff[2048];
+    int offset = 0;
+    int encontrados = 0;
+
+    memset(sendBuff, 0, sizeof(sendBuff));
+    offset += sprintf(sendBuff + offset, "=== VEHÍCULOS DE LA MARCA: %s ===\n", marca);
+
+    for (int i = 0; i < lv.numVeh; i++) {
+        if (strcmp(lv.aVeh[i].marca, marca) == 0) {
+            offset += sprintf(sendBuff + offset, "ID: %d | Matrícula: %s | Modelo: %s | Año: %d\n",
+                lv.aVeh[i].ID, lv.aVeh[i].matricula, lv.aVeh[i].modelo, lv.aVeh[i].year);
+            offset += sprintf(sendBuff + offset, "------------------------\n");
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        offset += sprintf(sendBuff + offset, "No se encontraron vehículos de la marca '%s'.\n", marca);
+    }
+
+    send(socket, sendBuff, strlen(sendBuff), 0);
+    writeLog("VEH: consultVehMarcaSocket Ejecutado.", FICHERO_VEH_LOG);
+}

@@ -1,6 +1,5 @@
 #ifndef CONCESIONARIO_CONCESIONARIO_H_
 #define CONCESIONARIO_CONCESIONARIO_H_
-
 #define TAM_NOM_EMAIL 30
 #define TAM_DIREC 40
 #define TAM_CID_TLF 15
@@ -33,5 +32,6 @@ void modConce(ListaConce *lista);
 void elimConce(ListaConce *lista);
 void visualizarConceCiudad(ListaConce lc);
 void consultConce(ListaConce lc, ListaVeh lv, char *ID);
-
+void consultConceSocket(SOCKET socket, ListaConce lc, ListaVeh lv, char *ID);
+void consultConceCiudadSocket(SOCKET socket, ListaConce lc, char *nombre);
 #endif /* CONCESIONARIO_CONCESIONARIO_H_ */
